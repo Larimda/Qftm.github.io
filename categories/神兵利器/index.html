@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Qftm">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Qftm">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Qftm&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>Qftm's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+">
+    
+    <!-- 主页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/29/2019%E5%AE%89%E5%85%A8%E6%B8%97%E9%80%8F%E7%B1%BB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" >
+            
+                <span>2019安全渗透类工具合集</span>
+        </a>
+        <div class="abstract-content">
+            子域名爆破枚举或接管
+https://github.com/lijiejie/subDomainsBrute - Lijiejie开发的一款使用广泛的子域名爆破枚举工具
+
+
+评分: 🌟🌟🌟🌟🌟 | 编程语言: Python 2.x | 仍在维护: ✖️
+
+
+https://github.com/ring04h/wydomain - 猪猪侠开发的一款域名收集全面、精准的子域名枚举工具
+
+
+评分: 🌟🌟🌟🌟🌟 | 编程语言: Python 2.x | 仍在维护: ✖️
+
+
+https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "工具">工具</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/14/MATLAB%E4%B9%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" >
+            
+                <span>MATLAB之图像与音频信号处理</span>
+        </a>
+        <div class="abstract-content">
+            原理简介离散傅立叶、离散余弦和离散小波变换是图像、音频信号常用基础操作，时域信号转换到不同变换域以后，会导致不同程度的能量集中，信息隐藏利用这个原理在变换域选择适当位置系数进行修改，嵌入信息，并确保图像、音频信号经处理后感官质量无明显变化。
+变换定义一维离散傅立叶变换对定义：
+一维离散余弦变换对定义：
+一维连续小波变换对定义：
+二维离散傅立叶变换对定义：
+二维离散余弦变换对定义：
+用离散傅立叶变换分析合成音频和图像分析合成音频文件包括以下步骤：l   读取音频文件数据
+l   一维离散傅立叶变换
+l   一维离散傅立叶逆变换
+l   观察结果
+第一步：读取音频文件数据新建一个 m 文件，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "MATLAB">MATLAB</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/12/MATLAB%E4%B9%8B%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%9F%BA%E7%A1%80%E5%87%BD%E6%95%B0/" >
+            
+                <span>MATLAB之基本语法与基础函数</span>
+        </a>
+        <div class="abstract-content">
+            常用命令dir：列出当MATLAB之基本语法与基础函数前目录下的所有文件
+clc：清除命令窗
+clear all：清除环境（从内存中清除所有变量）
+who：将内存中的当前变量以简单形式列出
+close all: 关闭所有的 Figure 窗口
+变量设置(1).变量命名
+MATLAB 的变量名以字母打头，后最多可跟 19 个字母或数字，如 x,y,ae3 和 d3er45 等都是合法的变量名，不能使用内部函数或命令名作为变量名。
+MATLAB 中的变量名区分大小，ab 与 Ab 表示两个不同的变量。
+(2).变量赋值
+l   表达式赋值
+&gt;&gt;a=(100*0.02)/4.0
+　...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "MATLAB">MATLAB</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/01/25/Vim%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B1%8F/" >
+            
+                <span>Vim 实现分屏</span>
+        </a>
+        <div class="abstract-content">
+            vim 分屏主要是sp（seismic profile）和vsp（vertical seismic profile）两个命令。
+水平拆分123将vm切换到命令模式，:sp       实现水平拆分屏幕
+
+垂直拆分123切换vim的命令模式:vsp   实现垂直分屏
+
+ps:在终端输入时主要是-O和-o两个参数，可能因为之前卤煮的vim装了python插件，使用分屏快捷键时不太方便，没有想象中的方便，可能还没发现vim分屏的强大吧。
+分屏启动Vim123vim -On file1 file2 ...使用大写的O参数来垂直分屏。vim -on file1 file2 ...使用小写的o参数来...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "神兵利器">神兵利器</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Vim">Vim</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/01/25/Vim%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >
+            
+                <span>Vim(Vi) 终端利器</span>
+        </a>
+        <div class="abstract-content">
+            vi编辑器vi是UNIX和类UNIX环境下的可用于创建文件的屏幕编辑器。vi有两种工作模式：命令模式和文本输入模式。启动vi需要输入vi，按[Spacebar]键并输入文件名后回车。
+Vim时Vi的高级版，几乎操作都一样。
+切换模式键vi从命令模式切换到文本输入模式。每个键以不同方式使vi进入文本输入模式。按[ESC]键使vi从文本输入模式回到命令模式。
+表1列出了vi从命令模式切换到文本输入模式的命令键及其功能。
+表1 切换到文本输入模式的命令键
+
+
+
+键
+功能
+
+
+
+i
+在光标左侧输入正文
+
+
+I
+在光标所在行的行首输入正文
+
+
+a
+在光标右侧输入正文
+
+
+A
+在光标所在行的行尾输入...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "神兵利器">神兵利器</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Vim">Vim</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >
+            
+                <span>Tmux 终端利器</span>
+        </a>
+        <div class="abstract-content">
+            介绍
+tmux是一个优秀的终端复用软件，split窗口。可以在一个terminal下打开多个终端。
+即使非正常掉线，也能保证当前的任务运行，这一点对于远程SSH访问特别有用，网络不好的情况下仍然能保证工作现场不丢失。SSH重新连接以后，就可以直接回到原来的工作环境，不但提高了工作效率，还降低了风险，增加了安全性。
+tmux完全使用键盘控制窗口，实现窗口的切换功能。
+
+安装12sudo apt-get install tmuxtmux # 打开tmux终端
+
+
+会话、窗口、面板根据tmux的定义，在开启了tmux服务后，会首先创建一个会话，而这个会话则会首先创建一个窗口，其中仅包含一个面板...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "神兵利器">神兵利器</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Tmux">Tmux</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:Qftmbin@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Qftm" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//twitter.com/Qftmer" class="iconfont-archer twitter" target="_blank" title=twitter></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//www.cnblogs.com/qftm/" class="iconfont-archer others" target="_blank" title=others></a>
+            
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 64
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span><a class="archive-post-title" href= "/2020/02/12/Hackintosh-Of-Lenovo-R720-15IKBN/" >Hackintosh Of Lenovo R720 15IKBN</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2020/01/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%97%85%E8%A1%8C%E8%AE%B0/" >信息收集-旅行记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2020/01/03/%E4%B8%AD%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E7%BA%A7IPS%E9%83%A8%E7%BD%B2/" >中小型企业级 IPS 部署</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span><a class="archive-post-title" href= "/2020/01/01/%E4%B8%AD%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%98%B2%E7%81%AB%E5%A2%99%E9%83%A8%E7%BD%B2/" >中小型企业级防火墙部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/22</span><a class="archive-post-title" href= "/2019/11/22/PhpStudyBackDoor2019%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/" >PhpStudy BackDoor2019 深度分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/Kali-Rolling-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93(Updateing)/" >Kali Rolling 系统配置总结 (Updateing)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/%E6%A5%BC%E4%B8%8A%E8%AF%B7%E8%AE%A9%E8%B7%AF-RoarCTF2019-Writeup/" >楼上请让路 RoarCTF2019 Writeup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/Joomla3.4.6-RCE%E6%BC%8F%E6%B4%9E%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/" >Joomla3.4.6 RCE漏洞深度分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2019/09/30/%E5%88%9D%E8%AF%86PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" >初识PE文件结构</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span><a class="archive-post-title" href= "/2019/09/29/2019%E5%AE%89%E5%85%A8%E6%B8%97%E9%80%8F%E7%B1%BB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" >2019安全渗透类工具合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span><a class="archive-post-title" href= "/2019/09/19/BMP%E5%9B%BE%E5%83%8F%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E5%8F%8A%E6%A3%80%E6%B5%8B/" >BMP 图像信息隐藏及检测</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2019/09/14/MATLAB%E4%B9%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" >MATLAB之图像与音频信号处理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2019/09/12/MATLAB%E4%B9%8B%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%9F%BA%E7%A1%80%E5%87%BD%E6%95%B0/" >MATLAB之基本语法与基础函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span><a class="archive-post-title" href= "/2019/09/11/CVE-2018-14418%E6%93%A6%E5%87%BA%E6%96%B0%E7%81%AB%E8%8A%B1/" >CVE-2018-14418 擦出新火花</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/%E6%B5%85%E8%B0%88%E7%94%B5%E5%AD%90%E6%95%B0%E5%AD%97%E5%8F%96%E8%AF%81%E6%8A%80%E6%9C%AF/" >浅谈电子数字取证技术</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/" >Linux 反弹 Shell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/AWD%E6%94%BB%E9%98%B2%E8%B5%9B%E4%B9%8B%E5%90%84%E7%B1%BB%E6%BC%8F%E6%B4%9EFIX%E6%96%B9%E6%A1%88/" >AWD攻防赛之各类漏洞FIX方案</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2019/08/01/%E7%AC%AC16%E5%B1%8A(2019)%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%B8%8E%E5%AF%B9%E6%8A%97%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B%E5%85%A8%E5%9B%BD%E7%BA%BF%E4%B8%8B%E6%80%BB%E5%86%B3%E8%B5%9BWriteup/" >第16届(2019)全国大学生信息安全与对抗技术竞赛全国线下总决赛 Writeup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2019/07/31/Hack-The-Box-Web-Pentest-2017/" >Hack The Box Web Pentest 2017</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2019/07/30/Hack-The-Box-Web-Pentest-2019/" >Hack The Box Web Pentest 2017</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/2019/07/03/BugkuCTF~Misc~WriteUp/" >BugkuCTF~Misc~WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DHCP 服务器配置与管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DNS 服务器配置与管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2019/04/26/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95-Des/" >对称加密算法 ~ Des</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >CBC 字节反转攻击</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2019/03/24/%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/" >对称密码体制和非对称密码体制</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span><a class="archive-post-title" href= "/2019/03/09/BugkuCTF~Mobile~WriteUp/" >BugkuCTF~Mobile~WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >路由协议与交换技术合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/CentOS7%E6%9C%80%E5%B0%8F%E5%8C%96%E5%AE%89%E8%A3%85%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >CentOS 7 最小化安装简单配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~Web~WriteUp/" >BugkuCTF~Web~WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1~WriteUp/" >BugkuCTF~代码审计~WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2019/02/13/Android%E4%B8%AA%E4%BA%BA%E6%89%8B%E6%9C%BA%E9%80%9A%E8%AE%AF%E5%BD%95%E5%BC%80%E5%8F%91/" >Android 个人手机通讯录开发</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2019/02/13/Android-SQLite-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" >Android SQLite 数据库学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/27</span><a class="archive-post-title" href= "/2019/01/27/Android%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" >Android 程序结构</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href= "/2018/12/22/XSS%E7%BB%95%E8%BF%87%E6%8A%80%E6%9C%AF/" >XSS 绕过技术</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href= "/2018/12/22/2018~%E7%AC%AC%E4%B8%89%E5%B1%8A%E5%8D%97%E5%AE%81%E5%B8%82%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E5%A4%A7%E8%B5%9B~nnctf~write-up/" >2018~第三届南宁市网络安全技术大赛~nnctf~write-up</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/21</span><a class="archive-post-title" href= "/2018/12/21/SQL%E6%B3%A8%E5%85%A5~MySQL%E4%B8%93%E9%A2%98/" >SQL 注入~MySQL专题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/12</span><a class="archive-post-title" href= "/2018/12/12/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E5%88%9B%E5%BB%BA%E6%97%A0%E5%90%91%E5%9B%BE/" >C语言实现邻接矩阵创建无向图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-%E8%BF%9B%E9%98%9F-%E5%87%BA%E9%98%9F-%E8%AF%BB%E5%8F%96%E9%98%9F%E5%A4%B4%E5%85%83%E7%B4%A0-%E5%88%A4%E7%A9%BA-2/" >C语言实现循环队列的初始化&进队&出队&读取队头元素&判空-2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%93%BE%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96&%E8%BF%9B%E9%98%9F&%E5%87%BA%E9%98%9F/" >C语言实现链队列的初始化&进队&出队</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%93%BE%E6%A0%88%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96&%E8%BF%9B%E6%A0%88&%E5%87%BA%E6%A0%88&%E8%AF%BB%E5%8F%96%E6%A0%88%E9%A1%B6%E5%85%83%E7%B4%A0/" >C语言实现链栈的初始化&进栈&出栈&读取栈顶元素</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96&%E8%BF%9B%E6%A0%88&%E5%87%BA%E6%A0%88&%E8%AF%BB%E5%8F%96%E6%A0%88%E9%A1%B6%E5%85%83%E7%B4%A0/" >C语言实现顺序栈的初始化&进栈&出栈&读取栈顶元素</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96&%E8%BF%9B%E9%98%9F&%E5%87%BA%E9%98%9F&%E8%AF%BB%E5%8F%96%E9%98%9F%E5%A4%B4%E5%85%83%E7%B4%A0&%E5%88%A4%E7%A9%BA-1/" >C语言实现循环队列的初始化&进队&出队&读取队头元素&判空-1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span><a class="archive-post-title" href= "/2018/11/27/MySQL%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >MySQL 个人学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2018/11/25/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%BB%9F%E8%AE%A1%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E7%9A%84%E4%B8%AA%E6%95%B0&%E5%BA%A6%E4%B8%BA1&%E5%BA%A6%E4%B8%BA2%E7%9A%84%E7%BB%93%E7%82%B9%E4%B8%AA%E6%95%B0/" >C语言实现二叉树中统计叶子结点的个数&度为1&度为2的结点个数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2018/11/25/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%88%9B%E5%BB%BA&%E9%81%8D%E5%8E%86/" >C语言实现邻接矩阵创建无向图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2018/11/25/web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" >web前端安全</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href= "/2018/11/07/CSRF%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/" >CSRF 漏洞测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2018/11/04/XSS-DOM%E6%B5%8B%E8%AF%95/" >XSS DOM 测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2018/11/04/XSS-Stored%E6%B5%8B%E8%AF%95/" >XSS Stored 测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2018/11/04/XSS-Reflected%E6%B5%8B%E8%AF%95/" >XSS Reflected 测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span><a class="archive-post-title" href= "/2018/10/13/ARP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" >ARP欺骗攻击</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/11</span><a class="archive-post-title" href= "/2018/10/11/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/" >ARP协议分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href= "/2018/07/23/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/" >渗透测试流程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2018/07/04/Kali-2018%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/" >Kali~2018安装后的配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2018/05/13/%E5%AE%9E%E9%AA%8C%E5%90%A7WriteUp%E5%90%88%E9%9B%86/" >实验吧 WriteUp 合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2018/04/29/%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A0%87%E5%BF%97/" >各类文件的文件头标志</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2018/01/30/%E8%AE%A4%E8%AF%86%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E5%A4%B4User-Agent/" >认识浏览器请求头User-Agent</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2018/01/30/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%AD%A6%E4%B9%A0/" >CTF中那些脑洞大开的编码和加密</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/Vim%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B1%8F/" >Vim 实现分屏</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/Vim%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Vim(Vi) 终端利器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Tmux 终端利器</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="ARP"><span class="iconfont-archer">&#xe606;</span>ARP</span>
+    
+        <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络安全"><span class="iconfont-archer">&#xe606;</span>网络安全</span>
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
+    
+        <span class="sidebar-tag-name" data-tags="WriteUp"><span class="iconfont-archer">&#xe606;</span>WriteUp</span>
+    
+        <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
+    
+        <span class="sidebar-tag-name" data-tags="Android 开发"><span class="iconfont-archer">&#xe606;</span>Android 开发</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQLite"><span class="iconfont-archer">&#xe606;</span>SQLite</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
+    
+        <span class="sidebar-tag-name" data-tags="BMP"><span class="iconfont-archer">&#xe606;</span>BMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Misc"><span class="iconfont-archer">&#xe606;</span>Misc</span>
+    
+        <span class="sidebar-tag-name" data-tags="BugkuCTF"><span class="iconfont-archer">&#xe606;</span>BugkuCTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="安卓逆向"><span class="iconfont-archer">&#xe606;</span>安卓逆向</span>
+    
+        <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
+    
+        <span class="sidebar-tag-name" data-tags="web安全"><span class="iconfont-archer">&#xe606;</span>web安全</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
+    
+        <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
+    
+        <span class="sidebar-tag-name" data-tags="前端安全"><span class="iconfont-archer">&#xe606;</span>前端安全</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="DVWA"><span class="iconfont-archer">&#xe606;</span>DVWA</span>
+    
+        <span class="sidebar-tag-name" data-tags="CVE"><span class="iconfont-archer">&#xe606;</span>CVE</span>
+    
+        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
+    
+        <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
+    
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="CentOS"><span class="iconfont-archer">&#xe606;</span>CentOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="C"><span class="iconfont-archer">&#xe606;</span>C</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法艺术"><span class="iconfont-archer">&#xe606;</span>算法艺术</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hack The Box"><span class="iconfont-archer">&#xe606;</span>Hack The Box</span>
+    
+        <span class="sidebar-tag-name" data-tags="Joomla3.4.6"><span class="iconfont-archer">&#xe606;</span>Joomla3.4.6</span>
+    
+        <span class="sidebar-tag-name" data-tags="RCE"><span class="iconfont-archer">&#xe606;</span>RCE</span>
+    
+        <span class="sidebar-tag-name" data-tags="Kali"><span class="iconfont-archer">&#xe606;</span>Kali</span>
+    
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
+    
+        <span class="sidebar-tag-name" data-tags="系统运维"><span class="iconfont-archer">&#xe606;</span>系统运维</span>
+    
+        <span class="sidebar-tag-name" data-tags="服务器"><span class="iconfont-archer">&#xe606;</span>服务器</span>
+    
+        <span class="sidebar-tag-name" data-tags="DHCP"><span class="iconfont-archer">&#xe606;</span>DHCP</span>
+    
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
+    
+        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
+    
+        <span class="sidebar-tag-name" data-tags="命令执行"><span class="iconfont-archer">&#xe606;</span>命令执行</span>
+    
+        <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
+    
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
+    
+        <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
+    
+        <span class="sidebar-tag-name" data-tags="BackDoor"><span class="iconfont-archer">&#xe606;</span>BackDoor</span>
+    
+        <span class="sidebar-tag-name" data-tags="Injection"><span class="iconfont-archer">&#xe606;</span>Injection</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQL Injection"><span class="iconfont-archer">&#xe606;</span>SQL Injection</span>
+    
+        <span class="sidebar-tag-name" data-tags="Vim"><span class="iconfont-archer">&#xe606;</span>Vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
+    
+        <span class="sidebar-tag-name" data-tags="MSF"><span class="iconfont-archer">&#xe606;</span>MSF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Tmux"><span class="iconfont-archer">&#xe606;</span>Tmux</span>
+    
+        <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
+    
+        <span class="sidebar-tag-name" data-tags="IDS"><span class="iconfont-archer">&#xe606;</span>IDS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
+        <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="信息收集"><span class="iconfont-archer">&#xe606;</span>信息收集</span>
+    
+        <span class="sidebar-tag-name" data-tags="SRC"><span class="iconfont-archer">&#xe606;</span>SRC</span>
+    
+        <span class="sidebar-tag-name" data-tags="DES"><span class="iconfont-archer">&#xe606;</span>DES</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
+    
+        <span class="sidebar-tag-name" data-tags="安全基础"><span class="iconfont-archer">&#xe606;</span>安全基础</span>
+    
+        <span class="sidebar-tag-name" data-tags="http"><span class="iconfont-archer">&#xe606;</span>http</span>
+    
+        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hackintosh"><span class="iconfont-archer">&#xe606;</span>Hackintosh</span>
+    
+        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="CTF"><span class="iconfont-archer">&#xe60a;</span>CTF</span>
+    
+        <span class="sidebar-category-name" data-categories="网络安全"><span class="iconfont-archer">&#xe60a;</span>网络安全</span>
+    
+        <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
+    
+        <span class="sidebar-category-name" data-categories="移动开发"><span class="iconfont-archer">&#xe60a;</span>移动开发</span>
+    
+        <span class="sidebar-category-name" data-categories="信息隐藏"><span class="iconfont-archer">&#xe60a;</span>信息隐藏</span>
+    
+        <span class="sidebar-category-name" data-categories="密码研究"><span class="iconfont-archer">&#xe60a;</span>密码研究</span>
+    
+        <span class="sidebar-category-name" data-categories="web安全"><span class="iconfont-archer">&#xe60a;</span>web安全</span>
+    
+        <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
+    
+        <span class="sidebar-category-name" data-categories="数据结构"><span class="iconfont-archer">&#xe60a;</span>数据结构</span>
+    
+        <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
+    
+        <span class="sidebar-category-name" data-categories="Hack-The-Box"><span class="iconfont-archer">&#xe60a;</span>Hack-The-Box</span>
+    
+        <span class="sidebar-category-name" data-categories="漏洞分析"><span class="iconfont-archer">&#xe60a;</span>漏洞分析</span>
+    
+        <span class="sidebar-category-name" data-categories="Kali"><span class="iconfont-archer">&#xe60a;</span>Kali</span>
+    
+        <span class="sidebar-category-name" data-categories="木马后门"><span class="iconfont-archer">&#xe60a;</span>木马后门</span>
+    
+        <span class="sidebar-category-name" data-categories="数据库"><span class="iconfont-archer">&#xe60a;</span>数据库</span>
+    
+        <span class="sidebar-category-name" data-categories="渗透测试"><span class="iconfont-archer">&#xe60a;</span>渗透测试</span>
+    
+        <span class="sidebar-category-name" data-categories="逆向工程"><span class="iconfont-archer">&#xe60a;</span>逆向工程</span>
+    
+        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
+    
+        <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
+    
+        <span class="sidebar-category-name" data-categories="安全基础"><span class="iconfont-archer">&#xe60a;</span>安全基础</span>
+    
+        <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Qftm"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
+</html>
+
+
