@@ -346,6 +346,39 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/01/Apple-iCloud-%E5%87%AD%E8%AF%81%E7%9A%84%E7%AA%83%E5%8F%96/" >
+            
+                <span>Apple iCloud 凭证的窃取分析 -【CVE-2020-3841】</span>
+        </a>
+        <div class="abstract-content">
+            前言在2019年8月，Sebastian Bicchi在红队评估期间发现了Apple iOS（CVE-2020-3841）中的一个漏洞。可以试图诱使用户在Wi-Fi网络钓鱼攻击中输入其凭据。在这种情况下，iOS / Safari（macOS也受到影响）通过其自动填充功能帮助我们。事实上这个研究过程会遇到一些问题，下面让我们看一下其工作方式以及最后怎么成功利用。
+Sebastian BicchiTags：redteam, app &amp; iot pentest, blue team developer.
+事件1月30号，@secresDoge发布了相关推特，关于(CVE-2020-38...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CVE">CVE</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Apple">Apple</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/02/12/Hackintosh-Of-Lenovo-R720-15IKBN/" >
             
                 <span>Hackintosh Of Lenovo R720 15IKBN</span>
@@ -519,7 +552,9 @@ IPS功能组成1234数据采集：采集和...
                 <span>PhpStudy BackDoor2019 深度分析</span>
         </a>
         <div class="abstract-content">
-            笔者《Qftm》原文发布《合天》：https://mp.weixin.qq.com/s?__biz=MjM5MTYxNjQxOA==&amp;mid=2652852661&amp;idx=1&amp;sn=1dd018a6694b79e18087e31ac44d44fa&amp;chksm=bd592d788a2ea46eae02350200b61e29bb944c5c444bd5c1282d58a3d43557104deb31c1d214&amp;mpshare=1&amp;scene=23&amp;srcid=&amp;sharer_sharetime=1574268683033&a...
+            关于《PhpStudy BackDoor》风波已经过去有一段时间了，由于，前段时间一直忙于其它事情QAQ，今天有时间对该事件重新回溯&amp;深度分析。
+*严正声明：本文仅限于技术讨论与分享，严禁用于非法途径
+背景分析2019年9月20日，杭州市公安局举行新闻通报会，通报今年以来组织开展打击涉网违法犯罪暨“净网2019”专项行动战果，通报内容中提到国内著名的PHP调试环境程序集成包Phpstudy软件遭受到以马某为首的国内黑客团伙攻击并被植入后门。 Phpstudy集成环境包在国内的使用用户逾百万，据悉，此次后门攻击事件可追溯到2016年，屹今为止累计控制计算机逾67万台，该黑客团伙通过...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -600,8 +635,7 @@ IPS功能组成1234数据采集：采集和...
                 <span>楼上请让路 RoarCTF2019 Writeup</span>
         </a>
         <div class="abstract-content">
-            笔者《Qftm》原文发布《先知》：https://xz.aliyun.com/t/6576
-Misc签到题RoarCTF{签到！！！}
+            Misc签到题RoarCTF{签到！！！}
 黄金六年
 文件尾部有一段base64，解码为16进制可以看到是一个压缩包
 
@@ -622,7 +656,9 @@ forensic直接上volatility
 volatility -f mem.raw pslist –profile=Win7SP1x86
 可以看到存在以下几个值得注意的进程：
 
-Dump...
+Dumpit.exe 一款内存镜像提取工具。
+TrueCrypt.exe 一款磁盘加密工具。
+Not...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -653,11 +689,11 @@ Dump...
                 <span>Joomla3.4.6 RCE漏洞深度分析</span>
         </a>
         <div class="abstract-content">
-            笔者《Qftm》原文发布《FreeBuf》：https://www.freebuf.com/vuls/216512.html
-*严正声明：本文仅限于技术讨论与分享，严禁用于非法途径
+            *严正声明：本文仅限于技术讨论与分享，严禁用于非法途径
 0×00 背景10月9号国内几家安全媒体公布了Joomla RCE的漏洞预警，并且网上已公布漏洞利用EXP，影响版本包括Joomla 3.0.0 – 3.4.6。
 0×01 环境搭建Joomla是一套全球知名的内容管理系统。Joomla是使用PHP语言加上MySQL数据库所开发的软件系统，目前最新版本是3.9.11 。可以在Linux、Windows、MacOSX等各种不同的平台上执行。
-Joomla环境搭建...
+Joomla环境搭建下载：https://github.com/joomla/joomla-cms/releases/tag/3.4.6
+PS：搭...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -707,48 +743,6 @@ Joomla环境搭建...
         <a class="post-tag" href="javascript:void(0);" data-tags = "PE">PE</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "文件结构">文件结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/29/2019%E5%AE%89%E5%85%A8%E6%B8%97%E9%80%8F%E7%B1%BB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" >
-            
-                <span>2019安全渗透类工具合集</span>
-        </a>
-        <div class="abstract-content">
-            子域名爆破枚举或接管
-https://github.com/lijiejie/subDomainsBrute - Lijiejie开发的一款使用广泛的子域名爆破枚举工具
-
-
-评分: 🌟🌟🌟🌟🌟 | 编程语言: Python 2.x | 仍在维护: ✖️
-
-
-https://github.com/ring04h/wydomain - 猪猪侠开发的一款域名收集全面、精准的子域名枚举工具
-
-
-评分: 🌟🌟🌟🌟🌟 | 编程语言: Python 2.x | 仍在维护: ✖️
-
-
-https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "工具">工具</a>
     
 </div>
             
@@ -1788,9 +1782,68 @@ https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 67
         </div>
         <!-- search  -->
         
@@ -1803,6 +1856,11 @@ https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/Apple-iCloud-%E5%87%AD%E8%AF%81%E7%9A%84%E7%AA%83%E5%8F%96/" >Apple iCloud 凭证的窃取分析 -【CVE-2020-3841】</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1870,6 +1928,11 @@ https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span><a class="archive-post-title" href= "/2019/09/19/%E5%9F%BA%E4%BA%8EBMP%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E4%B8%8E%E6%A3%80%E6%B5%8B/" >BMP 图像信息隐藏及检测</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2019/09/14/MATLAB%E4%B9%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" >MATLAB之图像与音频信号处理</a>
         </li>
     
@@ -1920,6 +1983,11 @@ https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI 巧用 Samba 绕过URL包含限制Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DHCP 服务器配置与管理</a>
         </li>
     
@@ -1935,7 +2003,7 @@ https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >CBC 字节反转攻击</a>
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >针对 CBC 字节反转攻击的研究与漏洞复现</a>
         </li>
     
     
@@ -2287,6 +2355,10 @@ https://github.com/le4f/dnsmaper - 子域名枚举爆破工具以及地图位置
     
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
+        <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
+    
+        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+    
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -2361,6 +2433,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
     
         <span class="sidebar-category-name" data-categories="安全基础"><span class="iconfont-archer">&#xe60a;</span>安全基础</span>
+    
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

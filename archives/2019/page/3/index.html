@@ -346,14 +346,99 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >
+        <a class="abstract-title" href = "/2019/05/12/Linux-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >
             
-                <span>CBC 字节反转攻击</span>
+                <span>Linux DNS 服务器配置与管理</span>
         </a>
         <div class="abstract-content">
-            一、CBC 简介
-现代密码体制
-现代密码中的加密体制一般分为对称加密体制(Symmetric Key Encryption)和非对称加密体制(Asymmetric Key Encryption)。对称加密又分为分组加密和序列密码。分组密码：也叫块加密(block cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组，有 ECB、CBC、CFB、OFB 四种工作模式。序列密码：也叫流加密(stream cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过某种复杂的运算（...
+            一、环境介绍：
+　　运行软件：VMware Workstation Pro 14
+　　系统环境：CentOS-7-x86_64-1810
+二、操作配置：
+1、基础知识简介
+（1）域名空间
+
+域和域名：
+DNS树的每个节点代表一个域，通过这些节点，对整个域名空间进行划分，成为一个层次结构。域名空间的每个域的名字通过域名进行表示。域名通常由一个完全正式域名（FQDN）标识。
+Internet域名空间：
+DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共有3种类型的顶级域 (组织域、地址域、反向域)。
+区（Zone）：
+区是DNS名称空间的一个连续部分，其包含了一组存储在DN...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "服务器">服务器</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DNS">DNS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/04/26/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95-Des/" >
+            
+                <span>Symmetric Key Encryption DES</span>
+        </a>
+        <div class="abstract-content">
+            一、对称加密 (Symmetric Key Encryption) 
+对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。自1977年美国颁布DES（Data Encryption Standard）密码算法作为美国数据加密标准以来，对称密码体制迅速发展，得到了世界各国的关注和普遍应用。对称密码体制从工作方式上可以分为分组加密和序列密码两大类。
+对称加密算法的优点：算法公开、计算量小、加密速度快、加密效率高。
+对称加密算法的...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "密码学">密码学</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DES">DES</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "算法">算法</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >
+            
+                <span>针对 CBC 字节反转攻击的研究与漏洞复现</span>
+        </a>
+        <div class="abstract-content">
+            CBC 简介现代密码体制现代密码中的加密体制一般分为对称加密体制(Symmetric Key Encryption)和非对称加密体制(Asymmetric Key Encryption)。对称加密又分为分组加密和序列密码。
+分组密码
+分组密码：也叫块加密(block cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组，有 ECB、CBC、CFB、OFB 四种工作模式。
+序列密码
+序列密码：也叫流加密(stream cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -670,76 +755,10 @@ Phone Module 简介界面展示
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/13/Android-SQLite-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" >
-            
-                <span>Android SQLite 数据库学习</span>
-        </a>
-        <div class="abstract-content">
-            SQLite 数据库简介　　SQLite 是一个轻量级数据库，它是D. Richard Hipp建立的公有领域项目，在2000年发布了第一个版本。它的设计目标是嵌入式的，而且占用资源非常低，在内存中只需要占用几百kB的存储空间，这也是Android移动设备采用SQLite数据库的重要原因之一。
-　　SQLite 是遵守ACID的关系型数据库管理系统。这里的ACID是指数据库事务正确执行的4个基本要素，即原子性(Atomicity)、致性 ( Consistency)、 隔离性( lolation). 持久性( Durabilily )。它能够支持Windows/Linux/UNIX等主流...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Android 开发">Android 开发</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SQLite">SQLite</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/27/Android%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" >
-            
-                <span>Android 程序结构</span>
-        </a>
-        <div class="abstract-content">
-            Android程序在创建时，Android Studio就为其构建了基本结构，设计者可以在此结构上开发应用程序，因此掌握Android程序结构是很有必要的。下面以HelloWorid程序为例，分析Android 程序结构：
-在图中，可以看到一个Android程序由多个文件以及文件夹组成，这些文件分别用于不同的功能，具体分析如下：
-
-manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是整个项目的配置文件。在程序中定义的四大组件都需要在这个文件中注册，另外在该文件中还可以给程序添加权限。在清单文件中配置的信息会添加到Android 系统中，当程序运行...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Android 开发">Android 开发</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2019/page/2/">&amp;#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><span class="page-number current">3</span>
+        <a class="extend prev" rel="prev" href="/archives/2019/page/2/">&amp;#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/page/4/">NEXT &amp;#62;</a>
     </nav>
     
 </main>
@@ -1769,9 +1788,68 @@ manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 67
         </div>
         <!-- search  -->
         
@@ -1784,6 +1862,11 @@ manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/Apple-iCloud-%E5%87%AD%E8%AF%81%E7%9A%84%E7%AA%83%E5%8F%96/" >Apple iCloud 凭证的窃取分析 -【CVE-2020-3841】</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1851,6 +1934,11 @@ manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span><a class="archive-post-title" href= "/2019/09/19/%E5%9F%BA%E4%BA%8EBMP%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E4%B8%8E%E6%A3%80%E6%B5%8B/" >BMP 图像信息隐藏及检测</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2019/09/14/MATLAB%E4%B9%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" >MATLAB之图像与音频信号处理</a>
         </li>
     
@@ -1901,6 +1989,11 @@ manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI 巧用 Samba 绕过URL包含限制Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DHCP 服务器配置与管理</a>
         </li>
     
@@ -1916,7 +2009,7 @@ manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >CBC 字节反转攻击</a>
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >针对 CBC 字节反转攻击的研究与漏洞复现</a>
         </li>
     
     
@@ -2268,6 +2361,10 @@ manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是�
     
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
+        <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
+    
+        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+    
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -2342,6 +2439,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
     
         <span class="sidebar-category-name" data-categories="安全基础"><span class="iconfont-archer">&#xe60a;</span>安全基础</span>
+    
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

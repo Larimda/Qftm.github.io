@@ -346,6 +346,82 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/31/Hack-The-Box-Web-Pentest-2017/" >
+            
+                <span>Hack The Box Web Pentest 2017</span>
+        </a>
+        <div class="abstract-content">
+            [20 Points] Lernaean [by [Arrexel]问题描述：Your target is not very good with computers. Try and guess their password to see if they may be hiding anything!
+
+网站首页登陆界面
+
+根据提示进行密码猜解
+
+BP爆破得到密码，同时在响应包里面得到flag
+
+[30 Points] Cartographer [by Arrexel]问题描述：Some underground hackers are developing a new command a...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/31</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "web安全">web安全</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hack The Box">Hack The Box</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/30/Hack-The-Box-Web-Pentest-2019/" >
+            
+                <span>Hack The Box Web Pentest 2019</span>
+        </a>
+        <div class="abstract-content">
+            [20 Points] Emdee five for life [by L4mpje]问题描述： Can you encrypt fast enough? 
+
+初始页面，不管怎么样点击Submit都会显示”Too slow!”
+
+ 依据Html源码，编写Python脚本进行利用
+
+1234567891011121314151617import requestsimport hashlibimport reurl&#x3D;&quot;http:&#x2F;&#x2F;docker.hackthebox.eu:34650&#x2F;&quot;r&#x3D;requests.session...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "web安全">web安全</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hack The Box">Hack The Box</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/07/03/BugkuCTF~Misc~WriteUp/" >
             
                 <span>BugkuCTF Misc WriteUp</span>
@@ -402,6 +478,42 @@ wires hark打开数据包进行分析，根据提示对telne...
         <a class="post-tag" href="javascript:void(0);" data-tags = "Misc">Misc</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "BugkuCTF">BugkuCTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >
+            
+                <span>RFI 巧用 Samba 绕过URL包含限制Getshell</span>
+        </a>
+        <div class="abstract-content">
+            前言最近，在Twitter上看到有人发布了关于RFI限制绕过的姿势，于是拿来分析一下~~
+
+RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“关闭”，指示PHP不加载远程HTTP或FTP URL，从而防止远程文件包含攻击。但是，即使allow_url_include和allow_url_fopen都设置为off，PHP也不会阻止SMB URL加载。
+攻击原理1unc -&gt; smb
+
+攻击场景当易受攻击的PHP应用程序代码尝试从受攻击者控制的SMB共享加载PHP Web shell时，SMB共享应该允许访问该文件。攻击者需要在其上配置具有匿名浏览访问...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Bypass">Bypass</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "RFI">RFI</a>
     
 </div>
             
@@ -556,12 +668,14 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     <article class="index-post">
         <a class="abstract-title" href = "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >
             
-                <span>CBC 字节反转攻击</span>
+                <span>针对 CBC 字节反转攻击的研究与漏洞复现</span>
         </a>
         <div class="abstract-content">
-            一、CBC 简介
-现代密码体制
-现代密码中的加密体制一般分为对称加密体制(Symmetric Key Encryption)和非对称加密体制(Asymmetric Key Encryption)。对称加密又分为分组加密和序列密码。分组密码：也叫块加密(block cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组，有 ECB、CBC、CFB、OFB 四种工作模式。序列密码：也叫流加密(stream cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过某种复杂的运算（...
+            CBC 简介现代密码体制现代密码中的加密体制一般分为对称加密体制(Symmetric Key Encryption)和非对称加密体制(Asymmetric Key Encryption)。对称加密又分为分组加密和序列密码。
+分组密码
+分组密码：也叫块加密(block cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组，有 ECB、CBC、CFB、OFB 四种工作模式。
+序列密码
+序列密码：也叫流加密(stream cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -660,143 +774,6 @@ signin 软件介绍：
         <a class="post-tag" href="javascript:void(0);" data-tags = "BugkuCTF">BugkuCTF</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "安卓逆向">安卓逆向</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >
-            
-                <span>路由协议与交换技术合集</span>
-        </a>
-        <div class="abstract-content">
-            笔者《Qftm》原文发布《博客园》：
-1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;category&#x2F;1414601.html
-
-路由器实现简单静态路由、浮动路由、负载均衡、远程登陆1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10496681.html
-
-RIP 实验123https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10540441.html
-
-EIGRP 基础实验1https:&#x2F...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "协议">协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "路由协议">路由协议</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/28/CentOS7%E6%9C%80%E5%B0%8F%E5%8C%96%E5%AE%89%E8%A3%85%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
-            
-                <span>CentOS 7 最小化安装简单配置</span>
-        </a>
-        <div class="abstract-content">
-            一、环境介绍：
-　　运行软件：VMware Workstation Pro 14
-　　系统环境：CentOS-7-x86_64-1810
-　　系统网络运行模式：NAT模式
-二、操作配置：
-1、配置动态获取IP
-1) 修改配置文件
-1vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eno33 &#x2F;&#x2F;eno33是你的网卡名字
-
-2) 修改选项ONBOOT  //默认ONBOOT处于关闭状态
- 
-ONBOOT = no ==&gt;&gt; ONBOOT = yes
-
-3) 重启服务
-1systemctl...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/16/BugkuCTF~Web~WriteUp/" >
-            
-                <span>BugkuCTF Web WriteUp</span>
-        </a>
-        <div class="abstract-content">
-            今天把之前做的题整理一下，方便有需要的人学习 φ(゜▽゜*)♪
-1、web2
-考点：F12的利用
-Topic Link：http://123.206.87.240:8002/web2/
-
-打开连接，特别的不一样，直接F12可得flag
-get flag:
-1flag KEY&#123;Web-2-bugKssNNikls9100&#125;
-
-
-
-2、计算器
-考点：F12的利用
-Topic Link：http://120.24.86.145:8002/yanzhengma/
-
-
-发现输入框对输入的数据长度有限制，F12进行修改长度输入正确结果即可获得flag一枚
-
-get flag:
-1...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Web">Web</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "WriteUp">WriteUp</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "BugkuCTF">BugkuCTF</a>
     
 </div>
             
@@ -1836,9 +1813,68 @@ get flag:
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 67
         </div>
         <!-- search  -->
         
@@ -1851,6 +1887,11 @@ get flag:
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/Apple-iCloud-%E5%87%AD%E8%AF%81%E7%9A%84%E7%AA%83%E5%8F%96/" >Apple iCloud 凭证的窃取分析 -【CVE-2020-3841】</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1918,6 +1959,11 @@ get flag:
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span><a class="archive-post-title" href= "/2019/09/19/%E5%9F%BA%E4%BA%8EBMP%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E4%B8%8E%E6%A3%80%E6%B5%8B/" >BMP 图像信息隐藏及检测</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2019/09/14/MATLAB%E4%B9%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" >MATLAB之图像与音频信号处理</a>
         </li>
     
@@ -1968,6 +2014,11 @@ get flag:
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI 巧用 Samba 绕过URL包含限制Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DHCP 服务器配置与管理</a>
         </li>
     
@@ -1983,7 +2034,7 @@ get flag:
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >CBC 字节反转攻击</a>
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >针对 CBC 字节反转攻击的研究与漏洞复现</a>
         </li>
     
     
@@ -2335,6 +2386,10 @@ get flag:
     
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
+        <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
+    
+        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+    
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -2409,6 +2464,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
     
         <span class="sidebar-category-name" data-categories="安全基础"><span class="iconfont-archer">&#xe60a;</span>安全基础</span>
+    
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
