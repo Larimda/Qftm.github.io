@@ -359,42 +359,29 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >
+        <a class="abstract-title" href = "/2018/07/04/Kali-2018%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/" >
             
-                <span>MSF 登陆Windows 1</span>
+                <span>Kali 2018安装后的配置</span>
         </a>
         <div class="abstract-content">
-            前言刚做完这个测试，于是，写下自己的测试过程以及测试中遇到的问题解决办法
-环境&amp;操作环境1Windows版本适合类型(Win 7 &#x2F;&#x2F; XP...............)
+            　　今天，物理机上成功的安装了Kali Linux系统，但是要想用的顺手还需要花费许多时间和精力，下面就是我对它的养成之路。
+添加普通用户1useradd -m -G sudo,video,audio,cdrom -s &#x2F;bin&#x2F;bash Rose
 
-操作gethash以XP为靶机，借助工具gethash
-其使用方法：在cmd中输入命令gethash.exe -dhl可以直接获得用户hash
+ 将用户添加到某个group中
+123sudo usermod -a 用户名 -G 组名递归更改目录&#x2F;文件所属用户组： sudo chgrp 用户名 -R MyDocuments&#x2F; 递归更改目录&#x2F;文件拥有者或用户组： sudo chown 用户名 -R MyDocuments&#x2F;
 
-输入命令gethash.exe $local可以查看该参数
-
-msf先加载模块
-
-连接靶机
-
-设置smbuser smbpass
-
-最后直接输入exploit进行攻击即可
-
-可以这样的话就算OK了，你就相当于登陆这个系统，可查看任何东西
-报错解...
+...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/04</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "渗透测试">渗透测试</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "MSF">MSF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
     
 </div>
             
@@ -428,9 +415,57 @@ exploit进行攻击登陆
             
             <div class= abstract-tags >
     
+        <a class="post-tag" href="javascript:void(0);" data-tags = "MSF">MSF</a>
+    
         <a class="post-tag" href="javascript:void(0);" data-tags = "渗透测试">渗透测试</a>
     
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >
+            
+                <span>MSF 登陆Windows 1</span>
+        </a>
+        <div class="abstract-content">
+            前言刚做完这个测试，于是，写下自己的测试过程以及测试中遇到的问题解决办法
+环境&amp;操作环境1Windows版本适合类型(Win 7 &#x2F;&#x2F; XP...............)
+
+操作gethash以XP为靶机，借助工具gethash
+其使用方法：在cmd中输入命令gethash.exe -dhl可以直接获得用户hash
+
+输入命令gethash.exe $local可以查看该参数
+
+msf先加载模块
+
+连接靶机
+
+设置smbuser smbpass
+
+最后直接输入exploit进行攻击即可
+
+可以这样的话就算OK了，你就相当于登陆这个系统，可查看任何东西
+报错解...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
         <a class="post-tag" href="javascript:void(0);" data-tags = "MSF">MSF</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "渗透测试">渗透测试</a>
     
 </div>
             
@@ -1970,16 +2005,9 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
     
     
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 69
+        Total : 70
         </div>
         <!-- search  -->
         
@@ -2100,6 +2128,11 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
         <li class="archive-post-item">
             <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/" >Linux 反弹 Shell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Windows%20%E5%8F%8D%E5%BC%B9%20Shell/" >Windows 反弹 Shell</a>
         </li>
     
     
@@ -2313,12 +2346,12 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
         </li>
     
     
@@ -2367,33 +2400,33 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
-        <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
     
         <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
         <span class="sidebar-tag-name" data-tags="SQLite"><span class="iconfont-archer">&#xe606;</span>SQLite</span>
     
+        <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
+    
         <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
     
         <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
     
-        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+        <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
     
-        <span class="sidebar-tag-name" data-tags="DVWA"><span class="iconfont-archer">&#xe606;</span>DVWA</span>
-    
-        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
+        <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
-    
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
         <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
-        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
+        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
         <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
     
@@ -2401,7 +2434,7 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
         <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
     
-        <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
+        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
     
         <span class="sidebar-tag-name" data-tags="BackDoor"><span class="iconfont-archer">&#xe606;</span>BackDoor</span>
     
@@ -2409,19 +2442,23 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
         <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
     
+        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
+    
         <span class="sidebar-tag-name" data-tags="Vim"><span class="iconfont-archer">&#xe606;</span>Vim</span>
     
         <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
+        <span class="sidebar-tag-name" data-tags="DVWA"><span class="iconfont-archer">&#xe606;</span>DVWA</span>
+    
         <span class="sidebar-tag-name" data-tags="MSF"><span class="iconfont-archer">&#xe606;</span>MSF</span>
+    
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
     
         <span class="sidebar-tag-name" data-tags="Tmux"><span class="iconfont-archer">&#xe606;</span>Tmux</span>
     
+        <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
+    
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
-    
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
-    
-        <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
     
@@ -2431,19 +2468,17 @@ tmux完全使用键盘控制窗口，实现窗口的切换功能。
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
-        <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
     
-        <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
+        <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
-        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
+        <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
-        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
-    
-        <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
-    
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+        <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

