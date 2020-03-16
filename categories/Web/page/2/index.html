@@ -346,6 +346,42 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/04/XSS-DOM%E6%B5%8B%E8%AF%95/" >
+            
+                <span>XSS DOM 测试</span>
+        </a>
+        <div class="abstract-content">
+            dvwa DOM XSSDOM Based XSS：是基于DOM文档对象模型的操作，通过前端脚本修改页面的DOM节点形成的XSS，该操作不与服务器端进行交互，而且代码是可见的，从前端获取到DOM中的数据在本地执行，从效果上来说也是反射型XSS。
+漏洞测试low 级别)
+可知Select按钮选择参数，数据提交是以GET请求的方式
+12345&lt;?php# No protections, anything goes?&gt;
+
+low 级别不存在Protect，可以非常简单的造成XSS攻击
+构造payload
+1http:&#x2F;&#x2F;192.168.43.146&#x2F;d...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/11/04/XSS-Stored%E6%B5%8B%E8%AF%95/" >
             
                 <span>XSS Stored 测试</span>
@@ -1577,9 +1613,28 @@ XSS也是一种注入攻击，长期以来被列为客户端web安全中的头�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 72
+        Total : 73
         </div>
         <!-- search  -->
         
@@ -1755,6 +1810,11 @@ XSS也是一种注入攻击，长期以来被列为客户端web安全中的头�
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DNS 服务器配置与管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2019/05/05/Some-Trick-About-php-filter/" >Some Trick About php://filter</a>
         </li>
     
     
@@ -2055,6 +2115,8 @@ XSS也是一种注入攻击，长期以来被列为客户端web安全中的头�
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
         <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
