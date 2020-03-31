@@ -245,7 +245,7 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Stay hungry, Stay foolish, Stay young
+                Maybe a hacker
             
             <!-- 文章页  -->
             
@@ -352,6 +352,167 @@ height:50vh;
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
             <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >
+            
+                <span>路由协议与交换技术合集</span>
+        </a>
+        <div class="abstract-content">
+            笔者《Qftm》原文发布《博客园》：
+1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;category&#x2F;1414601.html
+
+路由器实现简单静态路由、浮动路由、负载均衡、远程登陆1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10496681.html
+
+RIP 实验123https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10540441.html
+
+EIGRP 基础实验1https:&#x2F...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "协议">协议</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "路由协议">路由协议</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/28/CentOS7%E6%9C%80%E5%B0%8F%E5%8C%96%E5%AE%89%E8%A3%85%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
+            
+                <span>CentOS 7 最小化安装简单配置</span>
+        </a>
+        <div class="abstract-content">
+            一、环境介绍：
+　　运行软件：VMware Workstation Pro 14
+　　系统环境：CentOS-7-x86_64-1810
+　　系统网络运行模式：NAT模式
+二、操作配置：
+1、配置动态获取IP
+1) 修改配置文件
+1vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eno33 &#x2F;&#x2F;eno33是你的网卡名字
+
+2) 修改选项ONBOOT  //默认ONBOOT处于关闭状态
+ 
+ONBOOT = no ==&gt;&gt; ONBOOT = yes
+
+3) 重启服务
+1systemctl...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/16/BugkuCTF~Web~WriteUp/" >
+            
+                <span>BugkuCTF Web WriteUp</span>
+        </a>
+        <div class="abstract-content">
+            今天把之前做的题整理一下，方便有需要的人学习 φ(゜▽゜*)♪
+1、web2
+考点：F12的利用
+Topic Link：http://123.206.87.240:8002/web2/
+
+打开连接，特别的不一样，直接F12可得flag
+get flag:
+1flag KEY&#123;Web-2-bugKssNNikls9100&#125;
+
+
+
+2、计算器
+考点：F12的利用
+Topic Link：http://120.24.86.145:8002/yanzhengma/
+
+
+发现输入框对输入的数据长度有限制，F12进行修改长度输入正确结果即可获得flag一枚
+
+get flag:
+1...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/16/BugkuCTF~%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1~WriteUp/" >
+            
+                <span>BugkuCTF 代码审计 WriteUp</span>
+        </a>
+        <div class="abstract-content">
+            第一题：extract变量覆盖
+知识简介
+extract()函数语法：
+1234567891011121314extract(array,extract_rules,prefix)参数 描述array必需。 规定要使用的数组。extract_rules可选。 extract() 函数将检查每个键名是否为合法的变量名，同时也检查和符号表中已存在的变量名是否冲突。对不合法和冲突的键名的处理将根据此参数决定。可能的值：EXTR_OVERWRITE - 默认。如果有冲突，则覆盖已有的变量。EXTR_SKIP - 如果有冲突，不覆盖已有的变量。EXTR_PREFIX_SAME - 如果有冲突，在变...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     
     
@@ -559,122 +720,6 @@ m...
         <a class="post-tag" href="javascript:void(0);" data-tags = "MySQL">MySQL</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "SQLInjection">SQLInjection</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/12/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E5%88%9B%E5%BB%BA%E6%97%A0%E5%90%91%E5%9B%BE/" >
-            
-                <span>C语言实现邻接矩阵创建无向图</span>
-        </a>
-        <div class="abstract-content">
-            Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210310410510610710810911011111211311411511611711811912012112212312412512612712812913013113213313...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-%E8%BF%9B%E9%98%9F-%E5%87%BA%E9%98%9F-%E8%AF%BB%E5%8F%96%E9%98%9F%E5%A4%B4%E5%85%83%E7%B4%A0-%E5%88%A4%E7%A9%BA-2/" >
-            
-                <span>C语言实现循环队列的初始化&amp;进队&amp;出队&amp;读取队头元素&amp;判空-2</span>
-        </a>
-        <div class="abstract-content">
-            Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132&#x2F...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%93%BE%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96&%E8%BF%9B%E9%98%9F&%E5%87%BA%E9%98%9F/" >
-            
-                <span>C语言实现链队列的初始化&amp;进队&amp;出队</span>
-        </a>
-        <div class="abstract-content">
-            Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109&#x2F;*链表实现队列的一系列操作*&#x2F; #include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/28/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%93%BE%E6%A0%88%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96&%E8%BF%9B%E6%A0%88&%E5%87%BA%E6%A0%88&%E8%AF%BB%E5%8F%96%E6%A0%88%E9%A1%B6%E5%85%83%E7%B4%A0/" >
-            
-                <span>C语言实现链栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素</span>
-        </a>
-        <div class="abstract-content">
-            Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117&#x2F;*链表实现栈的一系列操作*&#x2F; #include&lt;stdio.h&gt;#...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
     
 </div>
             
@@ -1964,9 +2009,93 @@ m...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 73
+        Total : 77
         </div>
         <!-- search  -->
         
@@ -1979,6 +2108,26 @@ m...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/Linux-Network-Protocol-Stack/" >Linux Network Protocol Stack</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/Software-Engineering-Learning-Handbook/" >Software Engineering Learning Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/Socket-Learning-Handbook/" >Socket Programming Learning Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2020/03/18/PHP-File-Inclusion-Exploiting-and-Bypass/" >PHP File Inclusion Bug Exploiting and Bypass Handbook</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2376,19 +2525,19 @@ m...
     
         <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
     
-        <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
-    
         <span class="sidebar-tag-name" data-tags="SQLite"><span class="iconfont-archer">&#xe606;</span>SQLite</span>
     
         <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
     
-        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+        <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
-        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
     
         <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
     
         <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
         <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
@@ -2398,9 +2547,9 @@ m...
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
-        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
+        <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
@@ -2420,6 +2569,8 @@ m...
     
         <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
     
+        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
+    
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
         <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
@@ -2432,13 +2583,13 @@ m...
     
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
     
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
         <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
     
         <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
     
@@ -2446,9 +2597,11 @@ m...
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
+        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+    
         <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
-        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2509,7 +2662,7 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="后门分析"><span class="iconfont-archer">&#xe60a;</span>后门分析</span>
     
-        <span class="sidebar-category-name" data-categories="渗透测试"><span class="iconfont-archer">&#xe60a;</span>渗透测试</span>
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
         <span class="sidebar-category-name" data-categories="逆向工程"><span class="iconfont-archer">&#xe60a;</span>逆向工程</span>
     
@@ -2520,6 +2673,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
     
         <span class="sidebar-category-name" data-categories="路由协议"><span class="iconfont-archer">&#xe60a;</span>路由协议</span>
+    
+        <span class="sidebar-category-name" data-categories="软件工程"><span class="iconfont-archer">&#xe60a;</span>软件工程</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

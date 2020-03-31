@@ -245,7 +245,7 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Stay hungry, Stay foolish, Stay young
+                Maybe a hacker
             
             <!-- 文章页  -->
             
@@ -359,6 +359,135 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/07/CSRF%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/" >
+            
+                <span>CSRF 漏洞测试</span>
+        </a>
+        <div class="abstract-content">
+            CSRF简介CSRF中文名：跨站请求伪造，英文译为：Cross-site request forgery，CSRF攻击就是attacker（攻击者）利用victim（受害者）尚未失效的身份认证信息(cookie、session等)，以某种方式诱骗victim点击attacker精心制作的恶意链接或者访问包含恶意攻击代码的页面，当victim触发成功之后，恶意代码会被执行，浏览器默默的向目标service发出请求加载着victim尚未失效的身份认证信息，导致victim替attacker完成了非法操作比如：在某些论坛上发布大量的恶意言论、网站用户密码被恶意篡改、账户金额被盗取、删除网站个人...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSRF">CSRF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/04/XSS-DOM%E6%B5%8B%E8%AF%95/" >
+            
+                <span>XSS DOM 测试</span>
+        </a>
+        <div class="abstract-content">
+            dvwa DOM XSSDOM Based XSS：是基于DOM文档对象模型的操作，通过前端脚本修改页面的DOM节点形成的XSS，该操作不与服务器端进行交互，而且代码是可见的，从前端获取到DOM中的数据在本地执行，从效果上来说也是反射型XSS。
+漏洞测试low 级别)
+可知Select按钮选择参数，数据提交是以GET请求的方式
+12345&lt;?php# No protections, anything goes?&gt;
+
+low 级别不存在Protect，可以非常简单的造成XSS攻击
+构造payload
+1http:&#x2F;&#x2F;192.168.43.146&#x2F;d...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/04/XSS-Stored%E6%B5%8B%E8%AF%95/" >
+            
+                <span>XSS Stored 测试</span>
+        </a>
+        <div class="abstract-content">
+            dvwa存储型XSS存储型XSS：会把用户输入的数据“存储”在服务器端，一般出现在需要用户可以输入数据的地方，比如网站的留言板、评论等地方，当网站这些地方过滤不严格的时候，就会被黑客注入恶意攻击代码，存储在服务器端，每当用户加载该页面时，都会受到攻击，所以这种攻击行为也称为“持久型XSS(Persistent XSS)”。
+漏洞测试low级别)
+在Name和Message输入框中分别输入一个String（admin）发现输入的数据会显示在当前页面中，同时可以知道数据提交是以POST请求的方式
+查看源码：
+12345678910111213141516171819202122&lt;?ph...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/04/XSS-Reflected%E6%B5%8B%E8%AF%95/" >
+            
+                <span>XSS Reflected 测试</span>
+        </a>
+        <div class="abstract-content">
+            前言由于最近在做XSS方面的测试，于是找到了DVWA平台进行实验测试，通过这三篇文章让大家了解XSS方面的大概内容，这三篇文章只是把你领进XSS的大门，要想真正深入的学习XSS，你还需要去学习很多东西来提升自己。网站测试分为黑盒测试和白盒测试，在这里采用白盒测试来对网站进行XSS漏洞测试，XSS漏洞分为三种：反射型XSS、存储型XSS、DOM型XSS，分别用三篇文章来进行阐述。
+XSS攻击形成原理XSS中文名是“跨站脚本攻击”，英文全称是“Cross Site Scripting”。
+XSS也是一种注入攻击，长期以来被列为客户端web安全中的头号大敌，当web应用对用户输入过滤不严格，攻...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/10/13/ARP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" >
             
                 <span>ARP欺骗攻击</span>
@@ -448,7 +577,7 @@ ARP(Address Resolution Protocol)协议简...
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "渗透测试">渗透测试</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "攻防渗透">攻防渗透</a>
     
 </div>
             
@@ -529,7 +658,7 @@ msf先加载模块
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "渗透测试">渗透测试</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "攻防渗透">攻防渗透</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "MSF">MSF</a>
     
@@ -565,171 +694,9 @@ exploit进行攻击登陆
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "渗透测试">渗透测试</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "攻防渗透">攻防渗透</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "MSF">MSF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/05/13/%E5%AE%9E%E9%AA%8C%E5%90%A7WriteUp%E5%90%88%E9%9B%86/" >
-            
-                <span>实验吧 WriteUp 合集</span>
-        </a>
-        <div class="abstract-content">
-            笔者《Qftm》原文发布Web1https:&#x2F;&#x2F;blog.csdn.net&#x2F;tc125&#x2F;article&#x2F;category&#x2F;7661453
-
-Misc1https:&#x2F;&#x2F;blog.csdn.net&#x2F;tc125&#x2F;article&#x2F;category&#x2F;8638571
-
-Cipher1https:&#x2F;&#x2F;blog.csdn.net&#x2F;tc125&#x2F;article&#x2F;category&#x2F;8638574
-
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/29/%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A0%87%E5%BF%97/" >
-            
-                <span>各类文件的文件头标志</span>
-        </a>
-        <div class="abstract-content">
-            各类文件的文件头标志
-
-
-扩展名
-文件头标识（HEX）
-文件描述
-
-
-
-123
-00 00 1A 00 05 10 04
-Lotus 1-2-3 spreadsheet (v9) file
-
-
-3gg; 3gp; 3g2
-00 00 00 nn 66 74 79 70 33 67 70
-3rd Generation Partnership Project 3GPP (nn=0x14)  and 3GPP2 (nn=0x20) multimedia files
-
-
-7z
-37 7A BC AF 27 1C
-7-ZIP compressed file
-
-
-aba
-00 01 42 41
-Pa...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "文件结构">文件结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/01/30/%E8%AE%A4%E8%AF%86%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E5%A4%B4User-Agent/" >
-            
-                <span>认识浏览器请求头User-Agent</span>
-        </a>
-        <div class="abstract-content">
-            定义　　User Agent中文名为用户代理，是Http协议中的一部分，属于头域的组成部分，User Agent也简称UA。
-　　它是一个特殊字符串头，是一种向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核、等信息的标识。通过这个标识，用户所访问的网站可以显示不同的排版从而为用户提供更好的体验或者进行信息统计；例如用手机访问谷歌和电脑访问是不一样的，这些是谷歌根据访问者的UA来判断的。UA可以进行伪装。
-标准格式1浏览器标识 (操作系统标识; 加密等级标识; 浏览器语言) 渲染引擎标识 版本信息
-
-字段解析浏览器标识　出于兼容及推广等目的，很多浏览器的标识相同，因此浏...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "HTTP">HTTP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/01/30/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%AD%A6%E4%B9%A0/" >
-            
-                <span>CTF中那些脑洞大开的编码和加密</span>
-        </a>
-        <div class="abstract-content">
-            原文
-123http:&#x2F;&#x2F;www.tuicool.com&#x2F;articles&#x2F;2E3INnmhttp:&#x2F;&#x2F;www.secbox.cn&#x2F;hacker&#x2F;ctf&#x2F;8078.html
-
-0x00 前言总结，CTF中脑洞大开的编码与加密
-0x01 正文常见编码1.ASCII编码ASCII编码大致可以分作三部分组成：
-第一部分是：ASCII非打印控制字符（参详ASCII码表中0-31）;
-第二部分是：ASCII打印字符，也就是CTF中常用到的转换;
-
-第三部分是：扩展ASCII打印字符(第一第三部分详见 ASCI...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "密码研究">密码研究</a>
     
 </div>
             
@@ -2019,9 +1986,93 @@ Pa...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 73
+        Total : 77
         </div>
         <!-- search  -->
         
@@ -2034,6 +2085,26 @@ Pa...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/Linux-Network-Protocol-Stack/" >Linux Network Protocol Stack</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/Software-Engineering-Learning-Handbook/" >Software Engineering Learning Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/Socket-Learning-Handbook/" >Socket Programming Learning Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2020/03/18/PHP-File-Inclusion-Exploiting-and-Bypass/" >PHP File Inclusion Bug Exploiting and Bypass Handbook</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2431,19 +2502,19 @@ Pa...
     
         <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
     
-        <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
-    
         <span class="sidebar-tag-name" data-tags="SQLite"><span class="iconfont-archer">&#xe606;</span>SQLite</span>
     
         <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
     
-        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+        <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
-        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
     
         <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
     
         <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
         <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
@@ -2453,9 +2524,9 @@ Pa...
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
-        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
+        <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
@@ -2475,6 +2546,8 @@ Pa...
     
         <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
     
+        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
+    
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
         <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
@@ -2487,13 +2560,13 @@ Pa...
     
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
     
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
         <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
     
         <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
     
@@ -2501,9 +2574,11 @@ Pa...
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
+        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+    
         <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
-        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2564,7 +2639,7 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="后门分析"><span class="iconfont-archer">&#xe60a;</span>后门分析</span>
     
-        <span class="sidebar-category-name" data-categories="渗透测试"><span class="iconfont-archer">&#xe60a;</span>渗透测试</span>
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
         <span class="sidebar-category-name" data-categories="逆向工程"><span class="iconfont-archer">&#xe60a;</span>逆向工程</span>
     
@@ -2575,6 +2650,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
     
         <span class="sidebar-category-name" data-categories="路由协议"><span class="iconfont-archer">&#xe60a;</span>路由协议</span>
+    
+        <span class="sidebar-category-name" data-categories="软件工程"><span class="iconfont-archer">&#xe60a;</span>软件工程</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
