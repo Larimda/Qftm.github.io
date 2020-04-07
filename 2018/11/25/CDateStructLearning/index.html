@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Qftm">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Qftm">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>C Programming Language Data Structure Learning · Qftm&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Qftm&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">C Programming Language Data Structure Learning</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Qftm's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            C Programming Language Data Structure Learning
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">6k</span>Reading time: <span class="post-count reading-time">28 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/11/25</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="C语言实现二叉树的创建-amp-遍历"><a href="#C语言实现二叉树的创建-amp-遍历" class="headerlink" title="C语言实现二叉树的创建&amp;遍历"></a>C语言实现二叉树的创建&amp;遍历</h1><h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p><strong>重点是递归的使用</strong></p>
+<p>利用扩展先序遍历序列创建二叉链表。</p>
+<p>采用类似先序遍历的递归算法，首先读入当前根结点的数据，如果是’.’则将当前树根置为空，否则申请一个新结点，存入当前根结点的数据，分别用当前根结点的左子域和右子域进行递归调用，创建左、右子树。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> DataType;             <span class="comment">//二叉链表结点的数据类型 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>               //定义二叉树的二叉链表结点结构 </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">LChild</span>;</span>         <span class="comment">//左子树 </span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">RChild</span>;</span>         <span class="comment">//右子树     </span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *bt)</span></span>;   <span class="comment">//创建二叉链表函数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree root)</span></span>;      <span class="comment">//先序遍历二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree root)</span></span>;       <span class="comment">//中序遍历二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree root)</span></span>;     <span class="comment">//后序遍历二叉树</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiTree bt;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;                   <span class="comment">//二叉树操作选择菜单 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"                choice 1：创建二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：先序遍历二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：中序遍历二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 4：后序遍历二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：退出\n\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: CreateBiTree(&amp;bt);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: PreOrder(bt);             </span><br><span class="line">                      <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>: InOrder(bt);               </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: PostOrder(bt);                </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>: <span class="built_in">exit</span>(<span class="number">0</span>);                </span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter data:"</span>);</span><br><span class="line">    getchar();</span><br><span class="line">    ch = getchar();</span><br><span class="line">    <span class="keyword">if</span>(ch == <span class="string">'.'</span>)              <span class="comment">//读入的数据是'.'则将当前树根置为空 </span></span><br><span class="line">    &#123;</span><br><span class="line">        *bt = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>                      <span class="comment">//读入正常数据,为当前树根分配地址空间 </span></span><br><span class="line">    &#123;</span><br><span class="line">        *bt = (BiTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">        (*bt)-&gt;data = ch;</span><br><span class="line">        CreateBiTree(&amp;((*bt)-&gt;LChild)); <span class="comment">//递归调用CreateBiTree()函数,处理左子树 </span></span><br><span class="line">        CreateBiTree(&amp;((*bt)-&gt;RChild)); <span class="comment">//递归调用CreateBiTree()函数,处理右子树 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree root)</span> <span class="comment">//先序遍历二叉树,root为指向二叉树根结点的指针 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)    </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,root-&gt;data);      <span class="comment">//访问根结点 </span></span><br><span class="line">        PreOrder(root-&gt;LChild);        <span class="comment">//先序遍历左子树 </span></span><br><span class="line">        PreOrder(root-&gt;RChild);        <span class="comment">//先序遍历右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree root)</span>    <span class="comment">//中序遍历二叉树,root为指向二叉树根结点的指针</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)    </span><br><span class="line">    &#123;</span><br><span class="line">        InOrder(root-&gt;LChild);      <span class="comment">//中序遍历左子树</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,root-&gt;data);      <span class="comment">//访问根结点 </span></span><br><span class="line">        InOrder(root-&gt;RChild);      <span class="comment">//中序遍历右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree root)</span>     <span class="comment">//中序遍历二叉树,root为指向二叉树根结点的指针</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)             </span><br><span class="line">    &#123;</span><br><span class="line">        PostOrder(root-&gt;LChild);      <span class="comment">//后序遍历左子树</span></span><br><span class="line">        PostOrder(root-&gt;RChild);      <span class="comment">//后序遍历右子树</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,root-&gt;data);      <span class="comment">//访问根结点 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言实现二叉树中统计叶子结点的个数-amp-度为1-amp-度为2的结点个数"><a href="#C语言实现二叉树中统计叶子结点的个数-amp-度为1-amp-度为2的结点个数" class="headerlink" title="C语言实现二叉树中统计叶子结点的个数&amp;度为1&amp;度为2的结点个数"></a>C语言实现二叉树中统计叶子结点的个数&amp;度为1&amp;度为2的结点个数</h1><h2 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h2><p>统计二叉树中叶子结点的个数和度为1、度为2的结点个数，因此可以参照二叉树三种遍历算法（先序、中序、后序）中的任何一种去完成，只需将访问操作具体变为判断是否为叶子结点和度为1、度为2的结点及统计操作即可。</p>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> LeafCount=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> Degree1Count=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> Degree2Count=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> DataType;             <span class="comment">//二叉链表结点的数据类型 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>               //定义二叉树的二叉链表结点结构 </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">LChild</span>;</span>         <span class="comment">//左子树 </span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">RChild</span>;</span>         <span class="comment">//右子树     </span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *bt)</span></span>;   <span class="comment">//创建二叉链表函数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree root)</span></span>;      <span class="comment">//先序遍历二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree root)</span></span>;       <span class="comment">//中序遍历二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree root)</span></span>;     <span class="comment">//后序遍历二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Leaf</span><span class="params">(BiTree root)</span></span>;          <span class="comment">//统计叶子结点数目 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Degree1</span><span class="params">(BiTree root)</span></span>;        <span class="comment">//统计度为1的结点数目</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Degree2</span><span class="params">(BiTree root)</span></span>;        <span class="comment">//统计度为2的结点数目</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiTree bt;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;                   <span class="comment">//二叉树操作选择菜单 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"                choice 1：创建二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：先序遍历二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：中序遍历二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 4：后序遍历二叉树\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 5：打印叶子结点数目\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 6：打印度为1的结点数目\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 7：打印度为2的结点数目\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：退出\n\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: CreateBiTree(&amp;bt);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: PreOrder(bt);             </span><br><span class="line">                      <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>: InOrder(bt);               </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: PostOrder(bt);                </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>: Leaf(bt);             </span><br><span class="line">                      <span class="built_in">printf</span>(<span class="string">"该二叉树叶子结点的数目为：%d\n"</span>,LeafCount);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">6</span>: Degree1(bt);               </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"该二叉树度为1的结点数目为：%d\n"</span>,Degree1Count);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">7</span>: Degree2(bt);                </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"该二叉树度为2的结点数目为：%d\n"</span>,Degree2Count);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>: <span class="built_in">exit</span>(<span class="number">0</span>);                </span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter data:"</span>);</span><br><span class="line">    getchar();</span><br><span class="line">    ch = getchar();</span><br><span class="line">    <span class="keyword">if</span>(ch == <span class="string">'.'</span>)              <span class="comment">//读入的数据是'.'则将当前树根置为空 </span></span><br><span class="line">    &#123;</span><br><span class="line">        *bt = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>                      <span class="comment">//读入正常数据,为当前树根分配地址空间 </span></span><br><span class="line">    &#123;</span><br><span class="line">        *bt = (BiTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">        (*bt)-&gt;data = ch;</span><br><span class="line">        CreateBiTree(&amp;((*bt)-&gt;LChild)); <span class="comment">//递归调用CreateBiTree()函数,处理左子树 </span></span><br><span class="line">        CreateBiTree(&amp;((*bt)-&gt;RChild)); <span class="comment">//递归调用CreateBiTree()函数,处理右子树 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree root)</span> <span class="comment">//先序遍历二叉树,root为指向二叉树根结点的指针 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)    </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,root-&gt;data);      <span class="comment">//访问根结点 </span></span><br><span class="line">        PreOrder(root-&gt;LChild);        <span class="comment">//先序遍历左子树 </span></span><br><span class="line">        PreOrder(root-&gt;RChild);        <span class="comment">//先序遍历右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree root)</span>    <span class="comment">//中序遍历二叉树,root为指向二叉树根结点的指针</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)    </span><br><span class="line">    &#123;</span><br><span class="line">        InOrder(root-&gt;LChild);      <span class="comment">//中序遍历左子树</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,root-&gt;data);      <span class="comment">//访问根结点 </span></span><br><span class="line">        InOrder(root-&gt;RChild);      <span class="comment">//中序遍历右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree root)</span>     <span class="comment">//中序遍历二叉树,root为指向二叉树根结点的指针</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)             </span><br><span class="line">    &#123;</span><br><span class="line">        PostOrder(root-&gt;LChild);      <span class="comment">//后序遍历左子树</span></span><br><span class="line">        PostOrder(root-&gt;RChild);      <span class="comment">//后序遍历右子树</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,root-&gt;data);      <span class="comment">//访问根结点 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Leaf</span><span class="params">(BiTree root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Leaf(root-&gt;LChild);</span><br><span class="line">        Leaf(root-&gt;RChild);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;LChild==<span class="literal">NULL</span> &amp;&amp; root-&gt;RChild==<span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            LeafCount++;   <span class="comment">//统计叶子结点数目</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Degree1</span><span class="params">(BiTree root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Degree1(root-&gt;LChild);</span><br><span class="line">        Degree1(root-&gt;RChild);</span><br><span class="line">        <span class="keyword">if</span>((root-&gt;LChild==<span class="literal">NULL</span> &amp;&amp; root-&gt;RChild!=<span class="literal">NULL</span>)||(root-&gt;LChild!=<span class="literal">NULL</span> &amp;&amp; root-&gt;RChild==<span class="literal">NULL</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            Degree1Count++;   <span class="comment">//统计度为1的结点数目</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Degree2</span><span class="params">(BiTree root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Degree2(root-&gt;LChild);</span><br><span class="line">        Degree2(root-&gt;RChild);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;LChild!=<span class="literal">NULL</span> &amp;&amp; root-&gt;RChild!=<span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Degree2Count++;   <span class="comment">//统计度为2的结点数目</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言实现循环队列的初始化-amp-进队-amp-出队-amp-读取队头元素-amp-判空"><a href="#C语言实现循环队列的初始化-amp-进队-amp-出队-amp-读取队头元素-amp-判空" class="headerlink" title="C语言实现循环队列的初始化&amp;进队&amp;出队&amp;读取队头元素&amp;判空"></a>C语言实现循环队列的初始化&amp;进队&amp;出队&amp;读取队头元素&amp;判空</h1><p>队列是另一种限定性的线性表，它只允许在表的一端插入元素，而在另一端删除元素，所以队列具有先进先出的特性。</p>
+<h2 id="算法思想-2"><a href="#算法思想-2" class="headerlink" title="算法思想"></a>算法思想</h2><h3 id="系统用到的抽象数据类型定义"><a href="#系统用到的抽象数据类型定义" class="headerlink" title="系统用到的抽象数据类型定义"></a>系统用到的抽象数据类型定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ADT Queue&#123;</span><br><span class="line"></span><br><span class="line">  数据元素：可以是任意类型的数据，但必须属于同一个数据对象。</span><br><span class="line"></span><br><span class="line">  数据关系：队列中数据元素之间是线性关系。</span><br><span class="line"></span><br><span class="line">  基本操作：</span><br><span class="line">	1. initQueue(&amp;Q)；       &#x2F;&#x2F;循环队列初始化</span><br><span class="line">	2. enterQueue(&amp;Q);      &#x2F;&#x2F;循环队列入队操作</span><br><span class="line">	3. deleteQueue(&amp;Q);     &#x2F;&#x2F;循环队列出队操作</span><br><span class="line">	4. isEmpty(&amp;Q);         &#x2F;&#x2F;判断队列是否为空</span><br><span class="line">	5. getHead(&amp;Q,&amp;x);      &#x2F;&#x2F;读取队列的队头元素 ,指针x指向队头元素</span><br><span class="line"></span><br><span class="line">&#125;ADT Queue;</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统中子程序及功能要求"><a href="#系统中子程序及功能要求" class="headerlink" title="系统中子程序及功能要求"></a>系统中子程序及功能要求</h3><ul>
+<li>void initQueue(SeqQueue *Q);</li>
+</ul>
+<p>操作前提：Q为未初始化的队列。</p>
+<p>操作结果：将Q初始化为一个空队列。    </p>
+<ul>
+<li>int enterQueue(SeqQueue *Q,int n); </li>
+</ul>
+<p>操作前提：队列Q已存在。</p>
+<p>操作结果：在队列Q的队尾插入n。操作成功，返回值为True，否则返回值为False。</p>
+<ul>
+<li>void deleteQueue(SeqQueue *Q);</li>
+</ul>
+<p>操作前提：队列Q已存在。</p>
+<p>操作结果：将队列Q的队头元素出队。操作成功，返回值为True，否则返回值为False。</p>
+<ul>
+<li>int isEmpty(SeqQueue *Q);</li>
+</ul>
+<p>操作前提：队列Q已存在。</p>
+<p>操作结果：若队列为空，则返回True,否则返回False。     </p>
+<ul>
+<li>int getHead(SeqQueue *Q,int *x); </li>
+</ul>
+<p>操作前提：队列Q已存在。</p>
+<p>操作结果：取队列Q的队头元素（该元素不出队），并用x带回其值。操作成功，返回值为True，否则返回值为False。</p>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现-1"></a>代码实现-1</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*顺序表实现循环队列的基本操作 (损失一个数组空间)*/</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Queue_Size 50           <span class="comment">//队列的最大长度 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> True 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> False 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span>          </span><br><span class="line">    <span class="keyword">int</span> elem[Queue_Size];       <span class="comment">//队列的元素空间 </span></span><br><span class="line">    <span class="keyword">int</span> front;                  <span class="comment">//头指针指示器 </span></span><br><span class="line">    <span class="keyword">int</span> rear;                    <span class="comment">//尾指针指示器 </span></span><br><span class="line">&#125;SeqQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initQueue</span><span class="params">(SeqQueue *Q)</span></span>;        <span class="comment">//循环队列初始化 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enterQueue</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> n)</span></span>;  <span class="comment">//循环队列入队操作 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteQueue</span><span class="params">(SeqQueue *Q)</span></span>;      <span class="comment">//循环队列出队操作 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(SeqQueue *Q)</span></span>;           <span class="comment">//判断队列是否为空 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHead</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> *x)</span></span>;   <span class="comment">//读取队列的队头元素 ,指针x指向队头元素 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SeqQueue Q;</span><br><span class="line">    <span class="keyword">int</span> choice,x;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)           <span class="comment">//循环队列操作选择菜单 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 1：Queue initialization\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：Into the queue\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：Out of the queue\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 4：Determine whether the queue is empty\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 5：Get queue head\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：exit\n\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                initQueue(&amp;Q);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">int</span> n;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Please enter the number into the queue elements："</span>);</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);     <span class="comment">//读入存入的队列元素个数 </span></span><br><span class="line">                                              <span class="comment">//三目运算符根据返回值判断元素是否进队成功 </span></span><br><span class="line">                (enterQueue(&amp;Q,n)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"%d个元素依次进队成功\n"</span>,n):<span class="built_in">printf</span>(<span class="string">"%d个元素依次进队失败\n"</span>,n);    </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                deleteQueue(&amp;Q);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:            <span class="comment">//三目运算符根据返回值判断队列是否为空 </span></span><br><span class="line">                (isEmpty(&amp;Q)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"An empty Queue\n"</span>):<span class="built_in">printf</span>(<span class="string">"Not an empty Queue\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:              <span class="comment">//三目运算符根据返回值判断队头元素是否读取成功  </span></span><br><span class="line">                (getHead(&amp;Q,&amp;x)==False)?<span class="built_in">printf</span>(<span class="string">"An empty Queue error!!!!\n"</span>):<span class="built_in">printf</span>(<span class="string">"Get head successful，队头元素为：%d\n"</span>,x); </span><br><span class="line">                 <span class="keyword">break</span>; </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initQueue</span><span class="params">(SeqQueue *Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="comment">//将 *Q 初始化为一个空的循环队列 </span></span><br><span class="line">    Q-&gt;front=Q-&gt;rear=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enterQueue</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;  <span class="comment">//将元素n入队 </span></span><br><span class="line">    <span class="keyword">int</span> n1,n2;    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter into the queue elements in turn:\n"</span>);  </span><br><span class="line">    <span class="keyword">for</span>(n1=<span class="number">0</span>;n1&lt;n;n1++)           <span class="comment">//循环输入元素进入队列 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((Q-&gt;rear+<span class="number">1</span>)%Queue_Size==Q-&gt;front) <span class="keyword">return</span> False;   <span class="comment">//尾指针加1追上头指针，标志队列已经满了 </span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n2);        </span><br><span class="line">        Q-&gt;elem[Q-&gt;rear]=n2;      <span class="comment">//元素进队 </span></span><br><span class="line">        Q-&gt;rear=(Q-&gt;rear+<span class="number">1</span>)%Queue_Size;                 <span class="comment">//重新设置队尾指针                  </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> True;          <span class="comment">//操作成功 </span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteQueue</span><span class="params">(SeqQueue *Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="comment">//删除队列的队头元素 </span></span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear)</span><br><span class="line">    &#123;               <span class="comment">//队列为空，删除失败 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"An empty Queue error!!!!\n"</span>);  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        a=Q-&gt;elem[Q-&gt;front];           <span class="comment">//删除前先读取队头元素 </span></span><br><span class="line">        Q-&gt;front=(Q-&gt;front+<span class="number">1</span>)%Queue_Size;   <span class="comment">//重新设置队头指针 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队顶元素%d出队成功.\n"</span>,a);    <span class="comment">//操作成功 </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(SeqQueue *Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear)</span><br><span class="line">    &#123;               <span class="comment">//判断队列为空,返回True </span></span><br><span class="line">        <span class="keyword">return</span> True;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> False;  <span class="comment">//否则返回False </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHead</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> *x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear)</span><br><span class="line">    &#123;               <span class="comment">//队列为空，读取失败 </span></span><br><span class="line">        <span class="keyword">return</span> False;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        *x=Q-&gt;elem[Q-&gt;front];  <span class="comment">//操作成功 </span></span><br><span class="line">        <span class="keyword">return</span> True;            </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现-2"></a>代码实现-2</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*顺序表实现队列的一系列操作（设置flag标志不损失数组空间）*/</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Queue_Size 50     <span class="comment">//队列的最大长度 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> elem[Queue_Size];       <span class="comment">//队列的元素空间 </span></span><br><span class="line">    <span class="keyword">int</span> front;                  <span class="comment">//头指针指示器 </span></span><br><span class="line">    <span class="keyword">int</span> rear;                    <span class="comment">//尾指针指示器 </span></span><br><span class="line">    <span class="keyword">int</span> flag;                    <span class="comment">//flag，判断队列是否为空的标志 </span></span><br><span class="line">&#125;SeqQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数的定义*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initQueue</span><span class="params">(SeqQueue *Q)</span></span>;        <span class="comment">//循环队列初始化 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enterQueue</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> n)</span></span>;  <span class="comment">//循环队列入队操作 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteQueue</span><span class="params">(SeqQueue *Q)</span></span>;      <span class="comment">//循环队列出队操作 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(SeqQueue *Q)</span></span>;           <span class="comment">//判断队列是否为空 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHead</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> *x)</span></span>;   <span class="comment">//读取队列的队头元素 ,指针x指向队头元素 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SeqQueue Q;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)          <span class="comment">//循环队列操作选择菜单 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 1：Queue initialization\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：Into the queue\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：Out of the queue\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 4：Determine whether the queue is empty\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 5：Get queue head\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：exit\n\n"</span>);</span><br><span class="line">         <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                initQueue(&amp;Q);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">int</span> n;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Please enter the number into the queue elements："</span>);</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);  <span class="comment">//读入存入的队列元素个数 </span></span><br><span class="line">                                <span class="comment">//三目运算符根据返回值判断元素是否进队成功 </span></span><br><span class="line">                (enterQueue(&amp;Q,n)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"%d个元素依次进队成功\n"</span>,n):<span class="built_in">printf</span>(<span class="string">"%d个元素依次进队失败\n"</span>,n);    </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                deleteQueue(&amp;Q);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:            <span class="comment">//三目运算符根据返回值判断队列是否为空 </span></span><br><span class="line">                (isEmpty(&amp;Q)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"An empty Queue\n"</span>):<span class="built_in">printf</span>(<span class="string">"Not an empty Queue\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:              <span class="comment">//三目运算符根据返回值判断队头元素是否读取成功  </span></span><br><span class="line">                <span class="keyword">int</span> x;</span><br><span class="line">                (getHead(&amp;Q,&amp;x)==<span class="number">0</span>)?<span class="built_in">printf</span>(<span class="string">"An empty Queue error!!!!\n"</span>):<span class="built_in">printf</span>(<span class="string">"Get head successful，队头元素为：%d\n"</span>,x); </span><br><span class="line">                 <span class="keyword">break</span>;     </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数功能的实现*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initQueue</span><span class="params">(SeqQueue *Q)</span>   </span></span><br><span class="line"><span class="function"></span>&#123;                            <span class="comment">//将 *Q 初始化为一个空的循环队列 </span></span><br><span class="line">    Q-&gt;front=Q-&gt;rear=<span class="number">0</span>;</span><br><span class="line">    Q-&gt;flag=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enterQueue</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> n)</span>  <span class="comment">//进队列 </span></span></span><br><span class="line"><span class="function"></span>&#123;    <span class="comment">//将元素n入队</span></span><br><span class="line">    <span class="keyword">int</span> n1,n2;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;front==Q-&gt;rear)&amp;&amp;(Q-&gt;flag==<span class="number">1</span>)) <span class="keyword">return</span> ERROR;   <span class="comment">//标志队列已经满了 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter into the queue elements in turn:\n"</span>);  </span><br><span class="line">    <span class="keyword">for</span>(n1=<span class="number">0</span>;n1&lt;n;n1++)    <span class="comment">//循环输入元素进入队列 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n2);</span><br><span class="line">        Q-&gt;elem[Q-&gt;rear]=n2;</span><br><span class="line">        Q-&gt;rear=(Q-&gt;rear+<span class="number">1</span>)%Queue_Size;                 <span class="comment">//重新设置队尾指针</span></span><br><span class="line">        <span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear)        <span class="comment">//此处有两种情况：1.元素没有全部进入队列，空间已经满了 2.元素全部进入队列，空间刚刚好好 </span></span><br><span class="line">        &#123;</span><br><span class="line">            Q-&gt;flag=<span class="number">1</span>;       <span class="comment">//flag=1:队列空间存满 </span></span><br><span class="line">            <span class="keyword">return</span> ERROR; </span><br><span class="line">        &#125;                 </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteQueue</span><span class="params">(SeqQueue *Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;                               <span class="comment">//删除队列的队头元素 </span></span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;front==Q-&gt;rear)&amp;&amp;(Q-&gt;flag==<span class="number">0</span>))        <span class="comment">//队列为空，删除失败 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"An empty Queue error!!!!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        a=Q-&gt;elem[Q-&gt;front];               <span class="comment">//删除前先读取队头元素 </span></span><br><span class="line">        Q-&gt;front=(Q-&gt;front+<span class="number">1</span>)%Queue_Size;  <span class="comment">//重新设置队头指针 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队顶元素%d出队成功.\n"</span>,a); <span class="comment">//操作成功</span></span><br><span class="line">        <span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear) Q-&gt;flag=<span class="number">0</span>;   <span class="comment">//flag=0:队列中的元素全部出队 </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(SeqQueue *Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;front==Q-&gt;rear)&amp;&amp;(Q-&gt;flag==<span class="number">0</span>))</span><br><span class="line">    &#123;               <span class="comment">//判断队列为空,返回OK</span></span><br><span class="line">        <span class="keyword">return</span> OK;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ERROR;  <span class="comment">//否则返回ERROR </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHead</span><span class="params">(SeqQueue *Q,<span class="keyword">int</span> *x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;front==Q-&gt;rear)&amp;&amp;(Q-&gt;flag==<span class="number">0</span>))</span><br><span class="line">    &#123;               <span class="comment">//队列为空，读取失败 </span></span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        *x=Q-&gt;elem[Q-&gt;front];  <span class="comment">//操作成功 </span></span><br><span class="line">        <span class="keyword">return</span> OK;            </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言实现顺序栈的初始化-amp-进栈-amp-出栈-amp-读取栈顶元素"><a href="#C语言实现顺序栈的初始化-amp-进栈-amp-出栈-amp-读取栈顶元素" class="headerlink" title="C语言实现顺序栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素"></a>C语言实现顺序栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素</h1><h2 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*顺序表实现栈的一系列操作*/</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Stack_Size 50             <span class="comment">//设栈中元素个数为50 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>                </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> elem[Stack_Size];          <span class="comment">//用来存放栈中元素的一维数组 </span></span><br><span class="line">    <span class="keyword">int</span> top;                       <span class="comment">//用来存放栈顶元素的下标，top为 -1 表示空栈 </span></span><br><span class="line">&#125;SeqStack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数的定义*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">initStack</span><span class="params">(SeqStack *S)</span></span>;         <span class="comment">//初始化顺序栈 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(SeqStack *S,<span class="keyword">int</span> n)</span></span>;          <span class="comment">//顺序栈进栈运算 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">(SeqStack *S)</span></span>;                <span class="comment">//顺序栈出栈运算 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getTop</span><span class="params">(SeqStack *S,<span class="keyword">int</span> *s)</span></span>;     <span class="comment">//读取栈顶元素 </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SeqStack *S;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 1：Stack initialization\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：Into the stack\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：Out of the stack\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 4：Read the stack elements\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：exit\n\n"</span>);</span><br><span class="line">         <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                (initStack(S)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"initStck success.\n"</span>):<span class="built_in">printf</span>(<span class="string">"initStack ERROR\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">int</span> n;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Please enter the number into the stack elements："</span>);</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">                push(S,n);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                pop(S);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                <span class="keyword">int</span>* s;</span><br><span class="line">                (getTop(S,s)==<span class="number">1</span>)? <span class="built_in">printf</span>(<span class="string">"栈顶元素是：%d.\n"</span>,*s):<span class="built_in">printf</span>(<span class="string">"An empty stack error!!!!\n"</span>); <span class="comment">//三目运算符</span></span><br><span class="line">                <span class="keyword">break</span>;        </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数功能的实现*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">initStack</span><span class="params">(SeqStack *S)</span>    <span class="comment">//初始化顺序栈 </span></span></span><br><span class="line"><span class="function"></span>&#123;         </span><br><span class="line">    <span class="keyword">if</span>(S!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        S-&gt;top=<span class="number">-1</span>;             <span class="comment">//置为空栈 </span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> ERROR;        <span class="comment">//内存空间不足 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(SeqStack *S,<span class="keyword">int</span> n)</span>  <span class="comment">//进栈 ，将元素压入栈中 </span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">int</span> n1,n2;</span><br><span class="line">    <span class="keyword">if</span>(((S-&gt;top)+n)&lt;=Stack_Size<span class="number">-1</span>)   <span class="comment">//压入栈中的元素不能超过栈的最大存储 </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Please enter into the stack elements in turn:\n"</span>);  </span><br><span class="line">        <span class="keyword">for</span>(n1=<span class="number">0</span>;n1&lt;n;n1++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n2);</span><br><span class="line">            S-&gt;top++;                    <span class="comment">//移动栈顶指针 </span></span><br><span class="line">            S-&gt;elem[S-&gt;top]=n2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d个元素依次进栈成功\n"</span>,n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;                    <span class="comment">//栈空间不够 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"ERROR There is insufficient space on the stack.\n"</span>);            </span><br><span class="line">    &#125;                 </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">(SeqStack *S)</span></span></span><br><span class="line"><span class="function"></span>&#123;     <span class="comment">//栈顶元素出栈 </span></span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;top==<span class="number">-1</span>)</span><br><span class="line">    &#123;               <span class="comment">//栈为空，操作失败 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"An empty stack error!!!!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        a=S-&gt;elem[S-&gt;top];</span><br><span class="line">        S-&gt;top--;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"栈顶元素%d出栈成功.\n"</span>,a);  <span class="comment">//出栈成功 </span></span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getTop</span><span class="params">(SeqStack *S,<span class="keyword">int</span> *s)</span>   <span class="comment">//获取栈顶元素 </span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">if</span>(S-&gt;top==<span class="number">-1</span>)</span><br><span class="line">    &#123;               <span class="comment">//栈为空，操作失败 </span></span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        *s=S-&gt;elem[S-&gt;top];   <span class="comment">//读取栈顶元素成功 </span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言实现链栈的初始化-amp-进栈-amp-出栈-amp-读取栈顶元素"><a href="#C语言实现链栈的初始化-amp-进栈-amp-出栈-amp-读取栈顶元素" class="headerlink" title="C语言实现链栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素"></a>C语言实现链栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素</h1><h2 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*链表实现栈的一系列操作*/</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkStackNode,*LinkStack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数的定义*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initStack</span><span class="params">(LinkStack *top)</span></span>;       <span class="comment">//初始化链栈 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(LinkStack top,<span class="keyword">int</span> n)</span></span>;        <span class="comment">//链栈进栈操作 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">(LinkStack top)</span></span>;              <span class="comment">//链栈出栈操作 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getTop</span><span class="params">(LinkStack top,<span class="keyword">int</span> *s)</span></span>;     <span class="comment">//读取链栈栈顶元素 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LinkStack top;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 1：Stack initialization\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：Into the stack\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：Out of the stack\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 4：Read the stack elements\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：exit\n\n"</span>);</span><br><span class="line">         <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                initStack(&amp;top);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">int</span> n;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Please enter the number into the stack elements："</span>);</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">                (push(top,n)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"%d个元素依次进栈成功\n"</span>,n):<span class="built_in">printf</span>(<span class="string">"%d个元素依次进栈失败\n"</span>,n);    </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                pop(top);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                <span class="keyword">int</span>* s;</span><br><span class="line">                (getTop(top,s)==<span class="number">1</span>)? <span class="built_in">printf</span>(<span class="string">"栈顶元素是：%d.\n"</span>,*s):<span class="built_in">printf</span>(<span class="string">"An empty stack error!!!!\n"</span>); <span class="comment">//三目运算符</span></span><br><span class="line">                <span class="keyword">break</span>;        </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数功能的实现*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initStack</span><span class="params">(LinkStack *top)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="comment">//初始化 </span></span><br><span class="line">    *top=(LinkStack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkStackNode));  <span class="comment">//带头结点的单链表 </span></span><br><span class="line">    (*top)-&gt;next=<span class="literal">NULL</span>; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(LinkStack top,<span class="keyword">int</span> n)</span>    <span class="comment">//进栈 ，将元素压入栈中 </span></span></span><br><span class="line"><span class="function"></span>&#123;        </span><br><span class="line">    LinkStackNode *temp;</span><br><span class="line">    <span class="keyword">int</span> n1,n2;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter into the stack elements in turn:\n"</span>);  </span><br><span class="line">    <span class="keyword">for</span>(n1=<span class="number">0</span>;n1&lt;n;n1++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n2);</span><br><span class="line">        temp=(LinkStackNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkStackNode));  <span class="comment">//结点申请空间 </span></span><br><span class="line">        <span class="keyword">if</span>(temp==<span class="literal">NULL</span>) <span class="keyword">return</span> ERROR;  <span class="comment">//申请空间失败</span></span><br><span class="line">        temp-&gt;data=n2;</span><br><span class="line">        temp-&gt;next=top-&gt;next;          <span class="comment">//采用头插法存储元素 </span></span><br><span class="line">        top-&gt;next=temp; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">(LinkStack top)</span>          <span class="comment">//栈顶元素出栈 </span></span></span><br><span class="line"><span class="function"></span>&#123;           </span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    LinkStackNode *temp;</span><br><span class="line">    <span class="keyword">if</span>(top-&gt;next==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;               <span class="comment">//栈为空，出栈失败 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"An empty stack error!!!!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        temp=top-&gt;next;</span><br><span class="line">        a=temp-&gt;data;</span><br><span class="line">        top-&gt;next=temp-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(temp);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"栈顶元素%d出栈成功.\n"</span>,a);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getTop</span><span class="params">(LinkStack top,<span class="keyword">int</span> *s)</span>        <span class="comment">//获读取栈顶元素 </span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">if</span>(top-&gt;next==<span class="literal">NULL</span>)              <span class="comment">//栈为空，读取栈顶元素失败 </span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        *s=(top-&gt;next)-&gt;data;           <span class="comment">//读取栈顶元素，不出栈 </span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言实现链队列的初始化-amp-进队-amp-出队"><a href="#C语言实现链队列的初始化-amp-进队-amp-出队" class="headerlink" title="C语言实现链队列的初始化&amp;进队&amp;出队"></a>C语言实现链队列的初始化&amp;进队&amp;出队</h1><h2 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*链表实现队列的一系列操作*/</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;                            <span class="comment">//数据域 </span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span>                  <span class="comment">//指针域 </span></span><br><span class="line">&#125;LinkQueueNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    LinkQueueNode *front;              <span class="comment">//头指针 </span></span><br><span class="line">    LinkQueueNode *rear;               <span class="comment">//尾指针 </span></span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数的定义*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initQueue</span><span class="params">(LinkQueue *Q)</span></span>;          <span class="comment">//链队列初始化       </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enterQueue</span><span class="params">(LinkQueue *Q,<span class="keyword">int</span> n)</span></span>;    <span class="comment">//链队列入队操作 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteQueue</span><span class="params">(LinkQueue *Q)</span></span>;        <span class="comment">//链队列出队操作 </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LinkQueue Q;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 1：Queue initialization\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：Into the queue\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 3：Out of the queue\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：exit\n\n"</span>);</span><br><span class="line">         <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                initQueue(&amp;Q);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">int</span> n;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Please enter the number into the queue elements："</span>);</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">                (enterQueue(&amp;Q,n)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"%d个元素依次进队成功\n"</span>,n):<span class="built_in">printf</span>(<span class="string">"%d个元素依次进队失败\n"</span>,n);    </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                deleteQueue(&amp;Q);</span><br><span class="line">                <span class="keyword">break</span>;    </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数功能的实现*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initQueue</span><span class="params">(LinkQueue *Q)</span>   </span></span><br><span class="line"><span class="function"></span>&#123;            <span class="comment">//将 Q 初始化为一个空链队列 </span></span><br><span class="line">    Q-&gt;front=(LinkQueueNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkQueueNode));</span><br><span class="line">    Q-&gt;rear=Q-&gt;front;</span><br><span class="line">    Q-&gt;front-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enterQueue</span><span class="params">(LinkQueue *Q,<span class="keyword">int</span> n)</span>  <span class="comment">//进队列 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LinkQueueNode *temp;</span><br><span class="line">    <span class="keyword">int</span> n1,n2;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter into the queue elements in turn:\n"</span>);  </span><br><span class="line">    <span class="keyword">for</span>(n1=<span class="number">0</span>;n1&lt;n;n1++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n2);</span><br><span class="line">        temp=(LinkQueueNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkQueueNode));</span><br><span class="line">        <span class="keyword">if</span>(temp==<span class="literal">NULL</span>) <span class="keyword">return</span> ERROR;  <span class="comment">//申请空间失败</span></span><br><span class="line">        temp-&gt;data=n2;</span><br><span class="line">        temp-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        Q-&gt;rear-&gt;next=temp; </span><br><span class="line">        Q-&gt;rear=temp;                 <span class="comment">//队尾指针后移                    </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteQueue</span><span class="params">(LinkQueue *Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    LinkQueueNode *temp;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear)               <span class="comment">//队为空，出栈失败 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"An empty Queue error!!!!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        temp=Q-&gt;front-&gt;next;</span><br><span class="line">        a=temp-&gt;data;</span><br><span class="line">        Q-&gt;front-&gt;next=temp-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(Q-&gt;front==temp)           <span class="comment">//如果队中只有一个元素X，则X出队后成为空队 </span></span><br><span class="line">        &#123;</span><br><span class="line">            Q-&gt;rear=Q-&gt;front;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">free</span>(temp);                            <span class="comment">//释放存储空间 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队顶元素%d出队成功.\n"</span>,a);   </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言实现邻接矩阵创建无向图"><a href="#C语言实现邻接矩阵创建无向图" class="headerlink" title="C语言实现邻接矩阵创建无向图"></a>C语言实现邻接矩阵创建无向图</h1><h2 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* '邻接矩阵' 实现无向图的创建、深度优先遍历*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxVex      100          <span class="comment">//最多顶点个数</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INFINITY    32768        <span class="comment">//表示极大值，即 ∞</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE        1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE       0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK          1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR       0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> VertexType;    <span class="comment">//假设顶点数据类型为字符类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span>  EdgeType;      <span class="comment">//对于无权图，用1或0表示是否相邻，对带权图，则为权值类型 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    VertexType vertex[MaxVex];            <span class="comment">//顶点数组</span></span><br><span class="line">    EdgeType arcs[MaxVex][MaxVex];       <span class="comment">//邻接矩阵</span></span><br><span class="line">    <span class="keyword">int</span>    vexnum,arcnum;                <span class="comment">//图中的顶点数和边数 </span></span><br><span class="line">&#125;Graph;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> visited[MaxVex];    <span class="comment">//访问标志数组    </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数的定义*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(Graph *G)</span></span>;                    <span class="comment">//初始化邻接矩阵 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateVertex</span><span class="params">(Graph *G,VertexType v)</span></span>;<span class="comment">//求顶点位置函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">createUDG</span><span class="params">(Graph *G)</span></span>;                <span class="comment">//创建一个无向图 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DepthFirstSearch</span><span class="params">(Graph G, <span class="keyword">int</span> i)</span></span>;  <span class="comment">//图的深度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TraverseGraph</span><span class="params">(Graph G)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************主函数*************************/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Graph G;</span><br><span class="line">    <span class="keyword">int</span> choice;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">         <span class="built_in">printf</span>(<span class="string">"*****************Please enter your choice*****************\n\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 1：Initialization\n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 2：Create Graph\n"</span>);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"                choice 3：Depth First Search\n"</span>);       </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"                choice 0：exit\n\n"</span>);</span><br><span class="line">         <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;choice);</span><br><span class="line">        <span class="keyword">switch</span>(choice)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                init(&amp;G);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                (createUDG(&amp;G)==<span class="number">1</span>)?<span class="built_in">printf</span>(<span class="string">"Create Graph success.\n"</span>):<span class="built_in">printf</span>(<span class="string">"Create Graph ERROR\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"图的深度优先遍历为: "</span>);</span><br><span class="line">                TraverseGraph(G);</span><br><span class="line">                <span class="keyword">break</span>;        </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"ERROR！！\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************各个子函数功能的实现*********************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(Graph *G)</span>   <span class="comment">//初始化邻接矩阵 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入图的顶点个数和边数："</span>); </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;(G-&gt;vexnum),&amp;(G-&gt;arcnum));<span class="comment">//输入图的顶点个数和边数 </span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G-&gt;vexnum;i++)              <span class="comment">//初始化</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;G-&gt;vexnum;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            G-&gt;arcs[i][j]=INFINITY;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"图的初始化成功\n"</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateVertex</span><span class="params">(Graph *G,VertexType v)</span>  <span class="comment">//查找并返回顶点的位置 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j=<span class="number">0</span>,k;</span><br><span class="line">    <span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;G-&gt;vexnum;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(G-&gt;vertex[k]==v)</span><br><span class="line">        &#123;</span><br><span class="line">            j=k;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">createUDG</span><span class="params">(Graph *G)</span>  <span class="comment">//创建一个无向图</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,k,weight;</span><br><span class="line">    VertexType v1,v2;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G-&gt;vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"请输入图的第 %d 顶点："</span>,i+<span class="number">1</span>);</span><br><span class="line">        getchar();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;(G-&gt;vertex[i]));     <span class="comment">//输入图的顶点集 </span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;G-&gt;arcnum;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"请分别输入图的第 %d 条边的两个顶点和权值"</span>,k+<span class="number">1</span>);</span><br><span class="line">        getchar();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c %c %d"</span>,&amp;v1,&amp;v2,&amp;weight);<span class="comment">//输入一条边的两个顶点、权值 </span></span><br><span class="line">        i=LocateVertex(G,v1);</span><br><span class="line">        j=LocateVertex(G,v2);</span><br><span class="line">        G-&gt;arcs[i][j]=weight;     <span class="comment">//建立顶点之间的关系 </span></span><br><span class="line">        G-&gt;arcs[j][i]=weight;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DepthFirstSearch</span><span class="params">(Graph G, <span class="keyword">int</span> i)</span>   <span class="comment">//图的深度优先遍历</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    visited[i] = TRUE;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c "</span>,G.vertex[i]);  </span><br><span class="line">    <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;G.vexnum; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (G.arcs[i][j]!=INFINITY  &amp;&amp;  !visited[j])</span><br><span class="line">            DepthFirstSearch(G,j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TraverseGraph</span><span class="params">(Graph G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;G.vexnum; i++)   <span class="comment">//初始化访问标志数组</span></span><br><span class="line">        visited[i] = FALSE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;G.vexnum; i++)<span class="comment">//循环调用深度优先遍历连通子图的操作，若图G是连通图，则此调用只执行一次 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!visited[i])</span><br><span class="line">            DepthFirstSearch(G, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><p><img src="/2018/11/25/CDateStructLearning/image-20200408001227139.png" alt="image-20200408001227139"></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://Qftm.github.io">Qftm</a>
+            <p>原文链接：<a href="http://qftm.github.io/2018/11/25/CDateStructLearning/">http://qftm.github.io/2018/11/25/CDateStructLearning/</a>
+            <p>发表日期：<a href="http://qftm.github.io/2018/11/25/CDateStructLearning/">November 25th 2018, 10:09:00 pm</a>
+            <p>更新日期：<a href="http://qftm.github.io/2018/11/25/CDateStructLearning/">April 8th 2020, 12:13:06 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/12/21/SQL%E6%B3%A8%E5%85%A5~MySQL%E4%B8%93%E9%A2%98/" title= "SQL 注入~MySQL专题">
+                    <div class="nextTitle">SQL 注入~MySQL专题</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/11/25/web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" title= "Web 前端安全">
+                    <div class="prevTitle">Web 前端安全</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:Qftmbin@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Qftm" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//twitter.com/Qftmer" class="iconfont-archer twitter" target="_blank" title=twitter></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//www.cnblogs.com/qftm/" class="iconfont-archer others" target="_blank" title=others></a>
+            
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现二叉树的创建-amp-遍历"><span class="toc-number">1.</span> <span class="toc-text">C语言实现二叉树的创建&amp;遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想"><span class="toc-number">1.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现二叉树中统计叶子结点的个数-amp-度为1-amp-度为2的结点个数"><span class="toc-number">2.</span> <span class="toc-text">C语言实现二叉树中统计叶子结点的个数&amp;度为1&amp;度为2的结点个数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想-1"><span class="toc-number">2.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现循环队列的初始化-amp-进队-amp-出队-amp-读取队头元素-amp-判空"><span class="toc-number">3.</span> <span class="toc-text">C语言实现循环队列的初始化&amp;进队&amp;出队&amp;读取队头元素&amp;判空</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想-2"><span class="toc-number">3.1.</span> <span class="toc-text">算法思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统用到的抽象数据类型定义"><span class="toc-number">3.1.1.</span> <span class="toc-text">系统用到的抽象数据类型定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统中子程序及功能要求"><span class="toc-number">3.1.2.</span> <span class="toc-text">系统中子程序及功能要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-1"><span class="toc-number">3.2.</span> <span class="toc-text">代码实现-1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-2"><span class="toc-number">3.3.</span> <span class="toc-text">代码实现-2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现顺序栈的初始化-amp-进栈-amp-出栈-amp-读取栈顶元素"><span class="toc-number">4.</span> <span class="toc-text">C语言实现顺序栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-2"><span class="toc-number">4.1.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现链栈的初始化-amp-进栈-amp-出栈-amp-读取栈顶元素"><span class="toc-number">5.</span> <span class="toc-text">C语言实现链栈的初始化&amp;进栈&amp;出栈&amp;读取栈顶元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-3"><span class="toc-number">5.1.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现链队列的初始化-amp-进队-amp-出队"><span class="toc-number">6.</span> <span class="toc-text">C语言实现链队列的初始化&amp;进队&amp;出队</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-4"><span class="toc-number">6.1.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C语言实现邻接矩阵创建无向图"><span class="toc-number">7.</span> <span class="toc-text">C语言实现邻接矩阵创建无向图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现-5"><span class="toc-number">7.1.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码测试"><span class="toc-number">7.2.</span> <span class="toc-text">代码测试</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 66
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2020/04/03/php-filter-tricks/" >探索php://filter在实战当中的奇技淫巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/Linux-Network-Protocol-Stack/" >Linux Network Protocol Stack</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/Software-Engineering-Learning-Handbook/" >Software Engineering Learning Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/Socket-Learning-Handbook/" >Socket Programming Learning Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2020/03/18/PHP-File-Inclusion-Exploiting-and-Bypass/" >PHP File Inclusion Bug Exploiting and Bypass Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href= "/2020/03/15/LFI-PHPINFO-OR-PHP7-Segment-Fault/" >LFI PHPINFO OR PHP7 Segment Fault Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/LFI-Bypass-Session-Restriction-Getshell/" >LFI Bypass Session Restriction Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/" >电子取证之Linux下文件恢复</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span><a class="archive-post-title" href= "/2020/03/06/RFI%E5%B7%A7%E7%94%A8WebDAV%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI巧用WebDAV绕过URL包含限制Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/Apple-iCloud-%E5%87%AD%E8%AF%81%E7%9A%84%E7%AA%83%E5%8F%96/" >Apple iCloud 凭证的窃取分析 -【CVE-2020-3841】</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span><a class="archive-post-title" href= "/2020/02/12/Hackintosh-Of-Lenovo-R720-15IKBN/" >Hackintosh Of Lenovo R720 15IKBN</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2020/01/18/Information-Collection-Handbook/" >Information Collection Handbook</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2020/01/03/%E4%B8%AD%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E7%BA%A7IPS%E9%83%A8%E7%BD%B2/" >中小型企业级 IPS 部署</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span><a class="archive-post-title" href= "/2020/01/01/%E4%B8%AD%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%98%B2%E7%81%AB%E5%A2%99%E9%83%A8%E7%BD%B2/" >中小型企业级防火墙部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2019/12/31/Solve-Perl-Cant-locate-getopts/" >Solve Perl Can't locate getopts.pl</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/22</span><a class="archive-post-title" href= "/2019/11/22/PhpStudyBackDoor2019%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/" >PhpStudy BackDoor2019 深度分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/%E6%A5%BC%E4%B8%8A%E8%AF%B7%E8%AE%A9%E8%B7%AF-RoarCTF2019-Writeup/" >楼上请让路 RoarCTF2019 Writeup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/Kali-Rolling-2019/" >Kali Rolling 2019 系统配置总结（Updateing）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/Joomla3.4.6-RCE%E6%BC%8F%E6%B4%9E%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/" >Joomla3.4.6 RCE漏洞深度分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2019/09/30/%E5%88%9D%E8%AF%86PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" >初识PE文件结构</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span><a class="archive-post-title" href= "/2019/09/29/2019%E5%AE%89%E5%85%A8%E6%B8%97%E9%80%8F%E7%B1%BB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" >2019安全渗透类工具合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span><a class="archive-post-title" href= "/2019/09/19/%E5%9F%BA%E4%BA%8EBMP%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E4%B8%8E%E6%A3%80%E6%B5%8B/" >基于BMP图像的信息隐藏与检测</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2019/09/14/MATLAB%E4%B9%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" >MATLAB之图像与音频信号处理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2019/09/12/MATLAB%E4%B9%8B%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%9F%BA%E7%A1%80%E5%87%BD%E6%95%B0/" >MATLAB之基本语法与基础函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span><a class="archive-post-title" href= "/2019/09/11/CVE-2018-14418%E6%93%A6%E5%87%BA%E6%96%B0%E7%81%AB%E8%8A%B1/" >CVE-2018-14418 擦出新火花</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/%E6%B5%85%E8%B0%88%E7%94%B5%E5%AD%90%E6%95%B0%E5%AD%97%E5%8F%96%E8%AF%81%E6%8A%80%E6%9C%AF/" >浅谈电子数字取证技术</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/" >Linux 反弹 Shell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/Windows%20%E5%8F%8D%E5%BC%B9%20Shell/" >Windows 反弹 Shell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/AWD%E6%94%BB%E9%98%B2%E8%B5%9B%E4%B9%8B%E5%90%84%E7%B1%BB%E6%BC%8F%E6%B4%9EFIX%E6%96%B9%E6%A1%88/" >AWD攻防赛之各类漏洞FIX方案</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2019/08/01/%E7%AC%AC16%E5%B1%8A(2019)%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%B8%8E%E5%AF%B9%E6%8A%97%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B%E5%85%A8%E5%9B%BD%E7%BA%BF%E4%B8%8B%E6%80%BB%E5%86%B3%E8%B5%9BWriteup/" >第16届(2019)全国大学生信息安全与对抗技术竞赛全国线下总决赛 Writeup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2019/07/31/Hack-The-Box-Web-Pentest-2017/" >Hack The Box Web Pentest 2017</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2019/07/30/Hack-The-Box-Web-Pentest-2019/" >Hack The Box Web Pentest 2019</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/2019/07/03/BugkuCTF~Misc~WriteUp/" >BugkuCTF Misc WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI巧用Samba绕过URL包含限制Getshell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DHCP 服务器配置与管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2019/05/12/Linux-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >Linux DNS 服务器配置与管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2019/04/26/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95-Des/" >Symmetric Key Encryption DES</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/CBC%E5%AD%97%E8%8A%82%E5%8F%8D%E8%BD%AC%E6%94%BB%E5%87%BB/" >针对 CBC 字节反转攻击的研究与漏洞复现</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2019/03/24/%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/" >对称密码体制和非对称密码体制</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span><a class="archive-post-title" href= "/2019/03/09/BugkuCTF~Mobile~WriteUp/" >BugkuCTF Mobile WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >路由协议与交换技术合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/CentOS7%E6%9C%80%E5%B0%8F%E5%8C%96%E5%AE%89%E8%A3%85%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >CentOS 7 最小化安装简单配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~Web~WriteUp/" >BugkuCTF Web WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1~WriteUp/" >BugkuCTF 代码审计 WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2019/02/13/Android%E4%B8%AA%E4%BA%BA%E6%89%8B%E6%9C%BA%E9%80%9A%E8%AE%AF%E5%BD%95%E5%BC%80%E5%8F%91/" >Android 个人手机通讯录开发</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2019/02/13/Android-SQLite-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" >Android SQLite 数据库学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/27</span><a class="archive-post-title" href= "/2019/01/27/Android%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" >Android 程序结构</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href= "/2018/12/22/XSS%E7%BB%95%E8%BF%87%E6%8A%80%E6%9C%AF/" >XSS 绕过技术</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href= "/2018/12/22/2018~%E7%AC%AC%E4%B8%89%E5%B1%8A%E5%8D%97%E5%AE%81%E5%B8%82%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E5%A4%A7%E8%B5%9B~nnctf~write-up/" >2018第三届南宁市网络安全技术大赛 nnctf WriteUp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/21</span><a class="archive-post-title" href= "/2018/12/21/SQL%E6%B3%A8%E5%85%A5~MySQL%E4%B8%93%E9%A2%98/" >SQL 注入~MySQL专题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2018/11/25/CDateStructLearning/" >C Programming Language Data Structure Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2018/11/25/web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" >Web 前端安全</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href= "/2018/11/07/CSRF%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/" >CSRF 漏洞分析与测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2018/11/04/XSS-DOM%E6%B5%8B%E8%AF%95/" >XSS DOM 漏洞分析与测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2018/11/04/XSS-Stored%E6%B5%8B%E8%AF%95/" >XSS Stored 漏洞分析与测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2018/11/04/XSS-Reflected%E6%B5%8B%E8%AF%95/" >XSS Reflected 漏洞分析与测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span><a class="archive-post-title" href= "/2018/10/13/ARP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" >ARP 欺骗攻击</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/11</span><a class="archive-post-title" href= "/2018/10/11/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/" >ARP 协议分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href= "/2018/07/23/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/" >渗透测试流程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2018/07/04/Kali-Rolling-2018/" >Kali Rolling 2018 系统配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2018/05/13/%E5%AE%9E%E9%AA%8C%E5%90%A7WriteUp%E5%90%88%E9%9B%86/" >实验吧 WriteUp 合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2018/04/29/%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A0%87%E5%BF%97/" >各类文件的文件头标志</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2018/01/30/%E8%AE%A4%E8%AF%86%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E5%A4%B4User-Agent/" >认识浏览器请求头User-Agent</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2018/01/30/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%AD%A6%E4%B9%A0/" >CTF中那些脑洞大开的编码和加密</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Tmux 终端利器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/VimTerminal/" >Vim(Vi) 终端利器</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="ARP"><span class="iconfont-archer">&#xe606;</span>ARP</span>
+    
+        <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQLite"><span class="iconfont-archer">&#xe606;</span>SQLite</span>
+    
+        <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
+    
+        <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+    
+        <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
+    
+        <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
+    
+        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
+    
+        <span class="sidebar-tag-name" data-tags="LFI"><span class="iconfont-archer">&#xe606;</span>LFI</span>
+    
+        <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
+    
+        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
+    
+        <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
+    
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
+    
+        <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
+    
+        <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
+    
+        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
+    
+        <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Web"><span class="iconfont-archer">&#xe606;</span>Web</span>
+    
+        <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
+    
+        <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
+        <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
+    
+        <span class="sidebar-tag-name" data-tags="DES"><span class="iconfont-archer">&#xe606;</span>DES</span>
+    
+        <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
+        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
+    
+        <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
+    
+        <span class="sidebar-category-name" data-categories="CTF"><span class="iconfont-archer">&#xe60a;</span>CTF</span>
+    
+        <span class="sidebar-category-name" data-categories="网络安全"><span class="iconfont-archer">&#xe60a;</span>网络安全</span>
+    
+        <span class="sidebar-category-name" data-categories="移动开发"><span class="iconfont-archer">&#xe60a;</span>移动开发</span>
+    
+        <span class="sidebar-category-name" data-categories="漏洞分析"><span class="iconfont-archer">&#xe60a;</span>漏洞分析</span>
+    
+        <span class="sidebar-category-name" data-categories="Web"><span class="iconfont-archer">&#xe60a;</span>Web</span>
+    
+        <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
+    
+        <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
+    
+        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
+    
+        <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
+    
+        <span class="sidebar-category-name" data-categories="木马后门"><span class="iconfont-archer">&#xe60a;</span>木马后门</span>
+    
+        <span class="sidebar-category-name" data-categories="后门分析"><span class="iconfont-archer">&#xe60a;</span>后门分析</span>
+    
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
+    
+        <span class="sidebar-category-name" data-categories="逆向工程"><span class="iconfont-archer">&#xe60a;</span>逆向工程</span>
+    
+        <span class="sidebar-category-name" data-categories="信息隐藏"><span class="iconfont-archer">&#xe60a;</span>信息隐藏</span>
+    
+        <span class="sidebar-category-name" data-categories="密码研究"><span class="iconfont-archer">&#xe60a;</span>密码研究</span>
+    
+        <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
+    
+        <span class="sidebar-category-name" data-categories="路由协议"><span class="iconfont-archer">&#xe60a;</span>路由协议</span>
+    
+        <span class="sidebar-category-name" data-categories="软件工程"><span class="iconfont-archer">&#xe60a;</span>软件工程</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Qftm"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
