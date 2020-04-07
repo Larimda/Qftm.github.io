@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">14.2k</span>Reading time: <span class="post-count reading-time">58 min</span></span>
+                        <span>Word count: <span class="post-count word-count">14.4k</span>Reading time: <span class="post-count reading-time">59 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,7 +403,143 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>由于最近在梳理网络协议栈这部分内容，所以花了一部分时间把以前所学的<code>Socket</code>知识重新整理总结了一下，总结这个学习手册也是方便自己以后的查看。</p>
+        <h1 id="Socket-Programming-Learning-Handbook"><a href="#Socket-Programming-Learning-Handbook" class="headerlink" title="Socket Programming Learning Handbook"></a>Socket Programming Learning Handbook</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Author：Qftm</span><br><span class="line">Data：2020&#x2F;03&#x2F;22</span><br><span class="line">Blog：https:&#x2F;&#x2F;qftm.github.io&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>由于最近在梳理网络协议栈这部分内容，所以花了一部分时间把以前所学的<code>Socket</code>知识重新整理总结了一下，总结这个学习手册也是方便自己以后的查看。</p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h1><ul>
+<li><a href="#socket基础">Socket基础</a><ul>
+<li><a href="#套接字">套接字</a></li>
+<li><a href="#主机间通信">主机间通信</a></li>
+<li><a href="#unixlinux">UNIX/Linux</a></li>
+<li><a href="#window">Window</a></li>
+</ul>
+</li>
+<li><a href="#socket-api-编程模型">Socket API 编程模型</a><ul>
+<li><a href="#数据传输方式">数据传输方式</a></li>
+<li><a href="#tcp协议">TCP协议</a></li>
+<li><a href="#tcp三次握手">TCP三次握手</a></li>
+<li><a href="#tcp服务端api">TCP服务端API</a><ul>
+<li><a href="#socket建立">socket建立</a><ul>
+<li><a href="#socket">socket()</a></li>
+</ul>
+</li>
+<li><a href="#socket绑定">socket绑定</a><ul>
+<li><a href="#bind">bind()</a></li>
+</ul>
+</li>
+<li><a href="#socket监听">socket监听</a><ul>
+<li><a href="#listen">listen()</a></li>
+</ul>
+</li>
+<li><a href="#socket接收">socket接收</a><ul>
+<li><a href="#accept">accept()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tcp客户端api">TCP客户端API</a><ul>
+<li><a href="#socket建立-1">socket建立</a><ul>
+<li><a href="#socket-1">socket()</a></li>
+</ul>
+</li>
+<li><a href="#socket连接">socket连接</a><ul>
+<li><a href="#connect">connect()</a></li>
+</ul>
+</li>
+<li><a href="#socket通信">socket通信</a><ul>
+<li><a href="#readwrite">read/write()</a></li>
+</ul>
+</li>
+<li><a href="#socket关闭">socket关闭</a><ul>
+<li><a href="#close">close()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tcp四次握手">TCP四次握手</a></li>
+</ul>
+</li>
+<li><a href="#linux-socket编程">Linux Socket编程</a><ul>
+<li><a href="#socket-tcp">Socket TCP</a><ul>
+<li><a href="#服务端">服务端</a><ul>
+<li><a href="#serve.c">Serve.c</a></li>
+</ul>
+</li>
+<li><a href="#客户端">客户端</a><ul>
+<li><a href="#client.c">Client.c</a></li>
+</ul>
+</li>
+<li><a href="#网络通信">网络通信</a></li>
+</ul>
+</li>
+<li><a href="#socket-udp">Socket UDP</a><ul>
+<li><a href="#rw">R/W</a></li>
+<li><a href="#服务端-1">服务端</a><ul>
+<li><a href="#serve.c-1">Serve.c</a></li>
+</ul>
+</li>
+<li><a href="#客户端-1">客户端</a><ul>
+<li><a href="#client.c-1">Client.c</a></li>
+</ul>
+</li>
+<li><a href="#网络通信-1">网络通信</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#http-socket编程">HTTP Socket编程</a><ul>
+<li><a href="#服务端-2">服务端</a></li>
+<li><a href="#客户端-2">客户端</a><ul>
+<li><a href="#http.c">http.c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#python-socket编程">Python Socket编程</a><ul>
+<li><a href="#socket-tcp-1">Socket TCP</a><ul>
+<li><a href="#服务端-3">服务端</a><ul>
+<li><a href="#server.py">server.py</a></li>
+</ul>
+</li>
+<li><a href="#客户端-3">客户端</a><ul>
+<li><a href="#client.py">client.py</a></li>
+</ul>
+</li>
+<li><a href="#网络通信-2">网络通信</a></li>
+</ul>
+</li>
+<li><a href="#socket-udp-1">Socket UDP</a><ul>
+<li><a href="#服务端-4">服务端</a><ul>
+<li><a href="#server.py-1">server.py</a></li>
+</ul>
+</li>
+<li><a href="#客户端-4">客户端</a><ul>
+<li><a href="#client.py-1">client.py</a></li>
+</ul>
+</li>
+<li><a href="#网络通信-3">网络通信</a></li>
+</ul>
+</li>
+<li><a href="#python-advanced-api">Python Advanced API</a><ul>
+<li><a href="#服务端-5">服务端</a></li>
+<li><a href="#客户端-5">客户端</a><ul>
+<li><a href="#http.py">http.py</a></li>
+<li><a href="#https.py">https.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#linux-raw-socket编程">Linux Raw Socket编程</a><ul>
+<li><a href="#原始套接字">原始套接字</a></li>
+<li><a href="#绑定和连接操作">绑定和连接操作</a></li>
+<li><a href="#读写原始套接字">读写原始套接字</a></li>
+<li><a href="#数据报的处理">数据报的处理</a></li>
+<li><a href="#linux-icmp-socket编程">Linux ICMP Socket编程</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="Socket基础"><a href="#Socket基础" class="headerlink" title="Socket基础"></a>Socket基础</h1><p>套接字（Socket）最初是由加利福尼亚大学Berkeley分校为UNIX操作系统开发的网络通信接口，随着UNIX操作系统广泛使用，套接字成为当前最流行的网络通信应用程序接口之一。</p>
 <p>Windows Sockets API是微软 Windows的网络程序设计接口，它在继承了Berkeley Sockets主要特征的基础上，又对它进行了重要扩充。</p>
 <h2 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h2><p>socket是应用层与TCP/IP协议族通信的中间软件抽象层，是一组接口。将复杂的TCP/IP协议族隐藏在 socket接口的背后，通过调用简单的socket函数完成特定协议的数据传输。</p>
@@ -800,7 +936,7 @@ height:50vh;
             <p>Author：<a href="http://Qftm.github.io">Qftm</a>
             <p>原文链接：<a href="http://qftm.github.io/2020/03/22/Socket-Learning-Handbook/">http://qftm.github.io/2020/03/22/Socket-Learning-Handbook/</a>
             <p>发表日期：<a href="http://qftm.github.io/2020/03/22/Socket-Learning-Handbook/">March 22nd 2020, 5:21:00 am</a>
-            <p>更新日期：<a href="http://qftm.github.io/2020/03/22/Socket-Learning-Handbook/">April 7th 2020, 12:32:09 pm</a>
+            <p>更新日期：<a href="http://qftm.github.io/2020/03/22/Socket-Learning-Handbook/">April 7th 2020, 5:45:06 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -945,7 +1081,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket基础"><span class="toc-number">2.</span> <span class="toc-text">Socket基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#套接字"><span class="toc-number">2.1.</span> <span class="toc-text">套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主机间通信"><span class="toc-number">2.2.</span> <span class="toc-text">主机间通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNIX-Linux"><span class="toc-number">2.3.</span> <span class="toc-text">UNIX&#x2F;Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window"><span class="toc-number">2.4.</span> <span class="toc-text">Window</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket-API-编程模型"><span class="toc-number">3.</span> <span class="toc-text">Socket API 编程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据传输方式"><span class="toc-number">3.1.</span> <span class="toc-text">数据传输方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP协议"><span class="toc-number">3.2.</span> <span class="toc-text">TCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP三次握手"><span class="toc-number">3.3.</span> <span class="toc-text">TCP三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP服务端API"><span class="toc-number">3.4.</span> <span class="toc-text">TCP服务端API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#socket建立"><span class="toc-number">3.4.1.</span> <span class="toc-text">socket建立</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#socket"><span class="toc-number">3.4.1.1.</span> <span class="toc-text">socket()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket绑定"><span class="toc-number">3.4.2.</span> <span class="toc-text">socket绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bind"><span class="toc-number">3.4.2.1.</span> <span class="toc-text">bind()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket监听"><span class="toc-number">3.4.3.</span> <span class="toc-text">socket监听</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#listen"><span class="toc-number">3.4.3.1.</span> <span class="toc-text">listen()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket接收"><span class="toc-number">3.4.4.</span> <span class="toc-text">socket接收</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#accept"><span class="toc-number">3.4.4.1.</span> <span class="toc-text">accept()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP客户端API"><span class="toc-number">3.5.</span> <span class="toc-text">TCP客户端API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#socket建立-1"><span class="toc-number">3.5.1.</span> <span class="toc-text">socket建立</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#socket-1"><span class="toc-number">3.5.1.1.</span> <span class="toc-text">socket()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket连接"><span class="toc-number">3.5.2.</span> <span class="toc-text">socket连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#connect"><span class="toc-number">3.5.2.1.</span> <span class="toc-text">connect()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket通信"><span class="toc-number">3.5.3.</span> <span class="toc-text">socket通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#read-write"><span class="toc-number">3.5.3.1.</span> <span class="toc-text">read&#x2F;write()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket关闭"><span class="toc-number">3.5.4.</span> <span class="toc-text">socket关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#close"><span class="toc-number">3.5.4.1.</span> <span class="toc-text">close()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP四次握手"><span class="toc-number">3.6.</span> <span class="toc-text">TCP四次握手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Socket编程"><span class="toc-number">4.</span> <span class="toc-text">Linux Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-TCP"><span class="toc-number">4.1.</span> <span class="toc-text">Socket TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端"><span class="toc-number">4.1.1.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serve-c"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">Serve.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-number">4.1.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Client-c"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">Client.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信"><span class="toc-number">4.1.3.</span> <span class="toc-text">网络通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-UDP"><span class="toc-number">4.2.</span> <span class="toc-text">Socket UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R-W"><span class="toc-number">4.2.1.</span> <span class="toc-text">R&#x2F;W</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serve-c-1"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">Serve.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-1"><span class="toc-number">4.2.3.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Client-c-1"><span class="toc-number">4.2.3.1.</span> <span class="toc-text">Client.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信-1"><span class="toc-number">4.2.4.</span> <span class="toc-text">网络通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-Socket编程"><span class="toc-number">5.</span> <span class="toc-text">HTTP Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端-2"><span class="toc-number">5.1.</span> <span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端-2"><span class="toc-number">5.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http-c"><span class="toc-number">5.2.1.</span> <span class="toc-text">http.c</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-Socket编程"><span class="toc-number">6.</span> <span class="toc-text">Python Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-TCP-1"><span class="toc-number">6.1.</span> <span class="toc-text">Socket TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-3"><span class="toc-number">6.1.1.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#server-py"><span class="toc-number">6.1.1.1.</span> <span class="toc-text">server.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-3"><span class="toc-number">6.1.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#client-py"><span class="toc-number">6.1.2.1.</span> <span class="toc-text">client.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信-2"><span class="toc-number">6.1.3.</span> <span class="toc-text">网络通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-UDP-1"><span class="toc-number">6.2.</span> <span class="toc-text">Socket UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-4"><span class="toc-number">6.2.1.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#server-py-1"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">server.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-4"><span class="toc-number">6.2.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#client-py-1"><span class="toc-number">6.2.2.1.</span> <span class="toc-text">client.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信-3"><span class="toc-number">6.2.3.</span> <span class="toc-text">网络通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Advanced-API"><span class="toc-number">6.3.</span> <span class="toc-text">Python Advanced API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-5"><span class="toc-number">6.3.1.</span> <span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-5"><span class="toc-number">6.3.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#http-py"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">http.py</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#https-py"><span class="toc-number">6.3.2.2.</span> <span class="toc-text">https.py</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Raw-Socket编程"><span class="toc-number">7.</span> <span class="toc-text">Linux Raw Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始套接字"><span class="toc-number">7.1.</span> <span class="toc-text">原始套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定和连接操作"><span class="toc-number">7.2.</span> <span class="toc-text">绑定和连接操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读写原始套接字"><span class="toc-number">7.3.</span> <span class="toc-text">读写原始套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据报的处理"><span class="toc-number">7.4.</span> <span class="toc-text">数据报的处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-ICMP-Socket编程"><span class="toc-number">7.5.</span> <span class="toc-text">Linux ICMP Socket编程</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket-Programming-Learning-Handbook"><span class="toc-number">1.</span> <span class="toc-text">Socket Programming Learning Handbook</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-number">1.1.</span> <span class="toc-text">声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.2.</span> <span class="toc-text">正文</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Table-of-Contents"><span class="toc-number">2.</span> <span class="toc-text">Table of Contents</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket基础"><span class="toc-number">3.</span> <span class="toc-text">Socket基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#套接字"><span class="toc-number">3.1.</span> <span class="toc-text">套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主机间通信"><span class="toc-number">3.2.</span> <span class="toc-text">主机间通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNIX-Linux"><span class="toc-number">3.3.</span> <span class="toc-text">UNIX&#x2F;Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window"><span class="toc-number">3.4.</span> <span class="toc-text">Window</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket-API-编程模型"><span class="toc-number">4.</span> <span class="toc-text">Socket API 编程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据传输方式"><span class="toc-number">4.1.</span> <span class="toc-text">数据传输方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP协议"><span class="toc-number">4.2.</span> <span class="toc-text">TCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP三次握手"><span class="toc-number">4.3.</span> <span class="toc-text">TCP三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP服务端API"><span class="toc-number">4.4.</span> <span class="toc-text">TCP服务端API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#socket建立"><span class="toc-number">4.4.1.</span> <span class="toc-text">socket建立</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#socket"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">socket()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket绑定"><span class="toc-number">4.4.2.</span> <span class="toc-text">socket绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bind"><span class="toc-number">4.4.2.1.</span> <span class="toc-text">bind()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket监听"><span class="toc-number">4.4.3.</span> <span class="toc-text">socket监听</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#listen"><span class="toc-number">4.4.3.1.</span> <span class="toc-text">listen()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket接收"><span class="toc-number">4.4.4.</span> <span class="toc-text">socket接收</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#accept"><span class="toc-number">4.4.4.1.</span> <span class="toc-text">accept()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP客户端API"><span class="toc-number">4.5.</span> <span class="toc-text">TCP客户端API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#socket建立-1"><span class="toc-number">4.5.1.</span> <span class="toc-text">socket建立</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#socket-1"><span class="toc-number">4.5.1.1.</span> <span class="toc-text">socket()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket连接"><span class="toc-number">4.5.2.</span> <span class="toc-text">socket连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#connect"><span class="toc-number">4.5.2.1.</span> <span class="toc-text">connect()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket通信"><span class="toc-number">4.5.3.</span> <span class="toc-text">socket通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#read-write"><span class="toc-number">4.5.3.1.</span> <span class="toc-text">read&#x2F;write()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket关闭"><span class="toc-number">4.5.4.</span> <span class="toc-text">socket关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#close"><span class="toc-number">4.5.4.1.</span> <span class="toc-text">close()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP四次握手"><span class="toc-number">4.6.</span> <span class="toc-text">TCP四次握手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Socket编程"><span class="toc-number">5.</span> <span class="toc-text">Linux Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-TCP"><span class="toc-number">5.1.</span> <span class="toc-text">Socket TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端"><span class="toc-number">5.1.1.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serve-c"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">Serve.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-number">5.1.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Client-c"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">Client.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信"><span class="toc-number">5.1.3.</span> <span class="toc-text">网络通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-UDP"><span class="toc-number">5.2.</span> <span class="toc-text">Socket UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R-W"><span class="toc-number">5.2.1.</span> <span class="toc-text">R&#x2F;W</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-1"><span class="toc-number">5.2.2.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serve-c-1"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">Serve.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-1"><span class="toc-number">5.2.3.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Client-c-1"><span class="toc-number">5.2.3.1.</span> <span class="toc-text">Client.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信-1"><span class="toc-number">5.2.4.</span> <span class="toc-text">网络通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-Socket编程"><span class="toc-number">6.</span> <span class="toc-text">HTTP Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端-2"><span class="toc-number">6.1.</span> <span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端-2"><span class="toc-number">6.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http-c"><span class="toc-number">6.2.1.</span> <span class="toc-text">http.c</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-Socket编程"><span class="toc-number">7.</span> <span class="toc-text">Python Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-TCP-1"><span class="toc-number">7.1.</span> <span class="toc-text">Socket TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-3"><span class="toc-number">7.1.1.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#server-py"><span class="toc-number">7.1.1.1.</span> <span class="toc-text">server.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-3"><span class="toc-number">7.1.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#client-py"><span class="toc-number">7.1.2.1.</span> <span class="toc-text">client.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信-2"><span class="toc-number">7.1.3.</span> <span class="toc-text">网络通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket-UDP-1"><span class="toc-number">7.2.</span> <span class="toc-text">Socket UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-4"><span class="toc-number">7.2.1.</span> <span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#server-py-1"><span class="toc-number">7.2.1.1.</span> <span class="toc-text">server.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-4"><span class="toc-number">7.2.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#client-py-1"><span class="toc-number">7.2.2.1.</span> <span class="toc-text">client.py</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通信-3"><span class="toc-number">7.2.3.</span> <span class="toc-text">网络通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Advanced-API"><span class="toc-number">7.3.</span> <span class="toc-text">Python Advanced API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端-5"><span class="toc-number">7.3.1.</span> <span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-5"><span class="toc-number">7.3.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#http-py"><span class="toc-number">7.3.2.1.</span> <span class="toc-text">http.py</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#https-py"><span class="toc-number">7.3.2.2.</span> <span class="toc-text">https.py</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Raw-Socket编程"><span class="toc-number">8.</span> <span class="toc-text">Linux Raw Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始套接字"><span class="toc-number">8.1.</span> <span class="toc-text">原始套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定和连接操作"><span class="toc-number">8.2.</span> <span class="toc-text">绑定和连接操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读写原始套接字"><span class="toc-number">8.3.</span> <span class="toc-text">读写原始套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据报的处理"><span class="toc-number">8.4.</span> <span class="toc-text">数据报的处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-ICMP-Socket编程"><span class="toc-number">8.5.</span> <span class="toc-text">Linux ICMP Socket编程</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
