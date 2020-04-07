@@ -346,57 +346,6 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/12/Linux-DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >
-            
-                <span>Linux DHCP 服务器配置与管理</span>
-        </a>
-        <div class="abstract-content">
-            一、环境介绍：
-　　运行软件：VMware Workstation Pro 14
-　　系统环境：CentOS-7-x86_64-1810
-二、操作配置：
-1、DHCP 服务器搭建
-1)安装DHCP
-1yum install dhcp
-
-2) 设置虚拟机为仅主机模式、关闭虚拟机依靠主机的 DHCP 服务
-
-3) 配置dhcpd.conf (动态获取IP)
-
-4) 重启dhcpd服务
-1systemctl restart dhcpd
-
-5) 重启网卡
-1systemctl restart network
-
-6) 查看客户端 IP
-
-7) 配置dhcpd.conf (固定获取IP)
- 
-8) ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/2019/05/12/Linux-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" >
             
                 <span>Linux DNS 服务器配置与管理</span>
@@ -535,47 +484,6 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/09/BugkuCTF~Mobile~WriteUp/" >
-            
-                <span>BugkuCTF Mobile WriteUp</span>
-        </a>
-        <div class="abstract-content">
-            最近,开始记录一篇关于 Android 逆向分析的 WriteUp 方便有需要的人学习，也欢迎大家相互交流, 发现不
-一样的世界。
-一、 signin
-考点：反编译、静态分析
-Topic Link：https://ctf.bugku.com/files/109fa055c682e810684427c123a0833b/sign_in.zip
-
-signin 软件介绍：
-\1. 开始界面
-
-\2. 当输入的字符串有误时，会显示：Try again.
-
-题目分析：
-\1. 刚开始直接使用了 Android killer工具进行反编译，但是不能够查看Java源码 (有点不够意思，有时候Andr...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >
             
                 <span>路由协议与交换技术合集</span>
@@ -666,31 +574,18 @@ ONBOOT = no ==&gt;&gt; ONBOOT = yes
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/16/BugkuCTF~Web~WriteUp/" >
+        <a class="abstract-title" href = "/2019/02/16/BugkuCTF-Writeup/" >
             
-                <span>BugkuCTF Web WriteUp</span>
+                <span>Bugku CTF WriteUp 合集</span>
         </a>
         <div class="abstract-content">
-            今天把之前做的题整理一下，方便有需要的人学习 φ(゜▽゜*)♪
-1、web2
-考点：F12的利用
-Topic Link：http://123.206.87.240:8002/web2/
+            笔者《Qftm》原文发布Web1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10388710.html
 
-打开连接，特别的不一样，直接F12可得flag
-get flag:
-1flag KEY&#123;Web-2-bugKssNNikls9100&#125;
+Misc1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;11037200.html
 
+Mobile1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10498586.html
 
-
-2、计算器
-考点：F12的利用
-Topic Link：http://120.24.86.145:8002/yanzhengma/
-
-
-发现输入框对输入的数据长度有限制，F12进行修改长度输入正确结果即可获得flag一枚
-
-get flag:
-1...
+代码审计1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -714,26 +609,91 @@ get flag:
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/16/BugkuCTF~%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1~WriteUp/" >
+        <a class="abstract-title" href = "/2019/02/13/Android%E4%B8%AA%E4%BA%BA%E6%89%8B%E6%9C%BA%E9%80%9A%E8%AE%AF%E5%BD%95%E5%BC%80%E5%8F%91/" >
             
-                <span>BugkuCTF 代码审计 WriteUp</span>
+                <span>Android 个人手机通讯录开发</span>
         </a>
         <div class="abstract-content">
-            第一题：extract变量覆盖
-知识简介
-extract()函数语法：
-1234567891011121314extract(array,extract_rules,prefix)参数 描述array必需。 规定要使用的数组。extract_rules可选。 extract() 函数将检查每个键名是否为合法的变量名，同时也检查和符号表中已存在的变量名是否冲突。对不合法和冲突的键名的处理将根据此参数决定。可能的值：EXTR_OVERWRITE - 默认。如果有冲突，则覆盖已有的变量。EXTR_SKIP - 如果有冲突，不覆盖已有的变量。EXTR_PREFIX_SAME - 如果有冲突，在变...
+            Android 个人手机通讯录开发　　数据存储：SQLite 数据库
+　　开发工具：Android Studio
+Phone Module 简介界面展示       
+文件结构简单分析
+个人手机通讯录代码实现清单文件 (AndroidManifest.xml)1234567891011121314151617181920&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;&lt;manifest xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/16</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/13</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "安卓开发">安卓开发</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/13/Android-SQLite-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" >
+            
+                <span>Android SQLite 数据库学习</span>
+        </a>
+        <div class="abstract-content">
+            SQLite 数据库简介　　SQLite 是一个轻量级数据库，它是D. Richard Hipp建立的公有领域项目，在2000年发布了第一个版本。它的设计目标是嵌入式的，而且占用资源非常低，在内存中只需要占用几百kB的存储空间，这也是Android移动设备采用SQLite数据库的重要原因之一。
+　　SQLite 是遵守ACID的关系型数据库管理系统。这里的ACID是指数据库事务正确执行的4个基本要素，即原子性(Atomicity)、致性 ( Consistency)、 隔离性( lolation). 持久性( Durabilily )。它能够支持Windows/Linux/UNIX等主流...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SQLite">SQLite</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "安卓开发">安卓开发</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/27/Android%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" >
+            
+                <span>Android 程序结构</span>
+        </a>
+        <div class="abstract-content">
+            Android程序在创建时，Android Studio就为其构建了基本结构，设计者可以在此结构上开发应用程序，因此掌握Android程序结构是很有必要的。下面以HelloWorid程序为例，分析Android 程序结构：
+在图中，可以看到一个Android程序由多个文件以及文件夹组成，这些文件分别用于不同的功能，具体分析如下：
+
+manifests用于存放AndroidManifest xml文件(又称清单文件).该文件是整个项目的配置文件。在程序中定义的四大组件都需要在这个文件中注册，另外在该文件中还可以给程序添加权限。在清单文件中配置的信息会添加到Android 系统中，当程序运行...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/27</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "安卓开发">安卓开发</a>
     
 </div>
             
@@ -743,7 +703,7 @@ extract()函数语法：
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2019/page/2/">&amp;#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/page/4/">NEXT &amp;#62;</a>
+        <a class="extend prev" rel="prev" href="/archives/2019/page/2/">&amp;#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><span class="page-number current">3</span>
     </nav>
     
 </main>
@@ -1758,68 +1718,9 @@ extract()函数语法：
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 66
+        Total : 63
         </div>
         <!-- search  -->
         
@@ -1924,12 +1825,12 @@ extract()函数语法：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/%E6%A5%BC%E4%B8%8A%E8%AF%B7%E8%AE%A9%E8%B7%AF-RoarCTF2019-Writeup/" >楼上请让路 RoarCTF2019 Writeup</a>
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/Kali-Rolling-2019/" >Kali Rolling 2019 系统配置总结（Updateing）</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/Kali-Rolling-2019/" >Kali Rolling 2019 系统配置总结（Updateing）</a>
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/%E6%A5%BC%E4%B8%8A%E8%AF%B7%E8%AE%A9%E8%B7%AF-RoarCTF2019-Writeup/" >楼上请让路 RoarCTF2019 Writeup</a>
         </li>
     
     
@@ -2004,11 +1905,6 @@ extract()函数语法：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/2019/07/03/BugkuCTF~Misc~WriteUp/" >BugkuCTF Misc WriteUp</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI巧用Samba绕过URL包含限制Getshell</a>
         </li>
     
@@ -2039,11 +1935,6 @@ extract()函数语法：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span><a class="archive-post-title" href= "/2019/03/09/BugkuCTF~Mobile~WriteUp/" >BugkuCTF Mobile WriteUp</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >路由协议与交换技术合集</a>
         </li>
     
@@ -2054,12 +1945,7 @@ extract()函数语法：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~Web~WriteUp/" >BugkuCTF Web WriteUp</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1~WriteUp/" >BugkuCTF 代码审计 WriteUp</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF-Writeup/" >Bugku CTF WriteUp 合集</a>
         </li>
     
     
@@ -2153,7 +2039,7 @@ extract()函数语法：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2018/05/13/%E5%AE%9E%E9%AA%8C%E5%90%A7WriteUp%E5%90%88%E9%9B%86/" >实验吧 WriteUp 合集</a>
+            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2018/05/13/shiyanba-writeup/" >实验吧 CTF WriteUp 合集</a>
         </li>
     
     
@@ -2173,12 +2059,12 @@ extract()函数语法：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Tmux 终端利器</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/VimTerminal/" >Vim(Vi) 终端利器</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/VimTerminal/" >Vim(Vi) 终端利器</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Tmux 终端利器</a>
         </li>
     
     </div>
@@ -2186,13 +2072,13 @@ extract()函数语法：
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
-    
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
         <span class="sidebar-tag-name" data-tags="ARP"><span class="iconfont-archer">&#xe606;</span>ARP</span>
     
         <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
     
         <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
@@ -2206,19 +2092,21 @@ extract()函数语法：
     
         <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
     
-        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
         <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
+    
+        <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
@@ -2226,19 +2114,17 @@ extract()函数语法：
     
         <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
     
-        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
-    
         <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
     
-        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
+        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
     
         <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
     
         <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
     
-        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
     
-        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
+        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
     
         <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
     
@@ -2250,13 +2136,13 @@ extract()函数语法：
     
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
     
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
         <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
     
         <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
     
@@ -2268,9 +2154,9 @@ extract()函数语法：
     
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
-        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
+        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
     
-        <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
+        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2305,11 +2191,11 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
-    
         <span class="sidebar-category-name" data-categories="CTF"><span class="iconfont-archer">&#xe60a;</span>CTF</span>
     
         <span class="sidebar-category-name" data-categories="网络安全"><span class="iconfont-archer">&#xe60a;</span>网络安全</span>
+    
+        <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
     
         <span class="sidebar-category-name" data-categories="移动开发"><span class="iconfont-archer">&#xe60a;</span>移动开发</span>
     
@@ -2317,19 +2203,17 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="Web"><span class="iconfont-archer">&#xe60a;</span>Web</span>
     
-        <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
+        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
     
         <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
     
-        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
+        <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
     
         <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
     
         <span class="sidebar-category-name" data-categories="木马后门"><span class="iconfont-archer">&#xe60a;</span>木马后门</span>
     
         <span class="sidebar-category-name" data-categories="后门分析"><span class="iconfont-archer">&#xe60a;</span>后门分析</span>
-    
-        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
         <span class="sidebar-category-name" data-categories="逆向工程"><span class="iconfont-archer">&#xe60a;</span>逆向工程</span>
     
@@ -2338,6 +2222,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="密码研究"><span class="iconfont-archer">&#xe60a;</span>密码研究</span>
     
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
+    
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
         <span class="sidebar-category-name" data-categories="路由协议"><span class="iconfont-archer">&#xe60a;</span>路由协议</span>
     

@@ -418,68 +418,6 @@ BP爆破得到密码，同时在响应包里面得到flag
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/03/BugkuCTF~Misc~WriteUp/" >
-            
-                <span>BugkuCTF Misc WriteUp</span>
-        </a>
-        <div class="abstract-content">
-            1、签到
-
-get flag:
-1Qftm&#123;You should sign in&#125;
-
-
-
-2、这是一张单纯的图片
-
-查看图片十六进制
-
-提去特殊字符串进行解码
-
-get flag:
-1key&#123;you are right&#125;
-
-
-
-3、隐写
-
-解压压缩包得到一张图片
-
- 打开图片发现只有一个“Bu“可能缺少了什么东西，尝试更改其宽高，得到flag
-
-PS：从第二行开始，前四位是宽，后四位是高。
-
-get flag:
-1BUGKU&#123;a1e5aSA&#125;
-
-
-
-4、telnet
-
-wires hark打开数据包进行分析，根据提示对telne...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >
             
                 <span>RFI巧用Samba绕过URL包含限制Getshell</span>
@@ -705,35 +643,84 @@ DNS根域下面是顶级域，也由Internet域名注册授权机构管理。共
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/09/BugkuCTF~Mobile~WriteUp/" >
+        <a class="abstract-title" href = "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >
             
-                <span>BugkuCTF Mobile WriteUp</span>
+                <span>路由协议与交换技术合集</span>
         </a>
         <div class="abstract-content">
-            最近,开始记录一篇关于 Android 逆向分析的 WriteUp 方便有需要的人学习，也欢迎大家相互交流, 发现不
-一样的世界。
-一、 signin
-考点：反编译、静态分析
-Topic Link：https://ctf.bugku.com/files/109fa055c682e810684427c123a0833b/sign_in.zip
+            笔者《Qftm》原文发布《博客园》：
+1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;category&#x2F;1414601.html
 
-signin 软件介绍：
-\1. 开始界面
+路由器实现简单静态路由、浮动路由、负载均衡、远程登陆1https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10496681.html
 
-\2. 当输入的字符串有误时，会显示：Try again.
+RIP 实验123https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qftm&#x2F;p&#x2F;10540441.html
 
-题目分析：
-\1. 刚开始直接使用了 Android killer工具进行反编译，但是不能够查看Java源码 (有点不够意思，有时候Andr...
+EIGRP 基础实验1https:&#x2F...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/09</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/08</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "协议">协议</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "路由协议">路由协议</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/28/CentOS7%E6%9C%80%E5%B0%8F%E5%8C%96%E5%AE%89%E8%A3%85%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
+            
+                <span>CentOS 7 最小化安装简单配置</span>
+        </a>
+        <div class="abstract-content">
+            环境介绍
+运行软件
+
+1VMware Workstation Pro 14
+
+
+系统环境
+
+1CentOS-7-x86_64-1810
+
+
+系统网络运行模式
+
+1NAT模式
+
+系统配置配置动态获取IP1、修改配置文件
+1vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eno33 &#x2F;&#x2F;eno33是你的网卡名字
+
+2、修改选项ONBOOT  //默认ONBOOT处于关闭状态
+
+ONBOOT = no ==&gt;&gt; ONBOOT = yes
+
+3、重启服务
+1systemctl restart ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
     
 </div>
             
@@ -1758,68 +1745,9 @@ signin 软件介绍：
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 66
+        Total : 63
         </div>
         <!-- search  -->
         
@@ -1924,12 +1852,12 @@ signin 软件介绍：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/%E6%A5%BC%E4%B8%8A%E8%AF%B7%E8%AE%A9%E8%B7%AF-RoarCTF2019-Writeup/" >楼上请让路 RoarCTF2019 Writeup</a>
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/Kali-Rolling-2019/" >Kali Rolling 2019 系统配置总结（Updateing）</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/Kali-Rolling-2019/" >Kali Rolling 2019 系统配置总结（Updateing）</a>
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2019/10/27/%E6%A5%BC%E4%B8%8A%E8%AF%B7%E8%AE%A9%E8%B7%AF-RoarCTF2019-Writeup/" >楼上请让路 RoarCTF2019 Writeup</a>
         </li>
     
     
@@ -2004,11 +1932,6 @@ signin 软件介绍：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/2019/07/03/BugkuCTF~Misc~WriteUp/" >BugkuCTF Misc WriteUp</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2019/05/15/RFI%E5%B7%A7%E7%94%A8Samba%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" >RFI巧用Samba绕过URL包含限制Getshell</a>
         </li>
     
@@ -2039,11 +1962,6 @@ signin 软件介绍：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span><a class="archive-post-title" href= "/2019/03/09/BugkuCTF~Mobile~WriteUp/" >BugkuCTF Mobile WriteUp</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2019/03/08/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" >路由协议与交换技术合集</a>
         </li>
     
@@ -2054,12 +1972,7 @@ signin 软件介绍：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~Web~WriteUp/" >BugkuCTF Web WriteUp</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF~%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1~WriteUp/" >BugkuCTF 代码审计 WriteUp</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2019/02/16/BugkuCTF-Writeup/" >Bugku CTF WriteUp 合集</a>
         </li>
     
     
@@ -2153,7 +2066,7 @@ signin 软件介绍：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2018/05/13/%E5%AE%9E%E9%AA%8C%E5%90%A7WriteUp%E5%90%88%E9%9B%86/" >实验吧 WriteUp 合集</a>
+            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2018/05/13/shiyanba-writeup/" >实验吧 CTF WriteUp 合集</a>
         </li>
     
     
@@ -2173,12 +2086,12 @@ signin 软件介绍：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Tmux 终端利器</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/VimTerminal/" >Vim(Vi) 终端利器</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/VimTerminal/" >Vim(Vi) 终端利器</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2018/01/25/tmux%E7%BB%88%E7%AB%AF%E5%88%A9%E5%99%A8/" >Tmux 终端利器</a>
         </li>
     
     </div>
@@ -2186,13 +2099,13 @@ signin 软件介绍：
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
-    
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
         <span class="sidebar-tag-name" data-tags="ARP"><span class="iconfont-archer">&#xe606;</span>ARP</span>
     
         <span class="sidebar-tag-name" data-tags="协议"><span class="iconfont-archer">&#xe606;</span>协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="神兵利器"><span class="iconfont-archer">&#xe606;</span>神兵利器</span>
     
         <span class="sidebar-tag-name" data-tags="AWD"><span class="iconfont-archer">&#xe606;</span>AWD</span>
     
@@ -2206,19 +2119,21 @@ signin 软件介绍：
     
         <span class="sidebar-tag-name" data-tags="密码研究"><span class="iconfont-archer">&#xe606;</span>密码研究</span>
     
-        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
         <span class="sidebar-tag-name" data-tags="CMS"><span class="iconfont-archer">&#xe606;</span>CMS</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞挖掘"><span class="iconfont-archer">&#xe606;</span>漏洞挖掘</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
+    
+        <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
     
         <span class="sidebar-tag-name" data-tags="漏洞分析"><span class="iconfont-archer">&#xe606;</span>漏洞分析</span>
     
@@ -2226,19 +2141,17 @@ signin 软件介绍：
     
         <span class="sidebar-tag-name" data-tags="Bypass"><span class="iconfont-archer">&#xe606;</span>Bypass</span>
     
-        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
-    
         <span class="sidebar-tag-name" data-tags="MATLAB"><span class="iconfont-archer">&#xe606;</span>MATLAB</span>
     
-        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
+        <span class="sidebar-tag-name" data-tags="木马后门"><span class="iconfont-archer">&#xe606;</span>木马后门</span>
     
         <span class="sidebar-tag-name" data-tags="后门分析"><span class="iconfont-archer">&#xe606;</span>后门分析</span>
     
         <span class="sidebar-tag-name" data-tags="RFI"><span class="iconfont-archer">&#xe606;</span>RFI</span>
     
-        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
     
-        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
+        <span class="sidebar-tag-name" data-tags="SQLInjection"><span class="iconfont-archer">&#xe606;</span>SQLInjection</span>
     
         <span class="sidebar-tag-name" data-tags="PowerShell"><span class="iconfont-archer">&#xe606;</span>PowerShell</span>
     
@@ -2250,13 +2163,13 @@ signin 软件介绍：
     
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
     
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
         <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
     
         <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
     
@@ -2268,9 +2181,9 @@ signin 软件介绍：
     
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
-        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
+        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
     
-        <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
+        <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2305,11 +2218,11 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
-    
         <span class="sidebar-category-name" data-categories="CTF"><span class="iconfont-archer">&#xe60a;</span>CTF</span>
     
         <span class="sidebar-category-name" data-categories="网络安全"><span class="iconfont-archer">&#xe60a;</span>网络安全</span>
+    
+        <span class="sidebar-category-name" data-categories="神兵利器"><span class="iconfont-archer">&#xe60a;</span>神兵利器</span>
     
         <span class="sidebar-category-name" data-categories="移动开发"><span class="iconfont-archer">&#xe60a;</span>移动开发</span>
     
@@ -2317,19 +2230,17 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="Web"><span class="iconfont-archer">&#xe60a;</span>Web</span>
     
-        <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
+        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
     
         <span class="sidebar-category-name" data-categories="漏洞挖掘"><span class="iconfont-archer">&#xe60a;</span>漏洞挖掘</span>
     
-        <span class="sidebar-category-name" data-categories="算法艺术"><span class="iconfont-archer">&#xe60a;</span>算法艺术</span>
+        <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
     
         <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
     
         <span class="sidebar-category-name" data-categories="木马后门"><span class="iconfont-archer">&#xe60a;</span>木马后门</span>
     
         <span class="sidebar-category-name" data-categories="后门分析"><span class="iconfont-archer">&#xe60a;</span>后门分析</span>
-    
-        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
         <span class="sidebar-category-name" data-categories="逆向工程"><span class="iconfont-archer">&#xe60a;</span>逆向工程</span>
     
@@ -2338,6 +2249,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="密码研究"><span class="iconfont-archer">&#xe60a;</span>密码研究</span>
     
         <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
+    
+        <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
         <span class="sidebar-category-name" data-categories="路由协议"><span class="iconfont-archer">&#xe60a;</span>路由协议</span>
     
