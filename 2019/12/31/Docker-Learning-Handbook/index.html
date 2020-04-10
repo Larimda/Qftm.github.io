@@ -279,7 +279,7 @@ height:50vh;
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/04/10</span>
+                    <span class="post-intro-time">2019/12/31</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -403,9 +403,9 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Docker-Learning-Handbook"><a href="#Docker-Learning-Handbook" class="headerlink" title="Docker Learning Handbook"></a>Docker Learning Handbook</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Author：Qftm</span><br><span class="line">Data：2020&#x2F;04&#x2F;10</span><br><span class="line">Blog：https:&#x2F;&#x2F;qftm.github.io&#x2F;</span><br></pre></td></tr></table></figure>
+        <h1 id="Docker-Learning-Handbook"><a href="#Docker-Learning-Handbook" class="headerlink" title="Docker Learning Handbook"></a>Docker Learning Handbook</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Author：Qftm</span><br><span class="line">Data：2019&#x2F;12&#x2F;31</span><br><span class="line">Blog：https:&#x2F;&#x2F;qftm.github.io&#x2F;</span><br></pre></td></tr></table></figure>
 
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200405210845829.png" alt="image-20200405210845829"></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200405210845829.png" alt="image-20200405210845829"></p>
 <h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h1><ul>
 <li><a href="#docker-简介">Docker 简介</a></li>
 <li><a href="#docker-资源">Docker 资源</a></li>
@@ -521,7 +521,7 @@ height:50vh;
 <p>Docker 使用 Google 公司推出的 <a href="https://golang.org/" target="_blank" rel="noopener">Go 语言</a> 进行开发实现，基于 Linux 内核的 <a href="https://zh.wikipedia.org/wiki/Cgroups" target="_blank" rel="noopener">cgroup</a>，<a href="https://en.wikipedia.org/wiki/Linux_namespaces" target="_blank" rel="noopener">namespace</a>，以及 <a href="https://en.wikipedia.org/wiki/Aufs" target="_blank" rel="noopener">AUFS</a> 类的 <a href="https://en.wikipedia.org/wiki/Union_mount" target="_blank" rel="noopener">Union FS</a> 等技术，对进程进行封装隔离，属于 <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank" rel="noopener">操作系统层面的虚拟化技术</a>。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。最初实现是基于 <a href="https://linuxcontainers.org/lxc/introduction/" target="_blank" rel="noopener">LXC</a>，从 0.7 版本以后开始去除 LXC，转而使用自行开发的 <a href="https://github.com/docker/libcontainer" target="_blank" rel="noopener">libcontainer</a>，从 1.11 开始，则进一步演进为使用 <a href="https://github.com/opencontainers/runc" target="_blank" rel="noopener">runC</a> 和 <a href="https://github.com/containerd/containerd" target="_blank" rel="noopener">containerd</a>。</p>
 <p>Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。</p>
 <p>下面的图片比较了 Docker 和传统虚拟化方式的不同之处(官方图例)。传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程；而容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核，而且也没有进行硬件虚拟。因此容器要比传统虚拟机更为轻便。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200405182934013.png" alt="image-20200405182934013"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200405182934013.png" alt="image-20200405182934013"></p>
 <h1 id="Docker-资源"><a href="#Docker-资源" class="headerlink" title="Docker 资源"></a>Docker 资源</h1><p>Docker 官方主页</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.docker.com</span><br></pre></td></tr></table></figure>
 
@@ -614,27 +614,27 @@ height:50vh;
 <li>仓库（<code>Repository</code>）</li>
 </ul>
 <p>理解了这几个概念，就理解了 Docker 的整个生命周期，下面这副图展示了Docker的组成：</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406101727486.png" alt="image-20200406101727486"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406101727486.png" alt="image-20200406101727486"></p>
 <h2 id="C-S"><a href="#C-S" class="headerlink" title="C/S"></a>C/S</h2><p>Docker使用了C/S体系架构，Docker客户端与Docker守护进程通信，Docker守护进程负责构建，运行和分发Docker容器。Docker客户端和守护进程可以在同一个系统上运行，也可以将Docker客户端连接到远程Docker守护进程。</p>
 <ul>
 <li>Client/Server</li>
 </ul>
 <p>Docker的使用者并不会直接与Docker守护进程接触，而是由Docker客户端进行交互。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407162139749.png" alt="image-20200407162139749"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407162139749.png" alt="image-20200407162139749"></p>
 <ul>
 <li>Remote API</li>
 </ul>
 <p>Docker提供了一个用于与Docker守护进程进行交互的<a href="https://docs.docker.com/engine/api/" target="_blank" rel="noopener">API</a>（称为Docker Engine API），以及Go和Python的SDK。使用SDK，您可以快速轻松地构建和扩展Docker应用程序和解决方案。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407162639411.png" alt="image-20200407162639411"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407162639411.png" alt="image-20200407162639411"></p>
 <ul>
 <li>本地/远程(host)</li>
 </ul>
 <p>Docker客户端和守护进程可以在同一个系统上运行，也可以将Docker客户端连接到远程Docker守护进程。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406102156907.png" alt="image-20200406102156907"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406102156907.png" alt="image-20200406102156907"></p>
 <p>DockerClient与DockerServer的连接方式主要是通过Socket进行连接，主要由以下几种方式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock #默认使用</span><br><span class="line">tcp:&#x2F;&#x2F;host:port</span><br><span class="line">fd:&#x2F;&#x2F;socketfd</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407163404087.png" alt="image-20200407163404087"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407163404087.png" alt="image-20200407163404087"></p>
 <p>用户可以利用CLI（docker本身）或者自定义程序调用远程API与DockerServer建立Socket连接，由于Socket那么也就可以在本地或者远程(配置<code>docker -H</code>参数)和DokcerServer建立通信。</p>
 <h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><p>我们都知道，操作系统分为内核和用户空间。对于 Linux 而言，内核启动后，会挂载 <code>root</code> 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 <code>root</code> 文件系统。比如官方镜像 <code>ubuntu:18.04</code> 就包含了完整的一套 Ubuntu 18.04 最小系统的 <code>root</code> 文件系统。</p>
 <p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
@@ -642,7 +642,7 @@ height:50vh;
 <li><strong>分层存储</strong></li>
 </ul>
 <p>因为镜像包含操作系统完整的 <code>root</code> 文件系统，其体积往往是庞大的，因此在 Docker 设计时，就充分利用 <a href="https://en.wikipedia.org/wiki/Union_mount" target="_blank" rel="noopener">Union FS</a> 的技术，将其设计为分层存储的架构。所以严格来说，镜像并非是像一个 ISO 那样的打包文件，镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说，由多层文件系统联合组成。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406102230056.png" alt="image-20200406102230056"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406102230056.png" alt="image-20200406102230056"></p>
 <p>镜像构建时，会一层层构建，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。比如，删除前一层文件的操作，实际不是真的删除前一层的文件，而是仅在当前层标记为该文件已删除。在最终容器运行的时候，虽然不会看到这个文件，但是实际上该文件会一直跟随镜像。因此，在构建镜像的时候，需要额外小心，每一层尽量只包含该层需要添加的东西，任何额外的东西应该在该层构建结束前清理掉。</p>
 <p>分层存储的特征还使得镜像的复用、定制变的更为容易。甚至可以用之前构建好的镜像作为基础层，然后进一步添加新的层，以定制自己所需的内容，构建新的镜像。</p>
 <h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><p>镜像（<code>Image</code>）和容器（<code>Container</code>）的关系，就像是面向对象程序设计中的 <code>类</code> 和 <code>实例</code> 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
@@ -664,7 +664,7 @@ height:50vh;
 </tbody></table>
 <p>容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 <a href="https://en.wikipedia.org/wiki/Linux_namespaces" target="_blank" rel="noopener">命名空间</a>。因此容器可以拥有自己的 <code>root</code> 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。也因为这种隔离的特性，很多人初学 Docker 时常常会混淆容器和虚拟机。</p>
 <p>前面讲过镜像使用的是分层存储，容器也是如此。每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写（写时复制）而准备的存储层为<strong>容器存储层</strong>。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406103206422.png" alt="image-20200406103206422"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406103206422.png" alt="image-20200406103206422"></p>
 <p>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</p>
 <p>按照 Docker 最佳实践的要求，容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化。所有的文件写入操作，都应该使用 数据卷（Volume）、或者绑定宿主目录，在这些位置的读写会跳过容器存储层，直接对宿主（或网络存储）发生读写，其性能和稳定性更高。</p>
 <p>数据卷的生存周期独立于容器，容器消亡，数据卷不会消亡。因此，使用数据卷后，容器删除或者重新运行之后，数据却不会丢失。</p>
@@ -779,9 +779,9 @@ height:50vh;
 <p>Docker Toolbox 等配置方法请参考<a href="http://guide.daocloud.io/dcs/daocloud-9153151.html#docker-toolbox" target="_blank" rel="noopener">帮助文档</a>。</p>
 <h1 id="Docker-镜像使用"><a href="#Docker-镜像使用" class="headerlink" title="Docker 镜像使用"></a>Docker 镜像使用</h1><h2 id="获取仓库镜像"><a href="#获取仓库镜像" class="headerlink" title="获取仓库镜像"></a>获取仓库镜像</h2><p>前面提到过，<a href="https://hub.docker.com/search?q=&type=image" target="_blank" rel="noopener">Docker Hub</a> 上有大量的高质量的镜像可以用，这里我们就说一下怎么获取这些镜像。</p>
 <p>一般情况下我们可以在本地终端使用<code>docker search</code> 来搜索相关镜像（搜索指定软件名的镜像），但是有一个缺点就是搜索的结果不包含<code>Tag</code>也就导致我们无法使用<code>docker pull</code>下载相应的镜像。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406190916891.png" alt="image-20200406190916891"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406190916891.png" alt="image-20200406190916891"></p>
 <p>这个时候只能在<a href="https://hub.docker.com/search?q=&type=image" target="_blank" rel="noopener">Docker Hub</a> 上进行搜索然后根据显示的<code>TAG</code>在使用<code>docker pull</code>下载相应的镜像。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406191042497.png" alt="image-20200406191042497"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406191042497.png" alt="image-20200406191042497"></p>
 <p>从 Docker 镜像仓库获取镜像的命令是 <code>docker pull</code>。其命令格式为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</span><br></pre></td></tr></table></figure>
 
@@ -813,7 +813,7 @@ height:50vh;
 <p>查看本地镜像详细信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker image inspect 镜像名或镜像ID</span><br><span class="line">or</span><br><span class="line">docker inspect 镜像名或镜像ID</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406231617576.png" alt="image-20200406231617576"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406231617576.png" alt="image-20200406231617576"></p>
 <ul>
 <li><strong>虚悬镜像</strong></li>
 </ul>
@@ -830,7 +830,7 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rmi [OPTIONS] IMAGE [IMAGE...]</span><br><span class="line">or</span><br><span class="line">docker image rm [OPTIONS] IMAGE [IMAGE...]</span><br></pre></td></tr></table></figure>
 
 <p>用 ID、镜像名、摘要删除镜像。其中，&lt;镜像&gt; 可以是 镜像短 ID、镜像长 ID、镜像名 或者 镜像摘要。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406232524927.png" alt="image-20200406232524927"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406232524927.png" alt="image-20200406232524927"></p>
 <h2 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h2><p>一般情况下不会使用 <code>docker commit</code> 定制镜像，定制镜像应该使用 <code>Dockerfile</code> 来完成。因为<code>docker commit</code>定制的镜像相当于黑箱操作，外界不知道这个镜像做了哪些操作，不便于维护，而且由于其在容器的存储层上进行的修改，后期在其基础上进行修改不会导致上一层的内容真实的去除，也就导致制作的镜像变得更加臃肿。事实上<code>docker commit</code>这种方式定制的镜像和下面在容器里面所讲述的容器快照导出与导入作为一个镜像是类似的都是在容器的存储层进行了修改。而使用<code>dockerfile</code>制作的镜像是透明的，把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，也就方便后期的维护。下面主要了解一下这两种模式是怎么定制镜像的。</p>
 <h3 id="理解-commit-构建镜像"><a href="#理解-commit-构建镜像" class="headerlink" title="理解 commit 构建镜像"></a>理解 commit 构建镜像</h3><p>镜像是多层存储，每一层是在前一层的基础上进行的修改；而容器同样也是多层存储，是在以镜像为基础层，在其基础上加一层作为容器运行时的存储层。</p>
 <p>现在以一个简单的例子定制一个容器，存储一个文件<code>Qftm.txt</code>，文件内容<code>hello word</code>，然后将其定制为一个镜像。</p>
@@ -852,7 +852,7 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@rose:~# docker image ls</span><br><span class="line">REPOSITORY    TAG                 IMAGE ID            CREATED           SIZE</span><br><span class="line">ubuntu         v1               35e3740b9fa3        30 seconds ago      64.2MB</span><br></pre></td></tr></table></figure>
 
 <p>我们还可以用 <code>docker history</code> 具体查看镜像内的历史记录，如果比较 <code>ubuntu:18.04</code> 的历史记录，我们会发现新增了我们刚刚提交的这一层。</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407160927685.png" alt="image-20200407160927685"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407160927685.png" alt="image-20200407160927685"></p>
 <p>到这里新的镜像已经定制好了，可以运行这个镜像创建容器。最后要说的还是尽量不要用这种方法去定制镜像，缺点已经在上面讲过了。虽然使用 <code>docker commit</code> 命令可以比较直观的帮助理解镜像分层存储的概念，但是实际环境中并不会这样使用。</p>
 <h3 id="使用-dockerfile-构建镜像"><a href="#使用-dockerfile-构建镜像" class="headerlink" title="使用 dockerfile 构建镜像"></a>使用 dockerfile 构建镜像</h3><p>从刚才的 <code>docker commit</code> 的学习中，我们可以了解到，镜像的定制实际上就是定制每一层所添加的配置、文件。如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。这个脚本就是 Dockerfile。</p>
 <p>Dockerfile 是一个文本文件，其内包含了一条条的 <strong>指令(Instruction)</strong>，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。</p>
@@ -1185,7 +1185,7 @@ height:50vh;
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@rose:~&#x2F;mydocker# docker build -t webimage:v1.3 .</span><br><span class="line">or</span><br><span class="line">root@rose:~&#x2F;mydocker# docker build -t webimage:v1.3 . --no-cache</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200411013404649.png" alt="image-20200411013404649"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200411013404649.png" alt="image-20200411013404649"></p>
 <ul>
 <li>启动容器</li>
 </ul>
@@ -1196,13 +1196,13 @@ height:50vh;
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200411013729652.png" alt="image-20200411013729652"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200411013729652.png" alt="image-20200411013729652"></p>
 <ul>
 <li>查看容器状态</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@rose:~# docker logs -f --tail&#x3D;0 e6618707fda5</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200411014501996.png" alt="image-20200411014501996"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200411014501996.png" alt="image-20200411014501996"></p>
 <ul>
 <li>查看容器内部进程</li>
 </ul>
@@ -1212,12 +1212,12 @@ height:50vh;
 <li>访问网站</li>
 </ul>
 <p>测试网站是否可以正常访问</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200411014817997.png" alt="image-20200411014817997"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200411014817997.png" alt="image-20200411014817997"></p>
 <ul>
 <li>登录网站</li>
 </ul>
 <p>测试网站数据库是否正常连接</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200411015030829.png" alt="image-20200411015030829"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200411015030829.png" alt="image-20200411015030829"></p>
 <h1 id="Docker-容器操作"><a href="#Docker-容器操作" class="headerlink" title="Docker 容器操作"></a>Docker 容器操作</h1><p>在前面有了<code>docker pull</code>下来的镜像就可以实例化创建容器了。</p>
 <h2 id="启动创建容器"><a href="#启动创建容器" class="headerlink" title="启动创建容器"></a>启动创建容器</h2><p>启动容器有两种方式：一种是基于镜像新建一个容器并启动；另一种是将在终止状态（<code>stopped</code>）下的容器重新启动。</p>
 <h3 id="新建容器启动"><a href="#新建容器启动" class="headerlink" title="新建容器启动"></a>新建容器启动</h3><ul>
@@ -1249,13 +1249,13 @@ height:50vh;
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a -l  #查看容器，不加参数查看正在运行的容器，-a显示所有容器包括未运行的，-l显示最新创建的容器</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406222848432.png" alt="image-20200406222848432"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406222848432.png" alt="image-20200406222848432"></p>
 <ul>
 <li>查看容器详细信息</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker container inspect 容器ID或容器名</span><br><span class="line">or</span><br><span class="line">docker inspect 容器ID或容器名</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406223049123.png" alt="image-20200406223049123"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406223049123.png" alt="image-20200406223049123"></p>
 <h4 id="交互式容器"><a href="#交互式容器" class="headerlink" title="交互式容器"></a>交互式容器</h4><ul>
 <li>创建命令</li>
 </ul>
@@ -1272,7 +1272,7 @@ height:50vh;
 <ul>
 <li>查看容器</li>
 </ul>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406224831476.png" alt="image-20200406224831476"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406224831476.png" alt="image-20200406224831476"></p>
 <h3 id="启动已终止容器"><a href="#启动已终止容器" class="headerlink" title="启动已终止容器"></a>启动已终止容器</h3><p>可以利用<code>docker start</code>来启动一个已经停止的容器</p>
 <ul>
 <li>启动命令</li>
@@ -1304,7 +1304,7 @@ height:50vh;
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406234007447.png" alt="image-20200406234007447"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406234007447.png" alt="image-20200406234007447"></p>
 <ul>
 <li>附加到运行中的容器</li>
 </ul>
@@ -1326,14 +1326,14 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d ubuntu:latest &#x2F;bin&#x2F;sh -c &quot;while true; do echo hello world; sleep 1; done&quot;</span><br></pre></td></tr></table></figure>
 
 <p>执行信息不在终端直接显示，而是转入后台</p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407000128538.png" alt="image-20200407000128538"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407000128538.png" alt="image-20200407000128538"></p>
 <ul>
 <li>查看运行容器日志</li>
 </ul>
 <p>由于容器转入后台则看不到其相关输出信息，需要通过容器的运行日志来查看</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker logs [-f] [-t] [--tail] 容器名</span><br><span class="line">	-f --follows&#x3D;true|false 默认为false   #一直追踪日志的变化并返回结果</span><br><span class="line">	-t --timestamps&#x3D;true|false 默认为false  #返回日志的时间戳</span><br><span class="line">	--tail&#x3D;“all”  #指定结尾处返回日志的数量，如果不指定则返回所有日志。tail&#x3D;0显示最新的日志</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407000149865.png" alt="image-20200407000149865"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407000149865.png" alt="image-20200407000149865"></p>
 <ul>
 <li>查看运行容器内的进程</li>
 </ul>
@@ -1355,7 +1355,7 @@ height:50vh;
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器名  #给容器发送一个停止信号等待容器停止（停止之后会返回容器的名字&#x2F;ID）</span><br><span class="line">docker kill 容器名  #直接停止容器（停止之后会返回容器的名字&#x2F;ID）</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407000620845.png" alt="image-20200407000620845"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407000620845.png" alt="image-20200407000620845"></p>
 <h2 id="导出与导入"><a href="#导出与导入" class="headerlink" title="导出与导入"></a>导出与导入</h2><p>对于已经创建的容器是可以以归档的形式导出的（相当于导出此时容器的一个快照），同时也可以导入之前导出的容器作为一个新的镜像。</p>
 <h3 id="导出容器快照"><a href="#导出容器快照" class="headerlink" title="导出容器快照"></a>导出容器快照</h3><p>导出本地某个容器，可以使用 <code>docker export</code> 命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@rose:~# docker export 56b72bf3df65 &gt; ubuntu-latest.tar</span><br><span class="line">root@rose:~# ls</span><br><span class="line">snap  ubuntu-latest.tar</span><br><span class="line">root@rose:~#</span><br></pre></td></tr></table></figure>
@@ -1373,7 +1373,7 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器ID或容器名       #只能删除已经停止的容器</span><br><span class="line">or</span><br><span class="line">docker container rm 容器ID或容器名</span><br></pre></td></tr></table></figure>
 
 <p>例如删除前面创建的那个非交互式容器：<code>competent_brown</code></p>
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200406225641419.png" alt="image-20200406225641419"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200406225641419.png" alt="image-20200406225641419"></p>
 <ul>
 <li>删除所有已终止容器</li>
 </ul>
@@ -1403,7 +1403,7 @@ height:50vh;
 <p>使用 <code>docker port</code>或 <code>docker ps</code>或<code>docker container ls</code>来查看当前映射的端口配置，也可以查看到绑定的地址</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker port 容器名&#x2F;ID</span><br><span class="line">docker ps</span><br><span class="line">docker container ls</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407115414433.png" alt="image-20200407115414433"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407115414433.png" alt="image-20200407115414433"></p>
 <ul>
 <li><strong>测试端口映射情况</strong></li>
 </ul>
@@ -1413,7 +1413,7 @@ height:50vh;
 <p>访问容器的apache服务，在宿主机上访问<code>http://127.0.0.1:8080</code>相当于访问了<code>http://容器IP:80</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:&#x2F;&#x2F;127.0.0.1:8080</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/04/10/Docker-Learning-Handbook/image-20200407120522654.png" alt="image-20200407120522654"></p>
+<p><img src="/2019/12/31/Docker-Learning-Handbook/image-20200407120522654.png" alt="image-20200407120522654"></p>
 <p>查看容器运行的进程信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@rose:~# docker top a30200ca3b8a</span><br></pre></td></tr></table></figure>
 
@@ -1584,9 +1584,9 @@ height:50vh;
     
         <div class="license-wrapper">
             <p>Author：<a href="http://Qftm.github.io">Qftm</a>
-            <p>原文链接：<a href="http://qftm.github.io/2020/04/10/Docker-Learning-Handbook/">http://qftm.github.io/2020/04/10/Docker-Learning-Handbook/</a>
-            <p>发表日期：<a href="http://qftm.github.io/2020/04/10/Docker-Learning-Handbook/">April 10th 2020, 3:21:00 pm</a>
-            <p>更新日期：<a href="http://qftm.github.io/2020/04/10/Docker-Learning-Handbook/">April 11th 2020, 2:23:34 am</a>
+            <p>原文链接：<a href="http://qftm.github.io/2019/12/31/Docker-Learning-Handbook/">http://qftm.github.io/2019/12/31/Docker-Learning-Handbook/</a>
+            <p>发表日期：<a href="http://qftm.github.io/2019/12/31/Docker-Learning-Handbook/">December 31st 2019, 5:20:00 am</a>
+            <p>更新日期：<a href="http://qftm.github.io/2019/12/31/Docker-Learning-Handbook/">April 11th 2020, 2:31:14 am</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1594,12 +1594,17 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/01/01/%E4%B8%AD%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%98%B2%E7%81%AB%E5%A2%99%E9%83%A8%E7%BD%B2/" title= "中小型企业级防火墙部署">
+                    <div class="nextTitle">中小型企业级防火墙部署</div>
+                </a>
+            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/04/03/php-filter-tricks/" title= "探索php://filter在实战当中的奇技淫巧">
-                    <div class="prevTitle">探索php://filter在实战当中的奇技淫巧</div>
+                <a href= "/2019/11/22/PhpStudyBackDoor2019%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/" title= "PhpStudy BackDoor2019 深度分析">
+                    <div class="prevTitle">PhpStudy BackDoor2019 深度分析</div>
                 </a>
             
         </li>
@@ -2648,26 +2653,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 63
         </div>
         <!-- search  -->
         
@@ -2680,11 +2668,6 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/Docker-Learning-Handbook/" >Docker Learning Handbook</a>
-        </li>
     
     
         <li class="archive-post-item">
@@ -2767,7 +2750,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2019/12/31/Solve-Perl-Cant-locate-getopts/" >Solve Perl Can't locate getopts.pl</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2019/12/31/Docker-Learning-Handbook/" >Docker Learning Handbook</a>
         </li>
     
     
@@ -3054,11 +3037,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
-        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
-    
         <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
     
         <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
+    
+        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="LFI"><span class="iconfont-archer">&#xe606;</span>LFI</span>
     
@@ -3100,15 +3083,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
     
+        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+    
         <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
-        <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
+        <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
         <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
     
         <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
-    
-        <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -3179,9 +3162,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="路由协议"><span class="iconfont-archer">&#xe60a;</span>路由协议</span>
     
-        <span class="sidebar-category-name" data-categories="软件工程"><span class="iconfont-archer">&#xe60a;</span>软件工程</span>
-    
         <span class="sidebar-category-name" data-categories="云计算"><span class="iconfont-archer">&#xe60a;</span>云计算</span>
+    
+        <span class="sidebar-category-name" data-categories="软件工程"><span class="iconfont-archer">&#xe60a;</span>软件工程</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
