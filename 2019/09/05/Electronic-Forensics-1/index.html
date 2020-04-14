@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>电子取证之Linux下文件恢复 · Qftm&#39;s Blog</title>
+    <title>浅谈电子数字取证技术 · Qftm&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Qftm&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">电子取证之Linux下文件恢复</a>
+                <a href="#" class="post-name">浅谈电子数字取证技术</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            电子取证之Linux下文件恢复
+            浅谈电子数字取证技术
             <!-- 404 -->
             
         </h1>
@@ -272,12 +272,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.7k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.9k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/03/10</span>
+                    <span class="post-intro-time">2019/09/05</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,230 +401,151 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>You know it ? ? ?</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">→ Qftm ← :~# rm -rf /</span><br><span class="line">or</span><br><span class="line">→ Qftm ← :~# rm -rf /*</span><br></pre></td></tr></table></figure>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>近几年来，电子数字取证技术在网络攻击窃密、反欺诈调查、内部审计、失泄密痕迹发现、恶意网站查处等案件中发挥着举足轻重的作用。随着计算机犯罪及网络失泄密案件的频繁发生，电子数字证据作为一种新的证据形式势必越来越多的出现在司法活动中。</p>
+<h2 id="0x01-取证概述"><a href="#0x01-取证概述" class="headerlink" title="0x01 取证概述"></a>0x01 取证概述</h2><p><strong>韦氏大学词典（Dictionary by Merriam-Webster）</strong></p>
+<p>取证（Forensic）是科学知识在法律问题中的应用，或，对物证的科学分析。取证属于、用于或适用于法院法庭或公开讨论和辩论。</p>
+<p><strong>美国司法学会（National Institute of Justice, NIJ）</strong></p>
+<p>定义电子数据是以二进制形式存储或传输的信息，可以在法庭上被依赖，可以在电脑硬盘、移动电话、个人数字助手、数码相机中的闪存卡等中找到。电子数据证据可用于起诉所有类型的犯罪，而不仅仅是电子犯罪。</p>
+<p><strong>取证科学（Forensic Science）</strong></p>
+<p>取证科学是把物理学、化学、生物学、<strong>计算机科学</strong>和工程学等科学应用于法律问题上的科学。取证科学通过物证分析提供科学依据，在刑事司法系统中发挥着至关重要的作用。在调查过程中，在犯罪现场或从某一人收集证据，在犯罪实验室进行分析，然后在法庭上提交结果（NIJ）。</p>
+<p><strong>电子取证（Digital Forensic）定义</strong></p>
+<p>使用科学的可验证的方法对电子证据进行识别、保存、检查和分析的过程，并且最终这些证据是可以作为呈堂证供的（Jason Jordaan，DFIRLABS）。</p>
+<p>传统的电子数字取证最简单的解释是检查电子设备和计算机中存储的数据及其环境来确定发生了什么（Joakim Kavrestad，瑞典舍伍德大学）。</p>
+<h2 id="0x02-国内外取证概况"><a href="#0x02-国内外取证概况" class="headerlink" title="0x02 国内外取证概况"></a>0x02 国内外取证概况</h2><p><strong>国外动态</strong></p>
+<p>1、始于80年代</p>
+<p>2、20世纪90年代创立“国际计算机证据组织”</p>
+<p>3、已建立有较完善的法律原则和电子取证规范，但没有统一可靠的标准</p>
+<p>4、取证过程模型：基本过程模型（BPM）、事件响应过程模型（IRPM）、 法律执行过程模型（LEPM）、过程抽象模型（APM）</p>
+<p>5、英国《电子证据取证的最佳实践指南》（1999年）</p>
+<p>6、美国犯罪实验室主任协会/试验鉴定委员会编制的取证标准和准则（2003年）</p>
+<p>7、欧洲法学研究所（ENFSI）出版一系列取证指南（2008-2011年）</p>
+<p>8、取证工具：Encase（GUIDANCE）、DIBS（美国计算机取证与司法鉴定公司）、Flight Server（Vogon）等</p>
+<p><strong>国内动态</strong></p>
+<p>1、电子取证专家委员会（2005年）</p>
+<p>2、计算机取证与司法鉴定技术峰会和高峰论坛（CCFA，2005）</p>
+<p>3、已建立电子取证规范</p>
+<p>4、国家标准  </p>
+<p>GB/T 29360-2012 《电子物证数据恢复检验规程》<br>GB/T 29361-2012 《电子物证文件一致性检验规程》<br>GB/T 29362-2012 《电子物证数据搜索检验规程》  </p>
+<p>5、公安部</p>
+<p>GA/T 754-2008 《电子数据存储介质复制工具要求及检测方法》<br>GA/T 755-2008 《电子数据存储介质写保护设备要求及检测方法》<br>GA/T 756-2008 《数字化设备证据数据发现提取固定方法》</p>
+<p>……</p>
+<p>6、司法部</p>
+<p>SF/ZJD0400001—2014《电子数据司法鉴定通用实施规范》</p>
+<p>SF/ZJD04OlOOl一2014((电子数据复制设备鉴定实施规范》</p>
+<p>……</p>
+<p><strong>司法鉴定设备配置标准</strong></p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413172812399.png" alt="image-20200413172812399"></p>
+<p><strong>国内现状</strong></p>
+<p>1、计算机取证与司法鉴定方面研究和实践刚起步</p>
+<p>2、工具多是利用国外常用取证工具</p>
+<p>3、缺乏对取证和鉴定流程的深入研究</p>
+<p>4、证据收集、文档化和保存不完善</p>
+<p>5、数字证据分析和解释不足</p>
+<p>6、缺少取证和司法鉴定工具的评价标准</p>
+<p>7、欠缺取证和司法鉴定操作规范</p>
+<h2 id="0x03-取证技术发展趋势"><a href="#0x03-取证技术发展趋势" class="headerlink" title="0x03 取证技术发展趋势"></a>0x03 取证技术发展趋势</h2><p><strong>主机电子证据保全、恢复和分析技术</strong></p>
+<p>针对一台可能含有证据的非在线计算机进行证据获取的技术，包括：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">存储设备的恢复技术</span><br><span class="line"></span><br><span class="line">隐藏数据的再现技术</span><br><span class="line"></span><br><span class="line">加密数据的解密技术</span><br><span class="line"></span><br><span class="line">数据挖掘技术</span><br><span class="line"></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
 
-<h1 id="Linux-Inode"><a href="#Linux-Inode" class="headerlink" title="Linux Inode"></a>Linux Inode</h1><h2 id="Inode"><a href="#Inode" class="headerlink" title="Inode"></a>Inode</h2><p>Linux 文件系统的最基本单元：<code>inode</code>。<code>inode</code> 译成中文就是索引节点，每个存储设备（例如硬盘）或存储设备的分区被格式化为文件系统后，应该有两部份，一部份是<code>inode</code>，另一部份是<code>block</code>，block 是用来存储数据用的。而 inode 呢，就是用来存储这些数据的信息，这些信息包括文件大小、属主、归属的用户组、读写权限等。inode 为每个文件进行信息索引，所以就有了 inode 的数值。</p>
-<p>linux 操作系统下可以使用 <code>ls –id</code>命令来查看文件或者目录的 inode 值。</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310152033787.png" alt="image-20200310152033787"></p>
-<h2 id="Inode内容"><a href="#Inode内容" class="headerlink" title="Inode内容"></a>Inode内容</h2><p>（1）inode包含文件的元信息，具体来说有以下内容</p>
-<ul>
-<li><p>文件的字节数</p>
-</li>
-<li><p>文件拥有者的User ID</p>
-</li>
-<li><p>文件的Group ID</p>
-</li>
-<li><p>文件的读、写、执行权限</p>
-</li>
-<li><p>文件的时间戳，共有三个：ctime指inode上一次变动的时间，mtime指文件内容上一次变动的时间，atime指文件上一次打开的时间。</p>
-</li>
-<li><p>链接数，即有多少文件名指向这个inode（一般是指硬链接，因为软链接指向的是连接的文件）</p>
-</li>
-<li><p>文件数据block的位置</p>
-</li>
-</ul>
-<p>（2）可以用stat命令，查看某个文件的inode信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stat filename</span><br></pre></td></tr></table></figure>
+<p><strong>网络数据捕获与分析、网络追踪</strong></p>
+<p>网络追踪可分为四类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">基于主机</span><br><span class="line"></span><br><span class="line">基于网络</span><br><span class="line"></span><br><span class="line">被动式追踪</span><br><span class="line"></span><br><span class="line">主动式</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310151804513.png" alt="image-20200310151804513"></p>
-<p>PS：除了文件名以外的所有文件信息，都存在inode之中。至于为什么没有文件名，是因为，文件名和其节点会存放在相应的目录块里面。</p>
-<h2 id="Inode大小"><a href="#Inode大小" class="headerlink" title="Inode大小"></a>Inode大小</h2><p>inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自动将硬盘分成两个区域。一个是数据区，存放文件数据；另一个是inode区（inode table），存放inode所包含的信息。</p>
-<p>每个inode节点的大小，一般是128字节或256字节。inode节点的总数，在格式化时就给定，一般是每1KB或每2KB就设置一个inode。假定在一块1GB的硬盘中，每个inode节点的大小为128字节，每1KB就设置一个inode，那么inode table的大小就会达到128MB，占整块硬盘的12.8%。</p>
-<p>查看每个硬盘分区的inode总数和已经使用的数量，可以使用df命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -i</span><br></pre></td></tr></table></figure>
+<p>网络信息数据流捕获工具有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NetXray</span><br><span class="line"></span><br><span class="line">SnifferPro</span><br><span class="line"></span><br><span class="line">Lanexplore</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310152712387.png" alt="image-20200310152712387"></p>
-<p>查看每个inode节点的大小，可以用如下命令：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dumpe2fs -h &#x2F;dev&#x2F;sdb1 | grep &quot;Inode size&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>主动取证</strong></p>
+<p>主动取证主要指通过诱骗或攻击性手段获取罪犯证据，蜜罐技术是主要研究的方向，美国已成熟的网络诱骗系统包括：BackOfficer Friendly、Specter、Mantrap、DTK等</p>
+<p>诱骗系统要求保证入侵者在进入系统后，不能利用诱骗主机对内网其他主机构成威胁，但能监控入侵者在系统中一举一动，而且系统和日志必须要能伪装不能被发现。</p>
+<p><strong>密码分析和破解</strong></p>
+<p>目前密码加密技术的方向向量子密码、生物密码等新一代密码加密技术发展，因此密码分析技术也会随之进入一个新的领域。</p>
+<p>各类系统各类机密信息很大部分经过加密处理，因而密码分析和破解成电子取证中必须面对的问题。</p>
+<h2 id="0x04-取证流程"><a href="#0x04-取证流程" class="headerlink" title="0x04 取证流程"></a>0x04 取证流程</h2><p><strong>不同国家</strong></p>
+<p>1、《电子证据取证最佳实践指南》（英国）</p>
+<p>证据是从任何类型的电子数字存储中收集到的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">收集 -&gt; 分析 -&gt; 报告</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310152919399.png" alt="image-20200310152919399"></p>
-<p>由于每个文件都必须有一个inode，因此有可能发生inode已经用光，但是硬盘还未存满的情况。这时，就无法在硬盘上创建新文件。</p>
-<h2 id="目录文件"><a href="#目录文件" class="headerlink" title="目录文件"></a>目录文件</h2><p>Unix/Linux系统中，目录（directory）也是一种文件。打开目录，实际上就是打开目录文件。</p>
-<p>目录文件的结构非常简单，就是一系列目录项（dirent）的列表。每个目录项，由两部分组成：所包含文件的文件名，以及该文件名对应的inode号码。</p>
-<p><code>ls</code>命令只列出目录文件中的所有文件名</p>
-<p><code>ls -i</code>命令列出整个目录文件，即文件名和inode号码</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310153216666.png" alt="image-20200310153216666"></p>
-<h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><p>一般情况下，文件名和inode号码是”一一对应”关系，每个inode号码对应一个文件名。但是，Unix/Linux系统允许，多个文件名指向同一个inode号码。</p>
-<p>这意味着，可以用不同的文件名访问同样的内容；对文件内容进行修改，会影响到所有文件名；但是，删除一个文件名，不影响另一个文件名的访问。这种情况就被称为”硬链接”（hard link）。</p>
-<p><code>ln</code>命令可以创建硬链接：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>2、美国司法部（DOJ）</p>
+<p>证据是硬盘驱动器或手机或其他数字信息载体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">收集 -&gt; 检验 -&gt; 分析 -&gt; 报告</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310153603911.png" alt="image-20200310153603911"></p>
-<p>运行上面条命令以后，源文件与目标文件的inode号码相同，都指向同一个inode。inode信息中有一项叫做”链接数”，记录指向该inode的文件名总数，这时就会增加1。</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310153657837.png" alt="image-20200310153657837"></p>
-<p>反过来，删除一个文件名，就会使得inode节点中的”链接数”减1。当这个值减到0，表明没有文件名指向这个inode，系统就会回收这个inode号码，以及其所对应block区域。</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310153754818.png" alt="image-20200310153754818"></p>
-<p>这里顺便说一下目录文件的”链接数”。</p>
-<p>创建目录时，默认会生成两个目录项：”.”和”..”。前者的inode号码就是当前目录的inode号码，等同于当前目录的”硬链接”；后者的inode号码就是当前目录的父目录的inode号码，等同于父目录的”硬链接”。所以，任何一个目录的”硬链接”总数，总是等于2加上它的子目录总数（含隐藏目录）。</p>
-<h2 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h2><p>除了硬链接以外，还有一种特殊情况。</p>
-<p>文件A和文件B的inode号码虽然不一样，但是文件A的内容是文件B的路径。读取文件A时，系统会自动将访问者导向文件B。因此，无论打开哪一个文件，最终读取的都是文件B。这时，文件A就称为文件B的”软链接”（soft link）或者”符号链接（symbolic link）。</p>
-<p>这意味着，文件A依赖于文件B而存在，如果删除了文件B，打开文件A就会报错：”No such file or directory”。这是软链接与硬链接最大的不同：文件A指向文件B的文件名，而不是文件B的inode号码，文件B的inode”链接数”不会因此发生变化。</p>
-<p><code>ln -s</code>命令可以创建软链接:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s 源文文件或目录 目标文件或目录</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310154047013.png" alt="image-20200310154047013"></p>
-<p>查看file1.txt链接数</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310154208656.png" alt="image-20200310154208656"></p>
-<p>查看file2.txt信息</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310154237038.png" alt="image-20200310154237038"></p>
-<h1 id="文件恢复"><a href="#文件恢复" class="headerlink" title="文件恢复"></a>文件恢复</h1><h2 id="数据恢复"><a href="#数据恢复" class="headerlink" title="数据恢复"></a>数据恢复</h2><p>在Linux文件系统中，每个文件都是通过 inode 来描述其数据存放的具体位置，当文件被删除以后，文件的inode会被标记为删除，但是文件的数据块还在，这个时候还可以将删除的文件恢复，但是，如果在你删除文件之后没有将相应的设备卸载或者只读挂载，同时进行反复的磁盘读写操作，这样以前被删除的文件数据块很有可能被覆盖，导致删除文件无法恢复。</p>
-<p>在电子取证当中首先做的就是尽可能少的对取证对象进行操作，一般以只读的方式对内存数据和磁盘数据进行镜像克隆，然后在镜像上进行取证分析。</p>
-<p>对取证镜像进行数据恢复时要以只读的方式或者卸载设备的方式进行数据的恢复，以免因操纵不当覆盖了原始数据块，导致原始数据无法恢复的损失。</p>
-<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><p>常见的数据恢复软件有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">debugfs</span><br><span class="line">extundelete</span><br><span class="line">PhotoRec</span><br><span class="line">EasyRecovery</span><br><span class="line">PC3000</span><br><span class="line">FinalData</span><br><span class="line">FixRAR</span><br><span class="line">、、、、</span><br></pre></td></tr></table></figure>
-
-<p>这里主要介绍一下这几个工具：<code>debugfs</code>、<code>extundelete</code>、<code>PhotoRec</code></p>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>操作系统：<code>Kali Linux</code></p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310162315917.png" alt="image-20200310162315917"></p>
-<p>操作设备：<code>1G sdb</code>、<code>sdb1-&gt;ext2</code>、<code>sdb2-&gt;ext3</code>、<code>sdb3-&gt;ext4</code></p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310162410587.png" alt="image-20200310162410587"></p>
-<p>操作软件：<code>debugfs</code>、<code>extundelete</code>、<code>PhotoRec</code></p>
-<h2 id="使用debugfs恢复文件"><a href="#使用debugfs恢复文件" class="headerlink" title="使用debugfs恢复文件"></a>使用debugfs恢复文件</h2><p>Linux下自带debugfs，支持处理ext2的文件系统格式，对于现在的ext3/4文件系统格式不能恢复成功，但仍然可以查看inode等信息。</p>
-<ul>
-<li>操作分区sdb1</li>
-</ul>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310162945491.png" alt="image-20200310162945491"></p>
-<ul>
-<li>在分区sdb1中制造删除文件的动作</li>
-</ul>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310163635709.png" alt="image-20200310163635709"></p>
-<ul>
-<li>查看被删除的文件</li>
-</ul>
-<p>删除数据之后，首先卸载这块磁盘分区或者挂载为只读，以防止磁盘重新读写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">umount &#x2F;dev&#x2F;sdb1</span><br><span class="line">或者</span><br><span class="line">mount -r -n -o remount &#x2F;media&#x2F;root&#x2F;fe20b1ad-3acb-4ceb-80c3-32a1e6c93c15&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>使用debugfs 打开设备</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310163824063.png" alt="image-20200310163824063"></p>
-<p>用ls 加-d参数显示刚刚删除文件所在的目录</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310163901198.png" alt="image-20200310163901198"></p>
-<p>尝试进入HidHack1目录查看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debugfs: ls -d HidHack1</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310163942048.png" alt="image-20200310163942048"></p>
-<p>显示有&lt;&gt;尖括号(被删除的文件)的就是我们要找的文件Inode 号，使用<code>logdump -i &lt;inode&gt;</code>，查看inode详细信息</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310164118101.png" alt="image-20200310164118101"></p>
-<p>记下block=74、offset=256等关键信息，然后退出debugfs(按q退出)</p>
-<ul>
-<li>使用dd进行文件恢复</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if&#x3D;&#x2F;dev&#x2F;sdb1 of&#x3D;&#x2F;tmp&#x2F;ReQftm1.txt bs&#x3D;384 count&#x3D;1 skip&#x3D;122883</span><br></pre></td></tr></table></figure>
-
-<p>bs值为offset、skip值为block</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310164357998.png" alt="image-20200310164357998"></p>
-<h2 id="使用extundelete恢复文件"><a href="#使用extundelete恢复文件" class="headerlink" title="使用extundelete恢复文件"></a>使用extundelete恢复文件</h2><p>extundelete 是一个开源的数据恢复工具，支持 ext3、ext4 文件系统。</p>
-<ul>
-<li>安装extundelete</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install extundelete</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310164729608.png" alt="image-20200310164729608"></p>
-<ul>
-<li>extundelete用法</li>
-</ul>
-<p>用法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extundelete [options] [action] device-file</span><br></pre></td></tr></table></figure>
-
-<p>参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">其中参数（options）有：</span><br><span class="line">--version, -[vV]，显示软件版本号。</span><br><span class="line">--help，显示软件帮助信息。</span><br><span class="line">--superblock，显示超级块信息。</span><br><span class="line">--journal，显示日志信息。</span><br><span class="line">--after dtime，时间参数，表示在某段时间之后被删的文件或目录。</span><br><span class="line">--before dtime，时间参数，表示在某段时间之前被删的文件或目录。</span><br><span class="line"></span><br><span class="line">动作（action）有：</span><br><span class="line">--inode ino，显示节点“ino”的信息。</span><br><span class="line">--block blk，显示数据块“blk”的信息。</span><br><span class="line">--restore-inode ino[,ino,...]，恢复命令参数，表示恢复节点“ino”的文件，恢复的文件会自动放在当前目录下的RESTORED_FILES文件夹中，使用节点编号作为扩展名。</span><br><span class="line">--restore-file &#39;path&#39;，恢复命令参数，表示将恢复指定路径的文件，并把恢复的文件放在当前目录下的RECOVERED_FILES目录中。</span><br><span class="line">--restore-files &#39;path&#39; ，恢复命令参数，表示将恢复在路径中已列出的所有文件。</span><br><span class="line">--restore-directory &#39;path&#39; 恢复指定目录下所有删除的数据</span><br><span class="line">--restore-all，恢复命令参数，表示将尝试恢复所有目录和文件。</span><br><span class="line">-j journal，表示从已经命名的文件中读取扩展日志。</span><br><span class="line">-b blocknumber，表示使用之前备份的超级块来打开文件系统，一般用于查看现有超级块是不是当前所要的文件。</span><br><span class="line">-B blocksize，表示使用数据块大小来打开文件系统，一般用于查看已经知道大小的文件。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>操作分区sdb2</li>
-</ul>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310165133630.png" alt="image-20200310165133630"></p>
-<ul>
-<li>在分区sdb2中制造删除文件的动作</li>
-</ul>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310165305951.png" alt="image-20200310165305951"></p>
-<ul>
-<li>恢复被删除文件</li>
-</ul>
-<p>删除数据之后，首先卸载这块磁盘分区或者挂载为只读，以防止磁盘重新读写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">umount &#x2F;dev&#x2F;sdb2</span><br><span class="line">或者</span><br><span class="line">mount -r -n -o remount &#x2F;media&#x2F;root&#x2F;8d949467-112b-4e35-ac7c-f4f04f6a2beb&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310165539651.png" alt="image-20200310165539651"></p>
-<p>查看哪些文件被删除</p>
-<p>虽说<code>debugfs</code>不能作用与ext3/4等文件系统格式，但是它还是能帮助我们查看文件的inode信息，然后结合<code>extundelete</code>进行恢复数据。</p>
-<p>如果是删除的单个文件，也可以查看该文件所在目录的inode，然后通过该inode号，查看删除的文件。</p>
-<p>查看inode=2的情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extundelete &#x2F;dev&#x2F;sdb2 --inode 2  &#x2F;&#x2F;inode 2 根目录的inode号</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"> → Qftm ← :~# extundelete &#x2F;dev&#x2F;sdb2 --inode 2</span><br><span class="line">NOTICE: Extended attributes are not restored.</span><br><span class="line">Loading filesystem metadata ... 19 groups loaded.</span><br><span class="line">Group: 0</span><br><span class="line">Contents of inode 2:</span><br><span class="line">0000 | ed 41 00 00 00 04 00 00 6b 3a 67 5e 79 3a 67 5e | .A......k:g^y:g^</span><br><span class="line">0010 | 79 3a 67 5e 00 00 00 00 00 00 02 00 02 00 00 00 | y:g^............</span><br><span class="line">0020 | 00 00 00 00 11 00 00 00 02 02 00 00 00 00 00 00 | ................</span><br><span class="line">0030 | 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 | ................</span><br><span class="line">0040 | 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 | ................</span><br><span class="line">0050 | 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 | ................</span><br><span class="line">0060 | 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 | ................</span><br><span class="line">0070 | 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 | ................</span><br><span class="line"></span><br><span class="line">Inode is Allocated</span><br><span class="line">File mode: 16877</span><br><span class="line">Low 16 bits of Owner Uid: 0</span><br><span class="line">Size in bytes: 1024</span><br><span class="line">Access time: 1583823467</span><br><span class="line">Creation time: 1583823481</span><br><span class="line">Modification time: 1583823481</span><br><span class="line">Deletion Time: 0</span><br><span class="line">Low 16 bits of Group Id: 0</span><br><span class="line">Links count: 2</span><br><span class="line">Blocks count: 2</span><br><span class="line">File flags: 0</span><br><span class="line">File version (for NFS): 0</span><br><span class="line">File ACL: 0</span><br><span class="line">Directory ACL: 0</span><br><span class="line">Fragment address: 0</span><br><span class="line">Direct blocks: 514, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</span><br><span class="line">Indirect block: 0</span><br><span class="line">Double indirect block: 0</span><br><span class="line">Triple indirect block: 0</span><br><span class="line"></span><br><span class="line">File name                                       | Inode number | Deleted status</span><br><span class="line">.                                                 2</span><br><span class="line">..                                                2</span><br><span class="line">lost+found                                        11             Deleted</span><br><span class="line">HidHack2                                          20241          Deleted</span><br><span class="line">see.txt                                           14             Deleted</span><br><span class="line">.see.txt.swp                                      13             Deleted</span><br><span class="line">see.txt~                                          12             Deleted</span><br><span class="line"> → Qftm ← :~#</span><br></pre></td></tr></table></figure>
-
-<p>根据上面的输出，标记为Deleted状态的是已经删除的文件或目录。同时还可以看到每个已删除文件的inode值，接下来就可以恢复文件了。</p>
-<ul>
-<li>恢复单个文件</li>
-</ul>
-<p>恢复文件<code>see.txt</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extundelete &#x2F;dev&#x2F;sdb2 --restore-inode 14</span><br><span class="line">extundelete &#x2F;dev&#x2F;sdb2 --restore-file see.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310170123866.png" alt="image-20200310170123866"></p>
-<p>查看恢复后的<code>see.txt</code></p>
-<p>在文件恢复成功后，extundelete命令默认会在执行命令的当前目录下创建一个RECOVERED_FILES目录，此目录用于存放恢复出来的文件，所以执行extundelete命令的当前目录必须是可写的。</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310170707131.png" alt="image-20200310170707131"></p>
-<p>从上面可以看到通过Inode号恢复的文件命名后缀是该文件的inode号</p>
-<ul>
-<li>恢复目录</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extundelete &#x2F;dev&#x2F;sdb2 --restore-inode 20241</span><br><span class="line">extundelete &#x2F;dev&#x2F;sdb2 --restore-directory HidHack2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310172042573.png" alt="image-20200310172042573"></p>
-<p>查看恢复的目录<code>HidHack2</code></p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310172306790.png" alt="image-20200310172306790"></p>
-<p>从上面可以看到通过<code>--restore-directory</code>恢复的目录文件和原来的一样</p>
-<p>PS：使用<code>extundelete</code>恢复后的文件MD5值和原来的一样，这里不在测试</p>
-<h2 id="使用PhotoRec恢复文件"><a href="#使用PhotoRec恢复文件" class="headerlink" title="使用PhotoRec恢复文件"></a>使用PhotoRec恢复文件</h2><p>PhotoRec是一款用于恢复硬盘、光盘中丢失的视频、文档、压缩包等文件，或从数码相机存储卡中恢复丢失图片的数据恢复软件（因此，该软件命名为Photo Recovery这个名字)。 PhotoRec忽略文件系统，能直接从介质底层恢复数据，因此，在介质的文件系统严重破坏或被重新格式化后，它也能进行数据恢复。</p>
-<p>PhotoRec是一款免费的开源、跨多平台的数据恢复软件，受GNU General Public License (GPLV v2+) 的保护. PhotoRec 是TestDisk的伴侣程序, Testdisk是一款支持多种文件系统的丢失分区恢复，并能修复不可启动的磁盘的数据恢复软件。</p>
-<p>PhotoRec和TestDisk支持NTFS，HFS +，exFAT，ext2/ext3/ext4等多种文件系统。</p>
-<p>出于安全考虑, PhotoRec以只读方式来访问您要恢复数据所在的磁盘或存储卡介质。</p>
-<ul>
-<li>安装PhotoRec</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">------- On Debian&#x2F;Ubuntu&#x2F;Linux Mint ------- </span><br><span class="line">$ sudo apt-get install testdisk</span><br><span class="line">------- On CentOS&#x2F;RHEL&#x2F;Fedora ------- </span><br><span class="line">$ sudo yum install testdisk</span><br><span class="line">------- On Fedora 22+ ------- </span><br><span class="line">$ sudo dnf install testdisk   </span><br><span class="line">------- On Arch Linux ------- </span><br><span class="line">$ pacman -S testdisk             </span><br><span class="line">------- On Gentoo ------- </span><br><span class="line">$ emerge testdisk</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310180751711.png" alt="image-20200310180751711"></p>
-<ul>
-<li>操作分区sdb3</li>
-</ul>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310180703660.png" alt="image-20200310180703660"></p>
-<ul>
-<li>在分区sdb3中制造删除文件的动作</li>
-</ul>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310185807751.png" alt="image-20200310185807751"></p>
-<ul>
-<li>恢复被删除文件</li>
-</ul>
-<p>删除数据之后，首先卸载这块磁盘分区或者挂载为只读，以防止磁盘重新读写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">umount &#x2F;dev&#x2F;sdb3</span><br><span class="line">或者</span><br><span class="line">mount -r -n -o remount &#x2F;media&#x2F;root&#x2F;7dbab1c1-21b7-4cae-bb6c-3b42c6b23e55&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310181453152.png" alt="image-20200310181453152"></p>
-<p>运行PhotoRec，进入相应分区/dev/sdb</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184507622.png" alt="image-20200310184507622"></p>
-<p>选择分区/dev/sdb3进行恢复</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184536022.png" alt="image-20200310184536022"></p>
-<p>可以在<code>FIle opt</code> 中设置恢复规则（恢复的文件类型），根据相应需求进行设置，默认是全选。</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184619784.png" alt="image-20200310184619784"></p>
-<p>规则设置之后，退出，在search中进入<code>/dev/sdb3</code>，选择ext文件系统格式</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184650967.png" alt="image-20200310184650967"></p>
-<p>选择whole进行恢复</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184714947.png" alt="image-20200310184714947"></p>
-<p>确定之后，选择文件恢复到/root目录中</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184758303.png" alt="image-20200310184758303"></p>
-<p>选择好目录之后，按C开始恢复</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310184356665.png" alt="image-20200310184356665"></p>
-<p>查看恢复的文件</p>
-<p><img src="/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/image-20200310185336012.png" alt="image-20200310185336012"></p>
-<p>report.xml存放的是恢复信息。其他文件是恢复的数据文件，恢复的文件不是原来的文件名，但是文件内容不变，MD5值也是一样的。</p>
+<p><strong>收集</strong></p>
+<p>现场证据：电子数字媒介、终端设备</p>
+<p>线上证据：网络公开的（社交媒体帖子）、私人的（社交媒体账号信息）、易失性数据（进程、网络连接和开放端口等）  </p>
+<p>须由调查人员做备份，不能对其内容进行删改</p>
+<p><strong>分析</strong></p>
+<p>需要做存储镜像，在副本进行非破坏性分析</p>
+<p>能够对证据的取得作出复现</p>
+<p>尽可能将被嫌疑人删除、修改或隐藏的数据恢复</p>
+<p><strong>报告</strong></p>
+<p>取证的最终成果</p>
+<p>体现整个取证检查过程和数据恢复的过程（时间、地点、人员、方法以及理由等）</p>
+<p>易懂通俗（司法人员等非IT行业人员能明白）</p>
+<p><strong>数据（证据）采集</strong></p>
+<p>1、静态采集（Static）</p>
+<p>当主机是关闭的</p>
+<p>低效率</p>
+<p>无法取得易失性数据</p>
+<p>2、动态采集（Live）</p>
+<p>当主机是运行中的</p>
+<p>数据可能采集的同时被修改</p>
+<p>从不可信的网络获得的数据是不可靠的</p>
+<h2 id="0x05-熊猫烧香案例"><a href="#0x05-熊猫烧香案例" class="headerlink" title="0x05 熊猫烧香案例"></a>0x05 熊猫烧香案例</h2><p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413172927590.png" alt="image-20200413172927590"></p>
+<p><strong>背景</strong></p>
+<p>2006年底-2007年初，不断入侵PC、门户网站，给个人用户、企业局域网和网吧带来巨大损失。《2006年度中国大陆地区计算机病毒疫情和互联网安全报告》评为“毒王”</p>
+<p><strong>熊猫烧香病毒介绍</strong></p>
+<p>名称：熊猫烧香，worm.whBoy，worm.nimaya</p>
+<p>类型：蠕虫，能够终止大量的反病毒软件和防火墙软件进程</p>
+<p>描述：蠕虫病毒，多次变种，可执行文件出现“熊猫烧香”图案</p>
+<p>危害：通过局域网在极短时间内感染数千台计算机，中毒后可能蓝屏、频繁重启以及数据文件被破坏等。无法使用Ghost恢复。</p>
+<p><strong>鉴定要求</strong></p>
+<p>1、鉴定检材中是否存在制作传播病毒的证据</p>
+<p>2、鉴定病毒编写的相关事件信息及病毒制作方式</p>
+<p><strong>鉴定环境</strong></p>
+<p>硬件：取证计算机（Dell-DIMENSION5150）、高速硬盘复制机、四合一只读读卡器、取证硬盘、各类接口转化卡、数据线、移动硬盘、U盘</p>
+<p>软件：Win Svr 2003 Etprs Ed.、EnCase、UltraEdit-32</p>
+<p><strong>鉴定过程</strong></p>
+<p>1、存储介质正常工作，可读</p>
+<p>2、“移动硬盘”分区1中找到Delphi7和Vmware，构成进行木马病毒实验的基本环境，ICO用于更改程序图表</p>
+<p>3、分区1、2的收藏夹（Favrites）发现大量黑客、木马、病毒技术相关网站</p>
+<p>4、分区5（tools）myhacker目录下找到灰鸽子、nc、Sniffer、DDoS.EXE、黑客之门、网络神偷、Web3389.exe等大量黑客工具软件及说明书、录像等资料。历史日志发现嫌疑人多次访问这些数据。</p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413172945056.png" alt="image-20200413172945056"></p>
+<p>5、在分区5（tools）和桌面等目录下发现可执行木马程序,\Source Code\Delph\My_Work目录下，发现“武汉男生”的客户端和服务端程序， \Source Code\Delph\My_Work\武汉男生进程监控\code下发现病毒源代码,同时有病毒说明文件。 \Source Code\Delph\My_Work\传染 目录下发现多个版本的源文件。</p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413172955410.png" alt="image-20200413172955410"></p>
+<p>6、在分区2号码为35551的OICQ文件夹中，找到嫌疑人使用木马进行黑客活动的截图</p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413173007460.png" alt="image-20200413173007460"></p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413173014173.png" alt="image-20200413173014173"></p>
+<p>7、在“xxx的文档”中发现大量IP地址、计算机名以及网络游戏（如征途、冒险岛）账密。结合在\Source Code\Delphi\My_Workd\传染 目录下“readme.txt”文件，可认为嫌疑人最终目的是通过出售木马程序和所盗取的信息获得经济利益</p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413173037140.png" alt="image-20200413173037140"></p>
+<p>在“MyHacker\常看文章\账单”目录下，发现2005年1月-2006年7月的账目信息，合计约40余万元</p>
+<p><img src="/2019/09/05/Electronic-Forensics-1/image-20200413173044379.png" alt="image-20200413173044379"></p>
+<p><strong>鉴定结论</strong></p>
+<p>1、制作和传播木马病毒的实验环境</p>
+<p>2、编写病毒的软件工具</p>
+<p>3、多个病毒的源代码及可执行文件</p>
+<p>4、通过木马直接或间接获得的游戏账密等信息</p>
+<p>5、所出售木马病毒代码和木马生成器的价格</p>
+<p>6、收藏的相关技术资料的网址和多次访问病毒源码留下的历史记录</p>
+<p>7、病毒制作时间在2006年10月26日或更早，之后多次对其进行修改和升级</p>
+<p><strong>法律依据</strong></p>
+<p>刑法第二百八十六条　</p>
+<p>违反国家规定，对计算机信息系统功能进行删除、修改、增加、干扰，造成计算机信息系统不能正常运行，后果严重的，处五年以下有期徒刑或者拘役；后果特别严重的，处五年以上有期徒刑。</p>
+<p>违反国家规定，对计算机信息系统中存储、处理或者传输的数据和应用程序进行删除、修改、增加的操作，后果严重的，依照前款的规定处罚。</p>
+<p>故意制作、传播计算机病毒等破坏性程序，影响计算机系统正常运行，后果严重的，依照第一款的规定处罚。</p>
+<p><strong>总结展望</strong></p>
+<p>1、”熊猫烧香”案为以后的计算机网络案件处理提供了借鉴。</p>
+<p>2、案件中出现的计算机技术给计算机科学界和司法部门提出了新的挑战，促使相关法律的完善以及司法鉴定技术的进一步成熟。</p>
+<h2 id="0x06-参考文献"><a href="#0x06-参考文献" class="headerlink" title="0x06 参考文献"></a>0x06 参考文献</h2><p><a href="http://www.gjbmj.gov.cn/n1/2017/0316/c411145-29149427.html" target="_blank" rel="noopener">国内外电子数据取证标准规范研究</a></p>
+<p><a href="http://www.doc88.com/p-041682211628.html" target="_blank" rel="noopener">熊猫烧香案件的电子数据司法鉴定理论与实践</a></p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="http://Qftm.github.io">Qftm</a>
-            <p>原文链接：<a href="http://qftm.github.io/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/">http://qftm.github.io/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/</a>
-            <p>发表日期：<a href="http://qftm.github.io/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/">March 10th 2020, 5:02:00 pm</a>
-            <p>更新日期：<a href="http://qftm.github.io/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/">April 13th 2020, 4:08:18 pm</a>
+            <p>原文链接：<a href="http://qftm.github.io/2019/09/05/Electronic-Forensics-1/">http://qftm.github.io/2019/09/05/Electronic-Forensics-1/</a>
+            <p>发表日期：<a href="http://qftm.github.io/2019/09/05/Electronic-Forensics-1/">September 5th 2019, 5:02:00 pm</a>
+            <p>更新日期：<a href="http://qftm.github.io/2019/09/05/Electronic-Forensics-1/">April 13th 2020, 5:35:48 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -633,16 +554,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/03/12/LFI-Bypass-Session-Restriction-Getshell/" title= "LFI Bypass Session Restriction Getshell">
-                    <div class="nextTitle">LFI Bypass Session Restriction Getshell</div>
+                <a href= "/2019/09/11/CVE-2018-14418%E6%93%A6%E5%87%BA%E6%96%B0%E7%81%AB%E8%8A%B1/" title= "CVE-2018-14418 擦出新火花">
+                    <div class="nextTitle">CVE-2018-14418 擦出新火花</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/03/06/RFI%E5%B7%A7%E7%94%A8WebDAV%E7%BB%95%E8%BF%87URL%E5%8C%85%E5%90%AB%E9%99%90%E5%88%B6Getshell/" title= "RFI巧用WebDAV绕过URL包含限制Getshell">
-                    <div class="prevTitle">RFI巧用WebDAV绕过URL包含限制Getshell</div>
+                <a href= "/2019/08/03/Linux%E5%8F%8D%E5%BC%B9Shell/" title= "Linux 反弹 Shell">
+                    <div class="prevTitle">Linux 反弹 Shell</div>
                 </a>
             
         </li>
@@ -765,7 +686,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Inode"><span class="toc-number">2.</span> <span class="toc-text">Linux Inode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inode"><span class="toc-number">2.1.</span> <span class="toc-text">Inode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inode内容"><span class="toc-number">2.2.</span> <span class="toc-text">Inode内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inode大小"><span class="toc-number">2.3.</span> <span class="toc-text">Inode大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录文件"><span class="toc-number">2.4.</span> <span class="toc-text">目录文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬链接"><span class="toc-number">2.5.</span> <span class="toc-text">硬链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软链接"><span class="toc-number">2.6.</span> <span class="toc-text">软链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件恢复"><span class="toc-number">3.</span> <span class="toc-text">文件恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据恢复"><span class="toc-number">3.1.</span> <span class="toc-text">数据恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用工具"><span class="toc-number">3.2.</span> <span class="toc-text">常用工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境准备"><span class="toc-number">3.3.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用debugfs恢复文件"><span class="toc-number">3.4.</span> <span class="toc-text">使用debugfs恢复文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用extundelete恢复文件"><span class="toc-number">3.5.</span> <span class="toc-text">使用extundelete恢复文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用PhotoRec恢复文件"><span class="toc-number">3.6.</span> <span class="toc-text">使用PhotoRec恢复文件</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-取证概述"><span class="toc-number">2.</span> <span class="toc-text">0x01 取证概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-国内外取证概况"><span class="toc-number">3.</span> <span class="toc-text">0x02 国内外取证概况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-取证技术发展趋势"><span class="toc-number">4.</span> <span class="toc-text">0x03 取证技术发展趋势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-取证流程"><span class="toc-number">5.</span> <span class="toc-text">0x04 取证流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-熊猫烧香案例"><span class="toc-number">6.</span> <span class="toc-text">0x05 熊猫烧香案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-参考文献"><span class="toc-number">7.</span> <span class="toc-text">0x06 参考文献</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1744,7 +1665,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E4%B9%8BLinux%E4%B8%8B%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/" >电子取证之Linux下文件恢复</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/Linux-Electronic-Forensics/" >Linux Electronic Forensics Learning Handbook</a>
         </li>
     
     
@@ -1843,7 +1764,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/%E6%B5%85%E8%B0%88%E7%94%B5%E5%AD%90%E6%95%B0%E5%AD%97%E5%8F%96%E8%AF%81%E6%8A%80%E6%9C%AF/" >浅谈电子数字取证技术</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/Electronic-Forensics-1/" >浅谈电子数字取证技术</a>
         </li>
     
     
@@ -2075,11 +1996,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
+        <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
+    
+        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
+    
         <span class="sidebar-tag-name" data-tags="攻防渗透"><span class="iconfont-archer">&#xe606;</span>攻防渗透</span>
     
         <span class="sidebar-tag-name" data-tags="Handbook"><span class="iconfont-archer">&#xe606;</span>Handbook</span>
-    
-        <span class="sidebar-tag-name" data-tags="MacOS"><span class="iconfont-archer">&#xe606;</span>MacOS</span>
     
         <span class="sidebar-tag-name" data-tags="LFI"><span class="iconfont-archer">&#xe606;</span>LFI</span>
     
@@ -2107,29 +2030,27 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="IPS"><span class="iconfont-archer">&#xe606;</span>IPS</span>
     
-        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
-    
         <span class="sidebar-tag-name" data-tags="PE"><span class="iconfont-archer">&#xe606;</span>PE</span>
     
         <span class="sidebar-tag-name" data-tags="二进制"><span class="iconfont-archer">&#xe606;</span>二进制</span>
     
         <span class="sidebar-tag-name" data-tags="文件结构"><span class="iconfont-archer">&#xe606;</span>文件结构</span>
     
+        <span class="sidebar-tag-name" data-tags="Firewalld"><span class="iconfont-archer">&#xe606;</span>Firewalld</span>
+    
         <span class="sidebar-tag-name" data-tags="信息隐藏"><span class="iconfont-archer">&#xe606;</span>信息隐藏</span>
     
         <span class="sidebar-tag-name" data-tags="DES"><span class="iconfont-archer">&#xe606;</span>DES</span>
     
-        <span class="sidebar-tag-name" data-tags="电子取证"><span class="iconfont-archer">&#xe606;</span>电子取证</span>
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
         <span class="sidebar-tag-name" data-tags="路由协议"><span class="iconfont-archer">&#xe606;</span>路由协议</span>
     
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
-    
         <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
-        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
-    
         <span class="sidebar-tag-name" data-tags="开发"><span class="iconfont-archer">&#xe606;</span>开发</span>
+    
+        <span class="sidebar-tag-name" data-tags="Socket"><span class="iconfont-archer">&#xe606;</span>Socket</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -2182,6 +2103,8 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="运维"><span class="iconfont-archer">&#xe60a;</span>运维</span>
     
+        <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
+    
         <span class="sidebar-category-name" data-categories="Hackintosh"><span class="iconfont-archer">&#xe60a;</span>Hackintosh</span>
     
         <span class="sidebar-category-name" data-categories="木马后门"><span class="iconfont-archer">&#xe60a;</span>木马后门</span>
@@ -2193,8 +2116,6 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="信息隐藏"><span class="iconfont-archer">&#xe60a;</span>信息隐藏</span>
     
         <span class="sidebar-category-name" data-categories="密码研究"><span class="iconfont-archer">&#xe60a;</span>密码研究</span>
-    
-        <span class="sidebar-category-name" data-categories="取证艺术"><span class="iconfont-archer">&#xe60a;</span>取证艺术</span>
     
         <span class="sidebar-category-name" data-categories="攻防渗透"><span class="iconfont-archer">&#xe60a;</span>攻防渗透</span>
     
